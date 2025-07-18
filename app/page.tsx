@@ -59,7 +59,7 @@ export default function HomePage() {
           >
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30 backdrop-blur-sm">
               <Zap className="w-4 h-4 mr-2" />
-              Open Source Power Revolution
+              Open-Source Power Revolution
             </Badge>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
