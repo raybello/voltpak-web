@@ -1,0 +1,86 @@
+solid voltpak-expansion-housing-top
+  facet normal 0.0000 -1.0000 0.0000
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 380.0000 0.0000 0.0000
+      vertex 0.0000 4.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0.0000 -1.0000 0.0000
+    outer loop
+      vertex 380.0000 0.0000 0.0000
+      vertex 380.0000 4.0000 0.0000
+      vertex 0.0000 4.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0.0000 1.0000 0.0000
+    outer loop
+      vertex 0.0000 0.0000 270.0000
+      vertex 0.0000 4.0000 270.0000
+      vertex 380.0000 0.0000 270.0000
+    endloop
+  endfacet
+  facet normal 0.0000 1.0000 0.0000
+    outer loop
+      vertex 0.0000 4.0000 270.0000
+      vertex 380.0000 4.0000 270.0000
+      vertex 380.0000 0.0000 270.0000
+    endloop
+  endfacet
+  facet normal 0.0000 0.0000 -1.0000
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 0.0000 0.0000 270.0000
+      vertex 380.0000 0.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0.0000 0.0000 -1.0000
+    outer loop
+      vertex 0.0000 0.0000 270.0000
+      vertex 380.0000 0.0000 270.0000
+      vertex 380.0000 0.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0.0000 0.0000 1.0000
+    outer loop
+      vertex 0.0000 4.0000 0.0000
+      vertex 380.0000 4.0000 0.0000
+      vertex 0.0000 4.0000 270.0000
+    endloop
+  endfacet
+  facet normal 0.0000 0.0000 1.0000
+    outer loop
+      vertex 380.0000 4.0000 0.0000
+      vertex 380.0000 4.0000 270.0000
+      vertex 0.0000 4.0000 270.0000
+    endloop
+  endfacet
+  facet normal -1.0000 0.0000 0.0000
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 0.0000 4.0000 0.0000
+      vertex 0.0000 0.0000 270.0000
+    endloop
+  endfacet
+  facet normal -1.0000 0.0000 0.0000
+    outer loop
+      vertex 0.0000 4.0000 0.0000
+      vertex 0.0000 4.0000 270.0000
+      vertex 0.0000 0.0000 270.0000
+    endloop
+  endfacet
+  facet normal 1.0000 0.0000 0.0000
+    outer loop
+      vertex 380.0000 0.0000 0.0000
+      vertex 380.0000 0.0000 270.0000
+      vertex 380.0000 4.0000 0.0000
+    endloop
+  endfacet
+  facet normal 1.0000 0.0000 0.0000
+    outer loop
+      vertex 380.0000 0.0000 270.0000
+      vertex 380.0000 4.0000 270.0000
+      vertex 380.0000 4.0000 0.0000
+    endloop
+  endfacet
+endsolid voltpak-expansion-housing-top

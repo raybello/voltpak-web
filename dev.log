@@ -1,0 +1,46 @@
+
+> voltpak-web@1.0.0 dev
+> next dev -p 3000
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 1789ms
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-linux-x64-gnu isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-darwin-x64 isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-ia32-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-arm64-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-x64-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-linux-x64-musl isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-darwin-arm64 isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+ ○ Compiling / ...
+ ✓ Compiled / in 3.9s (520 modules)
+ GET / 200 in 4117ms
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-darwin-x64 isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-linux-x64-gnu isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-x64-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-darwin-arm64 isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-ia32-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-linux-x64-musl isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Managed item /sessions/epic-compassionate-archimedes/mnt/VoltPak Website Design/voltpak-web/node_modules/@next/swc-win32-arm64-msvc isn't a directory or doesn't contain a package.json (see snapshot.managedPaths option)
+ ○ Compiling /products/[slug] ...
+ ✓ Compiled /products/[slug] in 644ms (535 modules)
+ GET /products/voltpak-1000 200 in 1159ms
+ ✓ Compiled /shop in 223ms (523 modules)
+ GET /shop 200 in 299ms
+ ✓ Compiled /cart in 264ms (529 modules)
+ GET /cart 200 in 317ms
+ ✓ Compiled /checkout in 275ms (535 modules)
+ GET /checkout 200 in 333ms
+ ✓ Compiled /support in 224ms (537 modules)
+ GET /support 200 in 283ms
+ ✓ Compiled /about in 230ms (541 modules)
+ GET /about 200 in 296ms
+ GET / 200 in 70ms
+ GET /products/voltpak-1000 200 in 88ms
