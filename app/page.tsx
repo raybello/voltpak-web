@@ -78,9 +78,9 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { title: "Power Stations", href: "/shop", img: "/media/product-front.png", sub: "Integrated inverter + battery" },
-              { title: "Expansion Batteries", href: "/shop?category=battery", img: "/media/rear.jpg", sub: "Add capacity, stay modular" },
+              { title: "Expansion Batteries", href: "/shop?category=battery", img: "/media/battery.png", sub: "Add capacity, stay modular" },
               { title: "Solar Panels", href: "/shop?category=solar", img: "/media/lifestyle.png", sub: "Foldable or rigid, weather-sealed" },
-              { title: "Accessories", href: "/shop?category=accessory", img: "/media/front-ports.jpg", sub: "Cables, adapters, add-ons" },
+              // { title: "Accessories", href: "/shop?category=accessory", img: "/media/front-ports.jpg", sub: "Cables, adapters, add-ons" },
             ].map((t, i) => (
               <Link
                 key={t.title}
@@ -209,11 +209,11 @@ export default function Home() {
         <div className="overflow-x-auto no-scrollbar">
           <div className="flex gap-5 px-6 md:px-8 pb-2 max-w-container mx-auto">
             {[
-              { t: "Makers & Hackers", b: "Power your bench. Mod it if you want. We designed for that.", img: "/media/front-ports.jpg" },
-              { t: "Van life & off-grid", b: "Silent. Compact. Runs all night off a 220W panel.", img: "/media/lifestyle.png" },
-              { t: "Job site", b: "Circular saw, lights, drill — all day, no generator.", img: "/media/assembly.jpg" },
-              { t: "Home backup", b: "Fridge, router, CPAP. Ready before the outage starts.", img: "/media/lifestyle-2.png" },
-              { t: "Disaster prep", b: "100% charge in 1.8 hours from the wall. Always ready.", img: "/media/side.png" },
+              { t: "Makers & Hackers", b: "Power your bench. Mod it if you want. We designed for that.", img: "/media/hacker.png" },
+              { t: "Van life & off-grid", b: "Silent. Compact. Runs all night off a 220W panel.", img: "/media/van-life.png" },
+              { t: "Job site", b: "Circular saw, lights, drill — all day, no generator.", img: "/media/job-site.png" },
+              { t: "Home backup", b: "Fridge, router, CPAP. Ready before the outage starts.", img: "/media/home-life.png" },
+              // { t: "Disaster prep", b: "100% charge in 1.8 hours from the wall. Always ready.", img: "/media/side.png" },
             ].map((c) => (
               <div
                 key={c.t}
