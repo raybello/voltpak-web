@@ -1,8 +1,5 @@
 {
   "/shop/page": "app/shop/page.js",
-  "/careers/page": "app/careers/page.js",
   "/products/[slug]/page": "app/products/[slug]/page.js",
-  "/page": "app/page.js",
-  "/press/page": "app/press/page.js",
-  "/about/sustainability/page": "app/about/sustainability/page.js"
+  "/page": "app/page.js"
 }

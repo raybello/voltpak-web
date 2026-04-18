@@ -63,7 +63,7 @@ export default function EngineeringPage() {
 
           <div className="space-y-4">
             <div className="bg-ink-100 rounded-2xl p-6">
-              <div className="font-semibold text-ink-900 mb-3">What's open</div>
+              <div className="font-semibold text-ink-900 mb-3">What&apos;s open</div>
               <ul className="space-y-2 text-sm text-ink-700">
                 {[
                   "Inverter board — schematic and PCB layout (KiCad 7)",
@@ -81,7 +81,7 @@ export default function EngineeringPage() {
               </ul>
             </div>
             <div className="bg-ink-900 text-white rounded-2xl p-6">
-              <div className="font-semibold mb-3">What's not open — and why</div>
+              <div className="font-semibold mb-3">What&apos;s not open — and why</div>
               <p className="text-sm text-ink-300 leading-relaxed">
                 The MCU firmware is proprietary. It's our primary engineering moat —
                 the control logic, protection algorithms, and display stack took years

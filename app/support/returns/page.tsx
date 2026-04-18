@@ -56,7 +56,7 @@ export default function ReturnsPage() {
                 the unit at our warehouse. You'll get an email confirmation when it lands.
               </p>
               <div className="bg-ink-100 rounded-xl p-4 mt-2">
-                <div className="font-semibold text-ink-900 mb-2">What's not returnable</div>
+                <div className="font-semibold text-ink-900 mb-2">What&apos;s not returnable</div>
                 <ul className="space-y-1 text-ink-500">
                   {["Accessories under $30 (all sales final)", "Solar panels with visible field use or mounting marks", "Units with physical damage not present at delivery"].map(i => (
                     <li key={i} className="flex gap-2"><span className="text-ink-300 mt-1">·</span>{i}</li>

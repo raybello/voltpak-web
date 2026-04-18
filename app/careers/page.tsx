@@ -80,7 +80,7 @@ export default function CareersPage() {
         </div>
 
         <div className="border-t border-ink-100 pt-10">
-          <h3 className="font-semibold text-ink-900 mb-2">Don't see your role?</h3>
+          <h3 className="font-semibold text-ink-900 mb-2">Don&apos;t see your role?</h3>
           <p className="text-sm text-ink-500 leading-relaxed">
             If you're a hardware or firmware engineer who's dug into our open hardware files
             or is active in the Discord, send us an email anyway at{" "}

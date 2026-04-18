@@ -322,7 +322,7 @@ export default function Home() {
                 className="reveal bg-ink-100 rounded-2xl p-6"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <p className="text-ink-700 leading-relaxed">"{t.q}"</p>
+                <p className="text-ink-700 leading-relaxed">&ldquo;{t.q}&rdquo;</p>
                 <div className="mt-5 text-sm">
                   <div className="font-semibold text-ink-900">{t.n}</div>
                   <div className="text-ink-500">{t.c}</div>

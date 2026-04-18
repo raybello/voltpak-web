@@ -92,7 +92,7 @@ export default function AboutPage() {
 
       {/* ── WHO IT'S FOR ── */}
       <div className="max-w-3xl mx-auto px-6 md:px-8 mt-20">
-        <p className="text-eyebrow uppercase text-accent-hover mb-3">Who it's for</p>
+        <p className="text-eyebrow uppercase text-accent-hover mb-3">Who it&apos;s for</p>
         <h2 className="font-display text-section text-ink-900 mb-6">
           Built for people with a screwdriver and a question.
         </h2>
