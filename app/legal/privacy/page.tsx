@@ -21,11 +21,11 @@ export default function PrivacyPage() {
             },
             {
               heading: "Newsletter and email",
-              body: "If you sign up for the newsletter, we store your email address and send you product updates, firmware changelogs, and early access offers. You can unsubscribe at any time via the link in any email. We use Mailchimp for email delivery. Mailchimp receives your email address and tracks open rates — this is noted in their own privacy policy.",
+              body: "If you sign up for the newsletter, we store your email address and send you product updates, firmware changelogs, and early access offers. You can unsubscribe at any time via the link in any email. We use Mailchimp for email delivery. Mailchimp receives your email address and tracks open rates - this is noted in their own privacy policy.",
             },
             {
               heading: "Analytics",
-              body: "This site uses Plausible Analytics, a privacy-first analytics tool that does not use cookies, does not fingerprint visitors, and does not send data to Google. We can see aggregate traffic numbers — pages visited, referrers, country-level location — but nothing that identifies individual visitors.",
+              body: "This site uses Plausible Analytics, a privacy-first analytics tool that does not use cookies, does not fingerprint visitors, and does not send data to Google. We can see aggregate traffic numbers - pages visited, referrers, country-level location - but nothing that identifies individual visitors.",
             },
             {
               heading: "Cookies",

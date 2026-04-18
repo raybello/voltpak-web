@@ -86,7 +86,7 @@ export default function WarrantyPage() {
             Opening your VoltPak does not void your warranty. Replacing the fans, printing new panels,
             accessing the BMS PCB, or wiring in your own expansion battery does not void your warranty.
             We designed the hardware to be opened. The only action that voids coverage is flashing
-            unauthorised firmware onto the MCU — because that directly affects inverter safety behaviour
+            unauthorised firmware onto the MCU - because that directly affects inverter safety behaviour
             in ways we can't verify or support.
           </p>
           <p className="text-ink-300 mt-3 leading-relaxed">

@@ -49,7 +49,7 @@ const COMPARE_ROW_LABELS: Record<string, string[]> = {
 };
 
 // Normalize the product's own spec rows into the same label set so we
-// can line them up 1:1 with competitors.  Falls back to "—" when the
+// can line them up 1:1 with competitors.  Falls back to "-" when the
 // product doesn't publish that label.
 function pickProductValues(
   product: ProductDetail,
@@ -59,7 +59,7 @@ function pickProductValues(
     const hit = product.specs
       .flatMap((g) => g.rows)
       .find((r) => r.label.toLowerCase() === label.toLowerCase());
-    return { label, value: hit?.value ?? "—" };
+    return { label, value: hit?.value ?? "-" };
   });
 }
 
@@ -139,9 +139,8 @@ export default function CompareTable({
               {labels.map((label, i) => (
                 <tr
                   key={label}
-                  className={`border-b border-ink-100 ${
-                    i % 2 === 1 ? "bg-ink-100/30" : ""
-                  }`}
+                  className={`border-b border-ink-100 ${i % 2 === 1 ? "bg-ink-100/30" : ""
+                    }`}
                 >
                   <th
                     scope="row"

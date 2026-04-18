@@ -1,5 +1,5 @@
 // Top-level product catalog. Every product here has a matching entry
-// in lib/specs.ts keyed by `id` — that's where the detailed content
+// in lib/specs.ts keyed by `id` - that's where the detailed content
 // (features, specs, FAQ) lives.
 
 export type Product = {

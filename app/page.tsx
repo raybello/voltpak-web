@@ -211,7 +211,7 @@ export default function Home() {
             {[
               { t: "Makers & Hackers", b: "Power your bench. Mod it if you want. We designed for that.", img: "/media/hacker.png" },
               { t: "Van life & off-grid", b: "Silent. Compact. Runs all night off a 220W panel.", img: "/media/van-life.png" },
-              { t: "Job site", b: "Circular saw, lights, drill — all day, no generator.", img: "/media/job-site.png" },
+              { t: "Job site", b: "Circular saw, lights, drill - all day, no generator.", img: "/media/job-site.png" },
               { t: "Home backup", b: "Fridge, router, CPAP. Ready before the outage starts.", img: "/media/home-life.png" },
               // { t: "Disaster prep", b: "100% charge in 1.8 hours from the wall. Always ready.", img: "/media/side.png" },
             ].map((c) => (
@@ -354,7 +354,7 @@ export default function Home() {
             Designed for the curious.
           </h2>
           <p className="mt-6 text-ink-300 text-lg max-w-xl mx-auto">
-            Early access, mod guides, teardowns, and firmware updates — straight to your inbox. No noise.
+            Early access, mod guides, teardowns, and firmware updates - straight to your inbox. No noise.
           </p>
           <form className="mt-8 max-w-md mx-auto flex gap-2">
             <input

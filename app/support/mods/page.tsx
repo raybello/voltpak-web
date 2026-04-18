@@ -4,11 +4,11 @@ export const metadata = { title: "Mod & Repair Guides · VoltPak Support" };
 
 const MOD_FILES = [
   {
-    category: "Printable Parts — STL Files",
+    category: "Printable Parts - STL Files",
     note: "Print in PETG or ASA. PLA works indoors at low ambient temps.",
     files: [
       {
-        name: "Front Panel — Replacement",
+        name: "Front Panel - Replacement",
         desc: "Drop-in replacement front panel. Sized for stock display and port array cutouts. Modify to add custom labels, badge mounts, or cable routing.",
         version: "v1.0",
         date: "Apr 2026",
@@ -26,7 +26,7 @@ const MOD_FILES = [
         href: "/downloads/voltpak-1000-fan-guard-60mm.stl",
       },
       {
-        name: "Rack Ears — 1U Flush Mount",
+        name: "Rack Ears - 1U Flush Mount",
         desc: "Adapter ears for mounting VoltPak 1000 in a standard 19\" rack. 1U height. M5 rack holes.",
         version: "v1.0",
         date: "Apr 2026",
@@ -44,7 +44,7 @@ const MOD_FILES = [
         href: "/downloads/voltpak-desk-tilt-stand.stl",
       },
       {
-        name: "Expansion Battery — Housing Top Cover",
+        name: "Expansion Battery - Housing Top Cover",
         desc: "Replacement top cover for the Expansion Battery 2000. Add vents, labels, or additional mounting tabs.",
         version: "v1.0",
         date: "Apr 2026",
@@ -55,11 +55,11 @@ const MOD_FILES = [
     ],
   },
   {
-    category: "Hardware Files — PCB & Schematics",
-    note: "CERN-OHL-S v2. Study, modify, manufacture — with attribution.",
+    category: "Hardware Files - PCB & Schematics",
+    note: "CERN-OHL-S v2. Study, modify, manufacture - with attribution.",
     files: [
       {
-        name: "VoltPak Hardware — Open Source Package",
+        name: "VoltPak Hardware - Open Source Package",
         desc: "KiCad schematics and PCB layouts for the inverter board, BMS interface, and USB-PD controller. STEP mechanical model and full BOM included.",
         version: "v1.2",
         date: "Apr 2026",
@@ -85,7 +85,7 @@ const GUIDES = [
     tools: "Phillips #2, 4-pin JST PH2.0 crimper",
     steps: [
       "Power off and unplug all inputs.",
-      "Remove the left side panel — 4× M3 Phillips screws.",
+      "Remove the left side panel - 4× M3 Phillips screws.",
       "Disconnect the 4-pin JST fan connector.",
       "Unscrew the fan (4× M3 × 8 mm socket head).",
       "Install the replacement (standard 60 mm bolt pattern).",
@@ -101,7 +101,7 @@ const GUIDES = [
     steps: [
       "Power off. Remove AC and DC inputs. Wait 10 min for capacitors to discharge.",
       "Remove the rear panel (6× M3 Phillips).",
-      "The BMS board is mounted on the left — 4× M3 standoff screws.",
+      "The BMS board is mounted on the left - 4× M3 standoff screws.",
       "Cell voltage can be read at the BMS test points: TP1–TP8 (0 V reference at GND pad).",
       "Nominal per-cell: 3.2 V resting. Fully charged: 3.65 V. Minimum: 2.8 V.",
       "If any cell reads < 2.8 V at rest, the pack requires reconditioning or replacement.",
@@ -115,10 +115,10 @@ const GUIDES = [
     tools: "Phillips #2",
     steps: [
       "Power off and disconnect all cables.",
-      "Locate the fuse access panel on the rear — single M3 countersunk screw.",
+      "Locate the fuse access panel on the rear - single M3 countersunk screw.",
       "Remove the blade fuse (30 A, standard ATO).",
       "Inspect for visible burn or break. Replace with identical spec.",
-      "Reinstall panel. If fuse blows again immediately, do not replace — contact support.",
+      "Reinstall panel. If fuse blows again immediately, do not replace - contact support.",
     ],
   },
 ];
@@ -156,8 +156,8 @@ export default function ModsPage() {
         <div className="mb-12 grid md:grid-cols-3 gap-4">
           {[
             { label: "Discord server", sub: "Where the mods live. Share builds, ask questions, get hardware.", href: "https://discord.gg/voltpak" },
-            { label: "GitHub — hardware repo", sub: "KiCad files, STEP models, BOM. Star it. Fork it.", href: "https://github.com/voltpak-hw" },
-            { label: "Printables — community parts", sub: "Community-submitted STL files, brackets, and enclosure mods.", href: "https://printables.com/@voltpak" },
+            { label: "GitHub - hardware repo", sub: "KiCad files, STEP models, BOM. Star it. Fork it.", href: "https://github.com/voltpak-hw" },
+            { label: "Printables - community parts", sub: "Community-submitted STL files, brackets, and enclosure mods.", href: "https://printables.com/@voltpak" },
           ].map((c) => (
             <a key={c.label} href={c.href} className="group block bg-ink-100 rounded-xl p-5 hover:bg-ink-900 hover:text-white transition-colors">
               <div className="font-semibold text-ink-900 group-hover:text-white mb-1 transition-colors">{c.label}</div>
@@ -211,7 +211,7 @@ export default function ModsPage() {
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-hover hover:text-accent transition-colors"
                           >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                              <path d="M12 3v13m0 0-4-4m4 4 4-4M3 21h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M12 3v13m0 0-4-4m4 4 4-4M3 21h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             Download
                           </a>
@@ -241,7 +241,7 @@ export default function ModsPage() {
                     <span className="text-xs text-ink-500 hidden sm:inline">Tools: {g.tools}</span>
                   </div>
                   <svg className="flex-shrink-0 ml-4 text-ink-500 transition-transform group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </summary>
                 <div className="px-6 pb-6 pt-2 bg-white border-t border-ink-100">
@@ -279,7 +279,7 @@ export default function ModsPage() {
             ))}
           </div>
           <p className="mt-4 text-sm text-ink-500">
-            Avoid PLA near the fan areas — ambient temps inside the chassis can reach 45 °C under load.
+            Avoid PLA near the fan areas - ambient temps inside the chassis can reach 45 °C under load.
             PETG handles this comfortably. All tolerances assume a 0.4 mm nozzle with a 0.2 mm layer height.
           </p>
         </div>

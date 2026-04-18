@@ -44,7 +44,7 @@ export default function ReturnsPage() {
             <h2 className="font-display text-2xl font-semibold text-ink-900 mb-5">Returns</h2>
             <div className="space-y-4 text-sm text-ink-700 leading-relaxed">
               <p>
-                Return any VoltPak product within 30 days of delivery — opened or unopened, no questions asked.
+                Return any VoltPak product within 30 days of delivery - opened or unopened, no questions asked.
                 Unit must be in working condition with no physical damage caused after delivery.
               </p>
               <p>
@@ -72,8 +72,8 @@ export default function ReturnsPage() {
             <div className="space-y-5">
               {[
                 { title: "Standard (Free on orders $500+)", body: "4–7 business days via FedEx or UPS Ground. Tracking emailed at dispatch." },
-                { title: "Expedited — $19.99", body: "2–3 business days. Available at checkout. All 48 contiguous states." },
-                { title: "Overnight — $39.99", body: "Next business day if ordered before 2 pm PT. Weekdays only." },
+                { title: "Expedited - $19.99", body: "2–3 business days. Available at checkout. All 48 contiguous states." },
+                { title: "Overnight - $39.99", body: "Next business day if ordered before 2 pm PT. Weekdays only." },
                 { title: "Canada & international", body: "Available at checkout. Duties and import fees are the buyer's responsibility. We don't mark down values on customs forms." },
               ].map((s) => (
                 <div key={s.title} className="border-t border-ink-100 pt-4 first:border-0 first:pt-0">

@@ -7,14 +7,14 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import RevealInit from "@/components/motion/RevealInit";
 
 export const metadata: Metadata = {
-  title: "VoltPak — Silent power. Serious output.",
+  title: "VoltPak - Silent power. Serious output.",
   description:
     "VoltPak builds portable power stations, expandable battery systems and solar solutions for home backup, the outdoors and the job site.",
   metadataBase: new URL("https://voltpak.example.com"),
   openGraph: {
-    title: "VoltPak — Silent power. Serious output.",
+    title: "VoltPak - Silent power. Serious output.",
     description:
-      "Portable power stations, expandable batteries and solar — engineered for home backup, the outdoors and the job site.",
+      "Portable power stations, expandable batteries and solar - engineered for home backup, the outdoors and the job site.",
     type: "website",
   },
 };

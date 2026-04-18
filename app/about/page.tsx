@@ -14,13 +14,13 @@ export default function AboutPage() {
         <div className="mt-10 space-y-6 text-lg text-ink-500 leading-relaxed">
           <p>
             VoltPak builds portable inverter systems for people who want to understand
-            their gear. Not just use it — understand it. Open it, mod it, and trust it
+            their gear. Not just use it - understand it. Open it, mod it, and trust it
             because they've seen what's inside.
           </p>
           <p>
             Most portable power stations are sealed appliances.
             Gloss plastic. Hidden fans. Proprietary screws. You press a button and
-            hope it works. We think that's the wrong approach — especially for
+            hope it works. We think that's the wrong approach - especially for
             something you're counting on.
           </p>
           <p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
               {
                 n: "01",
                 t: "Functional futurism",
-                b: "Design should communicate what a product does — not what it costs. Airflow geometry is honest. Smooth surfaces are theater.",
+                b: "Design should communicate what a product does - not what it costs. Airflow geometry is honest. Smooth surfaces are theater.",
               },
               {
                 n: "02",
@@ -85,8 +85,8 @@ export default function AboutPage() {
           <img src="/media/rear.jpg" alt="VoltPak rear vents" className="w-full aspect-[4/3] object-cover rounded-2xl" />
         </div>
         <p className="mt-4 text-xs text-ink-500 text-center">
-          Left: port array — USB-A, USB-C, and AC outlets with individual status LEDs.
-          Right: rear exhaust geometry — functional, not styled.
+          Left: port array - USB-A, USB-C, and AC outlets with individual status LEDs.
+          Right: rear exhaust geometry - functional, not styled.
         </p>
       </div>
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
         <div className="space-y-5 text-lg text-ink-500 leading-relaxed">
           <p>
             If you've ever soldered a Raspberry Pi hat, swapped a laptop battery,
-            or printed an enclosure from Printables — VoltPak was built around
+            or printed an enclosure from Printables - VoltPak was built around
             the way you think about hardware.
           </p>
           <p>

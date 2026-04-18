@@ -1,0 +1,145 @@
+---
+title: "Where VoltPak stands in the open-source hardware world"
+description: "We publish schematics, PCB Gerbers, enclosure STLs, and a bill of materials for every unit we ship. Here's why - and where we draw the line between open hardware and open firmware."
+date: "2026-02-20"
+author: "Ray Bello, Founder"
+cover: "/media/hacker.png"
+tags: ["Company", "Open Source", "Philosophy"]
+---
+
+Every VoltPak 1000 ships with a QR code on the back panel that takes you to
+the full hardware source - schematics, Gerbers, BoM, and the STL files for
+every printable bracket and mount. You can download the whole bundle right
+now:
+
+<DownloadCard
+  href="/downloads/voltpak-hardware-open-source.zip"
+  title="VoltPak 1000 open hardware bundle"
+  description="Schematics (PDF + KiCad), PCB Gerbers, BoM, mechanical CAD, printable STLs. Licensed CERN-OHL-S v2."
+  type="zip"
+/>
+
+Most consumer electronics companies don't do this. Most of them actively
+don't want you to know what's inside the box. So it's a fair question to
+ask: **why?**
+
+The short answer is that we think the consumer electronics industry made a
+wrong turn about fifteen years ago when it started pretending hardware was
+a trade secret. The long answer is below.
+
+## The hardware-open, firmware-closed model
+
+Let's get this out of the way first, because it's the thing that draws the
+most heat from the community: **our firmware is not open source.**
+
+The bootloader is signed. The control-loop code is not published. We do
+publish the register-level interface, the CAN/BMS protocol, and enough
+information for anyone to write their own firmware - but we don't ship the
+source for ours.
+
+<Callout variant="note" title="Why split hardware and firmware">
+  Hardware is a statement of design. Firmware is a statement of <em>safety</em>.
+  A user can swap a MOSFET and worst-case kill their own unit. A user with
+  write access to our control loop can brick the OVP trip threshold and kill
+  someone else's house. Those two risks aren't symmetric, and we don't
+  think they should be treated symmetrically.
+</Callout>
+
+We talked about this choice for months internally. The conclusion was that
+the thing that actually benefits users - the ability to understand,
+repair, and extend the hardware - is preserved by open schematics. The
+thing that would put users at risk is a signed firmware chain you can't
+bypass. So that's what we shipped.
+
+Not everyone agrees with this. That's fine. We'd rather be honest about the
+trade-off than handwave it.
+
+## What "open" means in practice
+
+A lot of companies use the word "open" to mean "we published a photograph
+of the PCB." That's not open. Here's what shipping open hardware actually
+looks like for us:
+
+- **Schematics** - full KiCad sources plus rendered PDFs. Every net labeled. Every part number searchable.
+- **PCB Gerbers** - production-ready fabrication files, not screenshots. You can send them to JLCPCB tomorrow.
+- **BoM** - every component, manufacturer, part number, substitution notes, and the assembly process class for each part.
+- **Mechanical** - STEP files for the enclosure, STLs for every printable bracket, and the DXF for the front panel.
+- **Errata** - we publish mistakes. There's an errata document in the bundle. [VoltPak 1000 errata rev A](https://github.com/voltpak/hardware/blob/main/errata/voltpak-1000-rev-a.md) lists three issues we caught in DVT and fixed in production.
+
+The point is that someone technical should be able to take the bundle, sit
+down, and **rebuild a functionally-equivalent VoltPak 1000 on their own**.
+That's a pretty high bar. It's the bar we aim for.
+
+## What the STLs unlock
+
+Some of the coolest things users have done with VoltPak in the first six
+months were mechanical, not electrical. People have printed custom mounts,
+rack ears, desk tilts, fan guards, and battery housings. We ship STLs for
+the ones we're proud of:
+
+<DownloadCard
+  href="/downloads/voltpak-1000-rack-ears.stl"
+  title="19-inch rack mount ears"
+  description="For 1U rack-mounting a VoltPak 1000 in a comms cabinet."
+  type="stl"
+/>
+
+<DownloadCard
+  href="/downloads/voltpak-desk-tilt-stand.stl"
+  title="Desk tilt stand"
+  description="15° angled stand for benchtop use - takes pressure off the front ports during long sessions."
+  type="stl"
+/>
+
+<DownloadCard
+  href="/downloads/voltpak-1000-fan-guard-60mm.stl"
+  title="60 mm fan guard replacement"
+  description="Print in PETG. Replaces the stock steel mesh if you prefer quieter airflow."
+  type="stl"
+/>
+
+<DownloadCard
+  href="/downloads/voltpak-expansion-housing-top.stl"
+  title="Expansion battery top shell"
+  description="The top half of the expansion battery enclosure, released so you can build custom battery packs."
+  type="stl"
+/>
+
+## The economic argument
+
+The usual pushback we hear is: *"If you publish everything, won't someone just clone you?"*
+
+Two things are true about this.
+
+**First, yes, people can clone us.** There are already two Alibaba listings
+that look suspiciously like our PCB. This doesn't bother us much. If
+someone wants to manufacture a VoltPak clone at scale, they need access to
+the same transformer winder, the same MOSFET supply, the same enclosure
+tooling, and the same QA jigs. Hardware at this level is a
+capital-intensive game; the schematic is maybe 5 % of the moat.
+
+**Second, and more importantly, openness compounds into trust.** The number
+one reason our early customers bought a VoltPak was that they could look
+inside it before buying. That's worth more to us than the speculative
+downside of a knockoff that - let's be real - won't have OVP or OCP and
+will get one-star reviews six weeks after it ships.
+
+## Where we want the space to go
+
+We'd love to see open hardware become the default for power electronics
+consumer products, not the exception. Specifically:
+
+1. **Published schematics as a condition of safety certification.**
+2. **BoM transparency for repairability** - if you can't source the part, you can't fix the thing, and that's landfill by design.
+3. **Errata culture** - publishing mistakes openly as a signal of technical maturity, not weakness.
+
+We'll keep writing about where we think the space is going. If you want to
+build with us, the bundle is there. Break it, fork it, improve it, or just
+read it and understand what's in your box. All three are wins.
+
+<Callout variant="info" title="One more thing">
+  If you're working on an open hardware project in the power electronics
+  space and want someone to read your schematic or compare notes on
+  safety trip thresholds, reach out. We've been there and we'd like to
+  help. Email <a href="mailto:engineering@voltpak.com">engineering@voltpak.com</a>.
+</Callout>

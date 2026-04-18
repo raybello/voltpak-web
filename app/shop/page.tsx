@@ -32,7 +32,7 @@ export default function ShopPage({
           <h1 className="font-display text-display text-ink-900">Pick your build.</h1>
           <p className="mt-4 text-ink-500 max-w-2xl">
             Start with a complete system or build from the inverter core up.
-            Every component is designed to work together — and designed to be understood.
+            Every component is designed to work together - and designed to be understood.
           </p>
         </div>
 
@@ -42,11 +42,10 @@ export default function ShopPage({
             <Link
               key={c.key}
               href={c.key === "all" ? "/shop" : `/shop?category=${c.key}`}
-              className={`h-9 px-4 inline-flex items-center rounded-full text-sm transition border ${
-                cat === c.key
+              className={`h-9 px-4 inline-flex items-center rounded-full text-sm transition border ${cat === c.key
                   ? "bg-ink-900 text-white border-ink-900"
                   : "bg-white text-ink-700 border-ink-100 hover:border-ink-300"
-              }`}
+                }`}
             >
               {c.label}
             </Link>

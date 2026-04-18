@@ -53,7 +53,7 @@ export default function ProductHero({
             href="#buy"
             className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
           >
-            Buy — {formatPrice(price)}
+            Buy - {formatPrice(price)}
           </a>
           <a
             href="#features"

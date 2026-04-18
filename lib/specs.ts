@@ -1,5 +1,5 @@
 // Authoritative per-product detail data. Every product page reads from
-// this file — no content is hard-coded in JSX.  Benchmarks live in
+// this file - no content is hard-coded in JSX.  Benchmarks live in
 // lib/benchmarks.ts and are referenced by id from `compareAgainst`.
 
 export type SpecRow = { label: string; value: string; note?: string };
@@ -40,14 +40,14 @@ export type ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// VoltPak 1000 — flagship
+// VoltPak 1000 - flagship
 // ──────────────────────────────────────────────────────────────
 const VP1000: ProductDetail = {
   id: "vp-1000",
   shortDesc:
     "Silent 1,024 Wh LFP power station with 2,200 W AC, two 140 W USB-C PD 3.1 ports and a 70-minute AC recharge.",
   longDesc:
-    "The VoltPak 1000 is engineered around three principles: stay safe, stay silent, stay out of your way. 1,024 Wh of automotive-grade LiFePO4 cells. 2,200 W of clean sine-wave AC output. 23 dB in ECO mode — quieter than a library, quiet enough for your bedroom.",
+    "The VoltPak 1000 is engineered around three principles: stay safe, stay silent, stay out of your way. 1,024 Wh of automotive-grade LiFePO4 cells. 2,200 W of clean sine-wave AC output. 23 dB in ECO mode - quieter than a library, quiet enough for your bedroom.",
   heroTagline: { lineA: "Silent power.", lineB: "Serious output." },
   heroMedia: { type: "video", src: "/media/hero.mp4", poster: "/media/hero.png" },
   highlights: [
@@ -61,7 +61,7 @@ const VP1000: ProductDetail = {
       eyebrow: "Safety built in",
       title: "LFP cells. 11 sensors. 10 fuses.",
       body:
-        "A flame-retardant polycarbonate body over an aluminum chassis. 26 SGS certifications. Lithium Iron Phosphate chemistry rated for 4,000 charge cycles — a decade of daily use before capacity drops to 80%.",
+        "A flame-retardant polycarbonate body over an aluminum chassis. 26 SGS certifications. Lithium Iron Phosphate chemistry rated for 4,000 charge cycles - a decade of daily use before capacity drops to 80%.",
       media: {
         type: "image",
         src: "/media/assembly.jpg",
@@ -96,7 +96,7 @@ const VP1000: ProductDetail = {
       eyebrow: "Power everything",
       title: "12 outputs. 0 adapters.",
       body:
-        "Four NEMA 5-15R AC outlets. Two 140 W USB-C PD 3.1 ports for laptops. Two 24 W USB-A QC 3.0. A 12 V car outlet. A 15 W Qi wireless pad on top. Run your studio, your fridge, your CPAP — at the same time.",
+        "Four NEMA 5-15R AC outlets. Two 140 W USB-C PD 3.1 ports for laptops. Two 24 W USB-A QC 3.0. A 12 V car outlet. A 15 W Qi wireless pad on top. Run your studio, your fridge, your CPAP - at the same time.",
       media: {
         type: "image",
         src: "/media/front-ports.jpg",
@@ -251,7 +251,7 @@ const VP1000: ProductDetail = {
     },
     {
       q: "Can I daisy-chain expansion batteries?",
-      a: "Yes. Up to five Expansion Battery 2000 units per Station for a combined 11,264 Wh. Hot-swap is supported — no power-down required.",
+      a: "Yes. Up to five Expansion Battery 2000 units per Station for a combined 11,264 Wh. Hot-swap is supported - no power-down required.",
     },
     {
       q: "What's covered under warranty?",
@@ -269,7 +269,7 @@ const VP1000: ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// VoltPak 2000 — pro 2 kWh class
+// VoltPak 2000 - pro 2 kWh class
 // ──────────────────────────────────────────────────────────────
 const VP2000: ProductDetail = {
   id: "vp-2000",
@@ -290,7 +290,7 @@ const VP2000: ProductDetail = {
       eyebrow: "Whole-home scale",
       title: "Stack to 22.5 kWh.",
       body:
-        "Chain up to five Expansion Battery 2000 units on a single station. Enough reserve to run a refrigerator, router, CPAP and a few LED circuits for multiple days — silently.",
+        "Chain up to five Expansion Battery 2000 units on a single station. Enough reserve to run a refrigerator, router, CPAP and a few LED circuits for multiple days - silently.",
       media: {
         type: "image",
         src: "/media/rear.jpg",
@@ -308,7 +308,7 @@ const VP2000: ProductDetail = {
       eyebrow: "Pro AC output",
       title: "3,000 W. RV-ready.",
       body:
-        "Four NEMA 5-15R outlets plus one NEMA TT-30 for RV shore-power. 3,000 W continuous pure sine wave — enough for a miter saw, a residential AC compressor or a full recording rig.",
+        "Four NEMA 5-15R outlets plus one NEMA TT-30 for RV shore-power. 3,000 W continuous pure sine wave - enough for a miter saw, a residential AC compressor or a full recording rig.",
       media: {
         type: "image",
         src: "/media/front-ports.jpg",
@@ -420,7 +420,7 @@ const VP2000: ProductDetail = {
     },
     {
       q: "Is it loud under heavy load?",
-      a: "At full 3,000 W output the fans reach 32 dB — about the level of a library. In ECO mode at typical home-backup loads it stays at 26 dB.",
+      a: "At full 3,000 W output the fans reach 32 dB - about the level of a library. In ECO mode at typical home-backup loads it stays at 26 dB.",
     },
     {
       q: "How heavy is it with expansion batteries?",
@@ -445,14 +445,14 @@ const VP2000: ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// Expansion Battery 2000 (simplified lineup — one expansion SKU)
+// Expansion Battery 2000 (simplified lineup - one expansion SKU)
 // ──────────────────────────────────────────────────────────────
 const VP_BATT_2K: ProductDetail = {
   id: "vp-battery-2k",
   shortDesc:
     "2,048 Wh LFP expansion pack. One cable, double the runtime. Hot-swap supported.",
   longDesc:
-    "The Expansion Battery 2000 is passive capacity on demand. It inherits the parent station's output ceiling, BMS safety profile, and warranty. Chain up to five per station. No independent output — all energy routes through the VoltPak station you already own.",
+    "The Expansion Battery 2000 is passive capacity on demand. It inherits the parent station's output ceiling, BMS safety profile, and warranty. Chain up to five per station. No independent output - all energy routes through the VoltPak station you already own.",
   heroTagline: { lineA: "Double the runtime.", lineB: "Same VoltPak." },
   heroMedia: { type: "image", src: "/media/rear.jpg" },
   highlights: [
@@ -484,7 +484,7 @@ const VP_BATT_2K: ProductDetail = {
       eyebrow: "Stack as needed",
       title: "Up to 22.5 kWh.",
       body:
-        "One battery doubles the runtime. Five batteries turn a VoltPak 2000 into whole-home backup for multi-day outages. Add them as budget allows — the station ceiling is fixed at five.",
+        "One battery doubles the runtime. Five batteries turn a VoltPak 2000 into whole-home backup for multi-day outages. Add them as budget allows - the station ceiling is fixed at five.",
       media: {
         type: "image",
         src: "/media/side.png",
@@ -511,7 +511,7 @@ const VP_BATT_2K: ProductDetail = {
       group: "Pairing",
       rows: [
         { label: "Connector", value: "VoltLink SDC (included)" },
-        { label: "Telemetry", value: "Yes — appears as unified capacity in app" },
+        { label: "Telemetry", value: "Yes - appears as unified capacity in app" },
         { label: "Hot-swap", value: "Yes" },
         { label: "Max output (inherits station)", value: "2,200 W (VoltPak 1000) / 3,000 W (VoltPak 2000)" },
         { label: "Max chain per station", value: "5" },
@@ -557,14 +557,14 @@ const VP_BATT_2K: ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// Solar Panel 220W — foldable portable
+// Solar Panel 220W - foldable portable
 // ──────────────────────────────────────────────────────────────
 const VP_SOLAR_220: ProductDetail = {
   id: "vp-solar-220",
   shortDesc:
     "23.5% efficient foldable solar panel with dual SDC + MC4 output, IP67 sealed, 3-angle magnetic kickstand.",
   longDesc:
-    "A foldable monocrystalline PERC panel rated at 220 W under full sun. Dual SDC and MC4 outputs mean it pairs with both VoltPak and any third-party MPPT on the market. Weather-sealed to IP67 — run it through the afternoon thunderstorm.",
+    "A foldable monocrystalline PERC panel rated at 220 W under full sun. Dual SDC and MC4 outputs mean it pairs with both VoltPak and any third-party MPPT on the market. Weather-sealed to IP67 - run it through the afternoon thunderstorm.",
   heroTagline: { lineA: "Fold it.", lineB: "Forget it." },
   heroMedia: { type: "image", src: "/media/lifestyle.png" },
   highlights: [
@@ -594,7 +594,7 @@ const VP_SOLAR_220: ProductDetail = {
       eyebrow: "SDC + MC4",
       title: "Works with what you own.",
       body:
-        "SDC plugs straight into any VoltPak station. MC4 plugs into any third-party MPPT on the market — Jackery, EcoFlow, Bluetti, Goal Zero, Renogy. One panel, any ecosystem.",
+        "SDC plugs straight into any VoltPak station. MC4 plugs into any third-party MPPT on the market - Jackery, EcoFlow, Bluetti, Goal Zero, Renogy. One panel, any ecosystem.",
       media: {
         type: "image",
         src: "/media/front-ports.jpg",
@@ -607,7 +607,7 @@ const VP_SOLAR_220: ProductDetail = {
       eyebrow: "IP67 sealed",
       title: "Rain doesn't stop it.",
       body:
-        "The full panel + connectors meet IP67 — 30 minutes in 1 m of water, dust-tight, operating from -20 °C to 65 °C. Leave it out for the afternoon storm and come back to topped-up batteries.",
+        "The full panel + connectors meet IP67 - 30 minutes in 1 m of water, dust-tight, operating from -20 °C to 65 °C. Leave it out for the afternoon storm and come back to topped-up batteries.",
       media: {
         type: "image",
         src: "/media/assembly.jpg",
@@ -673,7 +673,7 @@ const VP_SOLAR_220: ProductDetail = {
   faq: [
     {
       q: "Will it work with my EcoFlow / Jackery / Bluetti?",
-      a: "Yes — use the MC4 output. Any station with an MPPT in the 12–60 V range accepts the 220 W panel directly.",
+      a: "Yes - use the MC4 output. Any station with an MPPT in the 12–60 V range accepts the 220 W panel directly.",
     },
     {
       q: "Do I need two panels for a VoltPak 1000?",
@@ -692,12 +692,12 @@ const VP_SOLAR_220: ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// Solar Panel 400W Bifacial — rigid high-yield
+// Solar Panel 400W Bifacial - rigid high-yield
 // ──────────────────────────────────────────────────────────────
 const VP_SOLAR_400: ProductDetail = {
   id: "vp-solar-400",
   shortDesc:
-    "400 W rigid bifacial solar panel — 23% front efficiency plus up to 25% albedo gain from the rear.",
+    "400 W rigid bifacial solar panel - 23% front efficiency plus up to 25% albedo gain from the rear.",
   longDesc:
     "A rigid monocrystalline bifacial panel for permanent installations, campers, cabins and ground-mount arrays. The rear-side cells pick up reflected light for real-world gains up to 25% above the 400 W rating.",
   heroTagline: { lineA: "400 watts.", lineB: "Plus a bonus." },
@@ -713,7 +713,7 @@ const VP_SOLAR_400: ProductDetail = {
       eyebrow: "Bifacial cells",
       title: "Sun from both sides.",
       body:
-        "Transparent backsheet lets reflected light hit the rear cells too. On white gravel or snow you'll see up to 500 W out of the panel — without changing the mount.",
+        "Transparent backsheet lets reflected light hit the rear cells too. On white gravel or snow you'll see up to 500 W out of the panel - without changing the mount.",
       media: {
         type: "image",
         src: "/media/lifestyle.png",
@@ -785,11 +785,11 @@ const VP_SOLAR_400: ProductDetail = {
   faq: [
     {
       q: "Can I use two 400W panels in series on a VoltPak 2000?",
-      a: "Yes — the Station 2000 MPPT accepts up to 60 V. Two 400W panels in series stay within that ceiling and feed the full 1,600 W solar input.",
+      a: "Yes - the Station 2000 MPPT accepts up to 60 V. Two 400W panels in series stay within that ceiling and feed the full 1,600 W solar input.",
     },
     {
       q: "How do I get the bifacial bonus?",
-      a: "Mount the panel with reflective material behind it — white gravel, snow, white membrane roofing — and leave at least 15 cm of air gap for the rear cells to see light.",
+      a: "Mount the panel with reflective material behind it - white gravel, snow, white membrane roofing - and leave at least 15 cm of air gap for the rear cells to see light.",
     },
   ],
   compareAgainst: ["anker-solix-ps400"],
@@ -805,7 +805,7 @@ const VP_SOLAR_400: ProductDetail = {
 const VP_1000_SOLAR: ProductDetail = {
   id: "vp-1000-solar",
   shortDesc:
-    "VoltPak 1000 + Solar Panel 220W. Everything you need for off-grid power — $99 less than buying separately.",
+    "VoltPak 1000 + Solar Panel 220W. Everything you need for off-grid power - $99 less than buying separately.",
   longDesc:
     "A complete off-grid starter: the flagship 1,024 Wh VoltPak 1000 paired with the 220 W foldable solar panel. Save $99 vs. buying them separately.",
   heroTagline: { lineA: "Station plus sun.", lineB: "Save $99." },
@@ -941,7 +941,7 @@ const VP_2000_SOLAR_KIT: ProductDetail = {
   faq: [
     {
       q: "Can I run the two panels in series or parallel?",
-      a: "Either. The included Y-cable puts them in parallel for higher current. Series is supported via MC4 for higher voltage — pick whichever best matches your MPPT window.",
+      a: "Either. The included Y-cable puts them in parallel for higher current. Series is supported via MC4 for higher voltage - pick whichever best matches your MPPT window.",
     },
   ],
   certifications: VP2000.certifications,

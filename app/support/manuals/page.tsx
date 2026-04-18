@@ -7,7 +7,7 @@ const DOCS = [
     category: "Quick-Start Guides",
     files: [
       {
-        name: "VoltPak 1000 — Quick-Start Guide",
+        name: "VoltPak 1000 - Quick-Start Guide",
         desc: "Get running in under 5 minutes. In-the-box checklist, first charge, port overview.",
         version: "v1.2",
         date: "Apr 2026",
@@ -21,7 +21,7 @@ const DOCS = [
     category: "Technical Reference Manuals",
     files: [
       {
-        name: "VoltPak 1000 — Technical Reference Manual",
+        name: "VoltPak 1000 - Technical Reference Manual",
         desc: "Full electrical architecture, block diagrams, thermal specs, BMS UART protocol, fastener reference.",
         version: "v1.2",
         date: "Apr 2026",
@@ -30,7 +30,7 @@ const DOCS = [
         href: "/downloads/voltpak-1000-technical-manual.pdf",
       },
       {
-        name: "Expansion Battery 2000 — Installation & Technical Reference",
+        name: "Expansion Battery 2000 - Installation & Technical Reference",
         desc: "SB50 connector wiring, BMS passthrough protocol, cell spec, installation sequence.",
         version: "v1.0",
         date: "Apr 2026",
@@ -45,7 +45,7 @@ const DOCS = [
     note: "Released under CERN-OHL-S v2. Hardware is open. Firmware is not.",
     files: [
       {
-        name: "VoltPak Hardware — Open Source Package",
+        name: "VoltPak Hardware - Open Source Package",
         desc: "KiCad schematics, PCB layouts, STEP mechanical model, BOM with Mouser/DigiKey PNs. Covers main inverter board, BMS interface board, and USB-PD controller.",
         version: "v1.2",
         date: "Apr 2026",
@@ -80,7 +80,7 @@ export default function ManualsPage() {
             Every number, documented.
           </h1>
           <p className="mt-4 text-ink-500 leading-relaxed">
-            Hardware documentation, PCB files, schematics, and BOM — all open.
+            Hardware documentation, PCB files, schematics, and BOM - all open.
             The firmware running the inverter MCU is proprietary. We don't release it.
             That's our moat. The hardware is yours to study, modify, and build on.
           </p>
@@ -92,14 +92,14 @@ export default function ManualsPage() {
             <div className="w-10 h-10 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
-                  stroke="#00D4FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  stroke="#00D4FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </div>
           <div>
             <div className="font-semibold text-white mb-1">A note on firmware</div>
             <p className="text-ink-300 text-sm leading-relaxed">
-              The firmware that runs on the inverter MCU is proprietary. We don't publish it — not binaries,
+              The firmware that runs on the inverter MCU is proprietary. We don't publish it - not binaries,
               not source. It's our engineering moat. You're welcome to reverse-engineer it. Builders who go
               deep and share findings publicly in our Discord get hardware, pre-release units, and direct
               access to our engineering team.
@@ -159,7 +159,7 @@ export default function ManualsPage() {
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-hover hover:text-accent transition-colors"
                           >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                              <path d="M12 3v13m0 0-4-4m4 4 4-4M3 21h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M12 3v13m0 0-4-4m4 4 4-4M3 21h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             Download
                           </a>
@@ -177,16 +177,16 @@ export default function ManualsPage() {
         <div className="mt-16 bg-ink-100 rounded-2xl p-8">
           <h3 className="font-semibold text-ink-900 mb-2">Firmware changelog</h3>
           <p className="text-sm text-ink-500 leading-relaxed">
-            We publish a public changelog for each firmware update — version number,
+            We publish a public changelog for each firmware update - version number,
             what changed, and any safety-relevant notes. Binaries are not included.
             The changelog is the record. If something in a release affects how you interact
             with the hardware, you'll find it here.
           </p>
           <div className="mt-6 space-y-3">
             {[
-              { ver: "v2.4.1", date: "Apr 2026", note: "BMS UART timeout fix — prevents false OCP trips when expansion battery connects cold." },
+              { ver: "v2.4.1", date: "Apr 2026", note: "BMS UART timeout fix - prevents false OCP trips when expansion battery connects cold." },
               { ver: "v2.4.0", date: "Mar 2026", note: "PD3.1 48V/5A EPR support on USB-C ports. ECO mode hysteresis tuning." },
-              { ver: "v2.3.2", date: "Jan 2026", note: "Surge detection improvement — reduced false trip rate on reactive loads by 40%." },
+              { ver: "v2.3.2", date: "Jan 2026", note: "Surge detection improvement - reduced false trip rate on reactive loads by 40%." },
               { ver: "v2.3.0", date: "Nov 2025", note: "Touchscreen UI redesign. Per-port watt display. Thermal graph added to system info." },
             ].map((entry) => (
               <div key={entry.ver} className="flex gap-4 text-sm">

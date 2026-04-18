@@ -18,7 +18,7 @@ export default function BatteryPage() {
             LFP is different. In a good way.
           </h1>
           <p className="mt-4 text-ink-500 leading-relaxed">
-            VoltPak uses lithium iron phosphate (LFP) cells — a chemistry built for longevity,
+            VoltPak uses lithium iron phosphate (LFP) cells - a chemistry built for longevity,
             not energy density. Here's what that means in practice, and how to get the most out of it.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function BatteryPage() {
             {
               stat: "0–100%",
               label: "Safe daily range",
-              body: "Unlike NMC, LFP doesn't benefit from partial cycling. Charge to 100% and discharge fully — the chemistry handles it.",
+              body: "Unlike NMC, LFP doesn't benefit from partial cycling. Charge to 100% and discharge fully - the chemistry handles it.",
             },
             {
               stat: "≤ 30 °C",
@@ -65,7 +65,7 @@ export default function BatteryPage() {
               },
               {
                 q: "What does the BMS actually do?",
-                a: "It monitors all 8 cell groups individually — voltage, temperature, and state of charge. It balances cells passively during charge, disconnects the pack if any cell exceeds safe limits, and reports everything to the display over UART. You can see cell-level data in the system info screen.",
+                a: "It monitors all 8 cell groups individually - voltage, temperature, and state of charge. It balances cells passively during charge, disconnects the pack if any cell exceeds safe limits, and reports everything to the display over UART. You can see cell-level data in the system info screen.",
               },
               {
                 q: "The capacity reading seems lower than rated. Is something wrong?",
@@ -73,18 +73,18 @@ export default function BatteryPage() {
               },
               {
                 q: "Can I read raw cell data myself?",
-                a: "Yes. The BMS exposes a UART interface at 115,200 baud (3.3 V logic) — connector and pinout in the technical manual. It outputs a JSON-formatted status packet every 2 seconds with per-cell voltage, temperature, and SOC. The protocol is documented in the hardware ZIP.",
+                a: "Yes. The BMS exposes a UART interface at 115,200 baud (3.3 V logic) - connector and pinout in the technical manual. It outputs a JSON-formatted status packet every 2 seconds with per-cell voltage, temperature, and SOC. The protocol is documented in the hardware ZIP.",
               },
               {
                 q: "When is a cell actually at end of life?",
-                a: "Warranty replacement threshold is 70% capacity retention. In practice, LFP cells tend to hit this point and then plateau — capacity doesn't continue falling sharply. Most packs remain usable well past the warranty threshold, just with reduced runtime.",
+                a: "Warranty replacement threshold is 70% capacity retention. In practice, LFP cells tend to hit this point and then plateau - capacity doesn't continue falling sharply. Most packs remain usable well past the warranty threshold, just with reduced runtime.",
               },
             ].map((item) => (
               <details key={item.q} className="group rounded-2xl border border-ink-100 overflow-hidden">
                 <summary className="flex items-center justify-between px-6 py-4 cursor-pointer bg-white hover:bg-ink-100/50 transition-colors list-none">
                   <span className="font-medium text-ink-900 pr-4">{item.q}</span>
                   <svg className="flex-shrink-0 text-ink-500 transition-transform group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </summary>
                 <div className="px-6 pb-5 pt-2 bg-white border-t border-ink-100">
@@ -110,12 +110,12 @@ export default function BatteryPage() {
               </thead>
               <tbody className="divide-y divide-ink-100 bg-white">
                 {[
-                  ["100% — fully charged", "3.65 V", "29.2 V", "BMS top-balance target"],
-                  ["80% — typical resting", "3.30 V", "26.4 V", "Normal daily resting voltage"],
-                  ["50% — storage voltage", "3.20 V", "25.6 V", "Ideal for long-term storage"],
-                  ["20% — low warning", "3.10 V", "24.8 V", "BMS activates low-SOC warning"],
-                  ["0% — cutoff", "2.80 V", "22.4 V", "BMS disconnects pack at this point"],
-                  ["< 2.50 V — over-discharged", "< 2.50 V", "< 20.0 V", "Contact support — cell may be damaged"],
+                  ["100% - fully charged", "3.65 V", "29.2 V", "BMS top-balance target"],
+                  ["80% - typical resting", "3.30 V", "26.4 V", "Normal daily resting voltage"],
+                  ["50% - storage voltage", "3.20 V", "25.6 V", "Ideal for long-term storage"],
+                  ["20% - low warning", "3.10 V", "24.8 V", "BMS activates low-SOC warning"],
+                  ["0% - cutoff", "2.80 V", "22.4 V", "BMS disconnects pack at this point"],
+                  ["< 2.50 V - over-discharged", "< 2.50 V", "< 20.0 V", "Contact support - cell may be damaged"],
                 ].map(([state, cell, pack, note]) => (
                   <tr key={state} className="hover:bg-ink-100/40 transition-colors">
                     <td className="px-5 py-3 font-medium text-ink-900">{state}</td>

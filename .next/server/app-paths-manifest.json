@@ -1,10 +1,4 @@
 {
-  "/shop/page": "app/shop/page.js",
-  "/products/[slug]/page": "app/products/[slug]/page.js",
-  "/compare/page": "app/compare/page.js",
-  "/careers/page": "app/careers/page.js",
-  "/press/page": "app/press/page.js",
-  "/page": "app/page.js",
-  "/support/page": "app/support/page.js",
-  "/cart/page": "app/cart/page.js"
+  "/press/[slug]/page": "app/press/[slug]/page.js",
+  "/press/page": "app/press/page.js"
 }

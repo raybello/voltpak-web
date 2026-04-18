@@ -19,7 +19,7 @@ export default function SpecSheet({
           <h2 className="font-display text-section text-ink-900">{title}</h2>
         </div>
 
-        {/* Two-column flow layout — long groups wrap naturally */}
+        {/* Two-column flow layout - long groups wrap naturally */}
         <div className="grid md:grid-cols-2 gap-x-12">
           {groups.map((g) => (
             <div key={g.group} className="reveal mb-8 break-inside-avoid-page">

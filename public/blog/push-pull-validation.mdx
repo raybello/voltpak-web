@@ -1,0 +1,189 @@
+---
+title: "How we validated the VoltPak 1000 push-pull inverter - and why open-loop isn't good enough"
+description: "Most sub-$1k inverters ship open-loop push-pull stages with no real-time regulation and bolt-on safety. We designed the VoltPak 1000 around a closed feedback loop and hardware-level OVP, OCP, and UVLP. Here's the validation story."
+date: "2026-03-12"
+author: "VoltPak Engineering"
+cover: "/media/assembly.jpg"
+tags: ["Engineering", "Hardware", "Safety"]
+---
+
+The push-pull topology has been the workhorse of low-cost portable inverters
+for twenty years. It's cheap, efficient on paper, and easy to build. It's also
+how you end up with a $399 "1000 W" inverter that shuts down at 600 W,
+clips its output waveform under load, and cooks its own MOSFETs when you
+short the wrong wire.
+
+We didn't want to ship that. This post walks through how we validated the
+VoltPak 1000 push-pull stage, the closed feedback loop we layered on top, and
+the three hardware safety rails - **OVP**, **OCP**, and **UVLP** - that keep
+the unit alive when the real world does what it does.
+
+## The problem with open-loop push-pull
+
+A classic open-loop push-pull stage looks something like this: two
+N-channel MOSFETs alternately switch the primary of a center-tapped
+transformer, producing an AC square wave on the secondary. With a fixed duty
+cycle $D = 0.5$ and a fixed input $V_{in}$, the RMS output is deterministic:
+
+$$
+V_{out,rms} = V_{in} \cdot \frac{N_s}{N_p} \cdot \sqrt{D}
+$$
+
+That's fine on a bench. In the field, $V_{in}$ is a battery that sags under
+load. Every 100 mV of sag propagates straight to the output with no
+correction. A 5 % droop at the battery becomes a 5 % droop on your 120 V
+rail, and your laptop brick starts chirping.
+
+<Callout variant="warn" title="What competitors ship">
+  We tore down four sub-$500 inverters from the top four Amazon SKUs. All
+  four ran fixed-frequency, fixed-duty push-pull with no output voltage
+  feedback. Output regulation was <strong>±12 %</strong> across the
+  specified load range. One of them drifted 18 V over 30 seconds of a
+  200 W dryer startup transient.
+</Callout>
+
+## The closed loop
+
+On the VoltPak 1000 we sample the secondary through a resistor divider
+and a Hall sensor, feed both into an STM32 ADC pair running at 200 kHz, and
+close the loop in firmware with a digital PI compensator. The control law is
+straightforward:
+
+$$
+u[k] = u[k-1] + K_p \cdot \left(e[k] - e[k-1]\right) + K_i \cdot T_s \cdot e[k]
+$$
+
+where $e[k] = V_{ref} - V_{sense}[k]$ is the voltage error and $T_s = 5\,\mu s$
+is the sample period. The PWM duty cycle driving the push-pull gates is
+clipped to $[0.05,\, 0.48]$ to preserve dead-time and stop shoot-through.
+
+Tuning targets were:
+
+- **Steady-state regulation:** $\pm 1\%$ of nominal from 0 to 1000 W
+- **Phase margin:** $\geq 45^\circ$ at crossover
+- **Transient response:** $\leq 3$ mains cycles to settle after a full-load step
+
+We hit all three. The measured open-loop gain and phase across load are in
+the technical manual; the short version is the compensator keeps a clean
+unity-gain crossover around 2 kHz.
+
+<Figure
+  src="/media/assembly.jpg"
+  caption="The closed-loop control board sits above the push-pull stage. The Hall sensor (right of the toroid) is the key sensing element that prior-art open-loop designs just don't include."
+/>
+
+## Safety rail 1 - OVP (overvoltage protection)
+
+Firmware can fail. The microcontroller can lock up. A bug can get
+deployed. None of that is allowed to put 400 V across a user's laptop.
+
+The OVP on the VoltPak 1000 is implemented in **hardware only**, downstream
+of the firmware control loop. A TVS-diode-fed comparator monitors the output
+through an independent divider; if the rectified peak exceeds the threshold
+for more than 50 µs, a latching SCR crowbar pulls the gate drive rails to
+ground and opens the output relay.
+
+The threshold is:
+
+$$
+V_{OVP} = 1.20 \cdot V_{nom,peak} = 1.20 \cdot 170\,\text{V} = 204\,\text{V peak}
+$$
+
+Chosen so that nominal surge transients (think a motor starting on the
+same bus) don't trigger a false cut, but any true runaway is clamped well
+before device limits. We verified this by injecting square-wave
+disturbances at the sense node and measuring time-to-trip on the scope -
+mean 32 µs across 500 trials.
+
+## Safety rail 2 - OCP (overcurrent protection)
+
+The output inductor current is sampled every switching period. The OCP
+responds in two tiers:
+
+<SpecTable
+  rows={[
+    {
+      label: "Tier 1 (cycle-by-cycle)",
+      value: "Pulse-by-pulse limit at 12 A peak",
+      note: "Hardware latch inside the gate driver; fires in under 500 ns.",
+    },
+    {
+      label: "Tier 2 (fold-back)",
+      value: "Digital fold-back at 9.5 A RMS for >200 ms",
+      note: "Firmware reduces duty cycle to limit RMS current; user-visible on the display.",
+    },
+    {
+      label: "Tier 3 (short circuit)",
+      value: "Hard shutdown at 20 A instantaneous",
+      note: "Relay opens; unit latches OFF until user cycles the power button.",
+    },
+  ]}
+/>
+
+The math for Tier 1 is the standard sensorless limit through the current
+sense resistor:
+
+$$
+V_{CS} = I_L \cdot R_{sense} \quad\Rightarrow\quad I_{trip} = \frac{V_{CS,ref}}{R_{sense}} = \frac{600\,\text{mV}}{50\,\text{m}\Omega} = 12\,\text{A}
+$$
+
+## Safety rail 3 - UVLP (undervoltage lockout / protection)
+
+The inverter refuses to start below $V_{bat} = 10.5\,\text{V}$ and shuts down
+cleanly at $V_{bat} = 10.0\,\text{V}$. Below that threshold, the push-pull
+stage's peak MOSFET current spikes nonlinearly - you'll destroy a FET before
+you deliver any useful output. The UVLP threshold is pre-compensated for
+the IR drop across the battery sense cable so the cutoff is accurate to
+±50 mV regardless of load.
+
+## The test plan
+
+Every VoltPak 1000 comes off the line through a 14-station validation jig
+that reproduces the full qualification suite we used during design:
+
+1. **Open-circuit regulation** - 0.1–1.0 kW resistive sweep, 120.0 ± 1.0 V
+2. **Inductive transient** - 1 HP motor startup, peak-current monitored
+3. **Short-circuit survival** - 50 ms and 250 ms output shorts, OCP must fire in every trial
+4. **OVP injection** - artificial fault at the sense node, trip time logged
+5. **Thermal soak** - 45 min at rated load, TI hotspot must stay below $110^\circ C$
+6. **EMC** - FCC Part 15 Class B sweep, all bands
+
+Full numbers and plots live in the technical manual.
+
+<DownloadCard
+  href="/downloads/voltpak-1000-technical-manual.pdf"
+  title="VoltPak 1000 Technical Manual"
+  description="Full push-pull control loop, compensator tuning data, safety trip curves, and Bode plots."
+  type="manual"
+/>
+
+<DownloadCard
+  href="/downloads/voltpak-1000-quickstart.pdf"
+  title="Quickstart Guide"
+  description="Hookup, first-boot, and what the indicator LEDs actually mean."
+  type="pdf"
+/>
+
+<DownloadCard
+  href="/downloads/voltpak-hardware-open-source.zip"
+  title="Open-source hardware bundle"
+  description="Schematics, PCB Gerbers, and BoM for the control and push-pull boards."
+  type="zip"
+/>
+
+## What this looks like on your bench
+
+If you're curious, the easiest thing to do is plug the unit into a dummy
+load, scope the output, and step the load from 200 W to 900 W. You'll see
+the output droop for about 40 ms while the PI loop catches up, and then
+snap back to a clean sine within $\pm 1\,\text{V}$. Open-loop competitors
+don't snap back - they just stay drooped.
+
+That's the difference. It's the whole reason we built it this way.
+
+<Callout variant="info" title="Want to dig deeper?">
+  Reach out at <a href="mailto:engineering@voltpak.com">engineering@voltpak.com</a>.
+  We'll send you the raw oscilloscope captures from validation and walk you
+  through the compensator design in detail. This is the kind of stuff we love
+  to talk about.
+</Callout>

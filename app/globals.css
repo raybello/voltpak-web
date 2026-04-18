@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* KaTeX styling for LaTeX in MDX blog posts. */
+@import "katex/dist/katex.min.css";
+
 :root {
   --bg: #ffffff;
   --ink: #0a0a0a;
@@ -31,6 +34,7 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -43,7 +47,7 @@ body {
 
 /* Reveal-on-scroll base state.
    IMPORTANT: content must always be visible by default.  The fade-in
-   animation is a pure progressive enhancement — it only activates
+   animation is a pure progressive enhancement - it only activates
    once the client-side script adds `.has-js` to <html>, which itself
    is set synchronously from an inline script in layout.tsx.
    This guarantees anyone with JS disabled, a slow main thread, or a
@@ -59,6 +63,7 @@ html.has-js .reveal {
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 html.has-js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -70,6 +75,7 @@ html.has-js .reveal.is-visible {
     transform: none;
     transition: none;
   }
+
   html {
     scroll-behavior: auto;
   }
@@ -81,6 +87,7 @@ html.has-js .reveal.is-visible {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
+
 .glass-dark {
   background: rgba(10, 10, 10, 0.72);
   backdrop-filter: saturate(180%) blur(20px);
@@ -102,4 +109,16 @@ html.has-js .reveal.is-visible {
   outline: 2px solid #00d4ff;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Block-math should breathe a little - overrides KaTeX's default spacing. */
+.katex-display {
+  margin: 1.75rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+.katex {
+  font-size: 1.05em;
 }

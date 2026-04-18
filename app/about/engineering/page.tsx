@@ -39,7 +39,7 @@ export default function EngineeringPage() {
             </h2>
             <div className="space-y-4 text-ink-500 leading-relaxed">
               <p>
-                Every VoltPak PCB — the main inverter board, the BMS interface, the USB-PD controller —
+                Every VoltPak PCB - the main inverter board, the BMS interface, the USB-PD controller -
                 is released as open source under the CERN Open Hardware Licence v2 (Strongly Reciprocal).
                 KiCad schematics, PCB layouts, STEP mechanical models, and a full BOM with
                 Mouser/DigiKey part numbers are available on this site and on GitHub.
@@ -50,7 +50,7 @@ export default function EngineeringPage() {
                 you missed, improves things you got lazy on, and builds mods that make the product better.
               </p>
               <p>
-                The CERN-OHL-S licence means you can study it, modify it, and manufacture from it —
+                The CERN-OHL-S licence means you can study it, modify it, and manufacture from it -
                 as long as you release your changes under the same terms.
               </p>
             </div>
@@ -66,9 +66,9 @@ export default function EngineeringPage() {
               <div className="font-semibold text-ink-900 mb-3">What&apos;s open</div>
               <ul className="space-y-2 text-sm text-ink-700">
                 {[
-                  "Inverter board — schematic and PCB layout (KiCad 7)",
-                  "BMS interface board — schematic and PCB",
-                  "USB-PD controller board — schematic and PCB",
+                  "Inverter board - schematic and PCB layout (KiCad 7)",
+                  "BMS interface board - schematic and PCB",
+                  "USB-PD controller board - schematic and PCB",
                   "Chassis STEP and IGES mechanical models",
                   "All STL files for user-replaceable panels",
                   "Full BOM with manufacturer PNs",
@@ -81,9 +81,9 @@ export default function EngineeringPage() {
               </ul>
             </div>
             <div className="bg-ink-900 text-white rounded-2xl p-6">
-              <div className="font-semibold mb-3">What&apos;s not open — and why</div>
+              <div className="font-semibold mb-3">What&apos;s not open - and why</div>
               <p className="text-sm text-ink-300 leading-relaxed">
-                The MCU firmware is proprietary. It's our primary engineering moat —
+                The MCU firmware is proprietary. It's our primary engineering moat -
                 the control logic, protection algorithms, and display stack took years
                 to develop and are what separate a good inverter from a reliable one.
                 We don't publish it. The community is welcome to reverse-engineer it.
@@ -109,7 +109,7 @@ export default function EngineeringPage() {
               { title: "No fake vents", body: "If there's a vent opening, air moves through it. Decorative geometry that implies airflow is dishonest design. We don't do it." },
               { title: "No gloss", body: "Matte ABS. Industrial grain texture. Hides wear. Survives a bench. Doesn't fingerprint. Consumer gloss finishes don't belong on tools." },
               { title: "Visible fasteners", body: "Standard M3 Phillips or hex socket throughout. Visible and reachable. Anyone with a screwdriver should be able to open this product." },
-              { title: "Instrumentation, not decoration", body: "LEDs exist to convey state — per-port status, not ambiance. The display is a dashboard, not a brand moment." },
+              { title: "Instrumentation, not decoration", body: "LEDs exist to convey state - per-port status, not ambiance. The display is a dashboard, not a brand moment." },
               { title: "Modular by default", body: "Battery compartment isolated. Fans on standard bolt patterns. Panels replaceable. The architecture invites modification." },
             ].map((p) => (
               <div key={p.title}>
@@ -133,7 +133,7 @@ export default function EngineeringPage() {
             </p>
             <p>
               Color palette: graphite, charcoal, desert tan. UI accents: white, amber,
-              cold blue — used sparingly. The accent colors on the display and LEDs are
+              cold blue - used sparingly. The accent colors on the display and LEDs are
               instrument colors, not brand colors. They mean something.
             </p>
             <p>

@@ -16,7 +16,7 @@ export default function TermsPage() {
             },
             {
               heading: "2. Open hardware licence",
-              body: "Hardware design files released on this site (schematics, PCB layouts, mechanical models) are provided under the CERN Open Hardware Licence v2 — Strongly Reciprocal. You may use, modify, and manufacture from them subject to those terms. The firmware running on VoltPak MCUs is proprietary and is not licensed for use, reproduction, or distribution.",
+              body: "Hardware design files released on this site (schematics, PCB layouts, mechanical models) are provided under the CERN Open Hardware Licence v2 - Strongly Reciprocal. You may use, modify, and manufacture from them subject to those terms. The firmware running on VoltPak MCUs is proprietary and is not licensed for use, reproduction, or distribution.",
             },
             {
               heading: "3. Warranty",

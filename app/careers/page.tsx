@@ -11,13 +11,13 @@ const ROLES = [
     title: "Embedded Firmware Engineer",
     type: "Full-time",
     location: "San Francisco, CA",
-    body: "Own the MCU firmware stack — control loops, BMS communication, display driver, USB-PD negotiation. C/C++ on STM32. This is the proprietary core of the product. You'll work on things you can't publish.",
+    body: "Own the MCU firmware stack - control loops, BMS communication, display driver, USB-PD negotiation. C/C++ on STM32. This is the proprietary core of the product. You'll work on things you can't publish.",
   },
   {
     title: "Mechanical / Industrial Designer",
     type: "Full-time",
     location: "San Francisco, CA (hybrid)",
-    body: "Chassis design, thermal management, panel geometry. STEP, IGES, SolidWorks or Fusion 360. You care about tolerances and airflow, not brand aesthetics. We ship open STL files — your work will be printed by strangers.",
+    body: "Chassis design, thermal management, panel geometry. STEP, IGES, SolidWorks or Fusion 360. You care about tolerances and airflow, not brand aesthetics. We ship open STL files - your work will be printed by strangers.",
   },
   {
     title: "Community & Developer Relations",
@@ -38,7 +38,7 @@ export default function CareersPage() {
           </h1>
           <p className="mt-4 text-lg text-ink-500 leading-relaxed">
             Small team. Real engineering problems. We release our hardware as open source
-            and keep the firmware proprietary. It's an unusual position to design for —
+            and keep the firmware proprietary. It's an unusual position to design for -
             and the people who find that interesting are the people we want to work with.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function CareersPage() {
                   <div className="text-sm text-ink-500 mt-0.5">{role.location} · {role.type}</div>
                 </div>
                 <a
-                  href={`mailto:careers@voltpak.com?subject=Application — ${role.title}`}
+                  href={`mailto:careers@voltpak.com?subject=Application - ${role.title}`}
                   className="flex-shrink-0 h-9 px-5 inline-flex items-center rounded-full bg-ink-900 text-white text-sm font-semibold hover:bg-ink-700 transition"
                 >
                   Apply

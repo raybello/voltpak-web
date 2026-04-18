@@ -19,7 +19,7 @@ export default function ContactPage() {
             Real answers. No scripts.
           </h1>
           <p className="mt-4 text-ink-500 leading-relaxed">
-            Our support team knows the product — not just the FAQ. Weekdays 8 am–6 pm PT.
+            Our support team knows the product - not just the FAQ. Weekdays 8 am–6 pm PT.
             We aim to reply within 24 hours, usually less.
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 href: "#chat",
               },
               {
-                title: "Discord — community + team",
+                title: "Discord - community + team",
                 sub: "discord.gg/voltpak",
                 body: "The fastest way to get a technical answer from someone who has already taken apart their VoltPak. Our engineers are in here too.",
                 cta: "Join the server →",
@@ -65,7 +65,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Contact form — client component */}
+          {/* Contact form - client component */}
           <ContactForm />
         </div>
 

@@ -19,7 +19,7 @@ export default function SustainabilityPage() {
           </h1>
           <p className="mt-4 text-lg text-ink-500 leading-relaxed">
             LFP chemistry. 3,500-cycle rated packs. Replaceable components. Open hardware.
-            Longevity is the sustainability story — not certifications.
+            Longevity is the sustainability story - not certifications.
           </p>
         </div>
 
@@ -27,8 +27,8 @@ export default function SustainabilityPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-20">
           {[
             {
-              title: "LFP — the right chemistry",
-              body: "Lithium iron phosphate contains no cobalt or nickel — two of the most environmentally costly mining outputs in consumer electronics. LFP is also substantially less prone to thermal runaway, which means lower failure rates and less e-waste from fires.",
+              title: "LFP - the right chemistry",
+              body: "Lithium iron phosphate contains no cobalt or nickel - two of the most environmentally costly mining outputs in consumer electronics. LFP is also substantially less prone to thermal runaway, which means lower failure rates and less e-waste from fires.",
             },
             {
               title: "3,500 cycles means 10 years",
@@ -36,7 +36,7 @@ export default function SustainabilityPage() {
             },
             {
               title: "Serviceable by design",
-              body: "Replaceable panels. Standard M3 fasteners. Serviceable fans. Isolated battery compartment. If a component fails, replace the component — not the unit. We stock spare parts, and the hardware files are open so third parties can manufacture them.",
+              body: "Replaceable panels. Standard M3 fasteners. Serviceable fans. Isolated battery compartment. If a component fails, replace the component - not the unit. We stock spare parts, and the hardware files are open so third parties can manufacture them.",
             },
             {
               title: "Open hardware extends product life",
@@ -65,7 +65,7 @@ export default function SustainabilityPage() {
             <p>
               When a VoltPak battery pack reaches end of useful life, we accept it back.
               We work with certified LFP recycling partners to ensure cells are processed
-              properly — not landfilled.
+              properly - not landfilled.
             </p>
             <p>
               Contact us at returns@voltpak.com with subject line "Battery recycling" and

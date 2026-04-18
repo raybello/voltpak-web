@@ -2,7 +2,7 @@ import { Product } from "@/lib/products";
 import { ProductDetail } from "@/lib/specs";
 
 // Emits schema.org Product JSON-LD for rich Google Shopping results.
-// Reads exclusively from the product + detail data — no duplication.
+// Reads exclusively from the product + detail data - no duplication.
 export default function ProductJsonLd({
   product,
   detail,

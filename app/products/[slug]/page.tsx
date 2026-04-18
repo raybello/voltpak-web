@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!product || !detail) return { title: "Not found · VoltPak" };
 
   return {
-    title: `${product.name} — ${product.tagline} | VoltPak`,
+    title: `${product.name} - ${product.tagline} | VoltPak`,
     description: detail.shortDesc,
     openGraph: {
       title: `${product.name} | VoltPak`,

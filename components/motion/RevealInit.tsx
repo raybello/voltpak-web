@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 /**
  * Scroll-reveal initializer.
  *
- * Our `.reveal` utility starts VISIBLE in CSS — the `html.has-js`
+ * Our `.reveal` utility starts VISIBLE in CSS - the `html.has-js`
  * class (set synchronously in <head>) opts the document into the
  * hidden-until-observed state.  This component then progressively
  * reveals each element as it enters the viewport.
  *
  * IMPORTANT: this lives in the root layout, which persists across
  * client-side navigations.  Without a route-aware dependency the
- * effect would only run on the very first mount — every subsequent
+ * effect would only run on the very first mount - every subsequent
  * page would render its `.reveal` elements hidden with no observer
  * attached.  Keying the effect on `usePathname()` re-initializes
  * the observer whenever the route changes.
@@ -45,7 +45,7 @@ export default function RevealInit() {
 
       if (els.length === 0) return;
 
-      // Safety net #1: no IO support — show everything.
+      // Safety net #1: no IO support - show everything.
       if (!("IntersectionObserver" in window)) {
         els.forEach((el) => el.classList.add("is-visible"));
         return;
@@ -75,7 +75,7 @@ export default function RevealInit() {
         if (!el.classList.contains("is-visible")) io!.observe(el);
       });
 
-      // Safety net #3: belt-and-braces — reveal anything still hidden
+      // Safety net #3: belt-and-braces - reveal anything still hidden
       // after 2.5s regardless of scroll position.
       timeout = window.setTimeout(() => {
         document

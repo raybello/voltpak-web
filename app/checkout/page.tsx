@@ -22,7 +22,7 @@ export default function CheckoutPage() {
             Order placed.
           </h1>
           <p className="mt-3 text-ink-500">
-            A confirmation is on the way. This is a demo storefront — no real
+            A confirmation is on the way. This is a demo storefront - no real
             charges were made.
           </p>
           <Link

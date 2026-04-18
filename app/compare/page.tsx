@@ -6,9 +6,9 @@ import { PRODUCTS } from "@/lib/products";
 import { SPECS, type ProductDetail } from "@/lib/specs";
 import { formatPrice } from "@/lib/format";
 
-// Universal label set — union of the spec labels we care about across
+// Universal label set - union of the spec labels we care about across
 // the most common compare cases.  Rows without a value in either
-// product show "—".
+// product show "-".
 const COMPARE_LABELS = [
   "Capacity",
   "Chemistry",
@@ -41,7 +41,7 @@ function pick(detail: ProductDetail, label: string) {
   const hit = detail.specs
     .flatMap((g) => g.rows)
     .find((r) => r.label.toLowerCase() === label.toLowerCase());
-  return hit?.value ?? "—";
+  return hit?.value ?? "-";
 }
 
 export default function ComparePage() {
@@ -58,9 +58,9 @@ export default function ComparePage() {
     () =>
       COMPARE_LABELS.map((label) => ({
         label,
-        l: leftSpecs ? pick(leftSpecs, label) : "—",
-        r: rightSpecs ? pick(rightSpecs, label) : "—",
-      })).filter((r) => r.l !== "—" || r.r !== "—"),
+        l: leftSpecs ? pick(leftSpecs, label) : "-",
+        r: rightSpecs ? pick(rightSpecs, label) : "-",
+      })).filter((r) => r.l !== "-" || r.r !== "-"),
     [leftSpecs, rightSpecs]
   );
 
@@ -108,9 +108,8 @@ export default function ComparePage() {
         {rows.map((r, i) => (
           <div
             key={r.label}
-            className={`grid grid-cols-[1fr_2fr_2fr] md:grid-cols-[1fr_3fr_3fr] text-sm border-b border-ink-100 ${
-              i % 2 === 1 ? "bg-ink-100/30" : ""
-            }`}
+            className={`grid grid-cols-[1fr_2fr_2fr] md:grid-cols-[1fr_3fr_3fr] text-sm border-b border-ink-100 ${i % 2 === 1 ? "bg-ink-100/30" : ""
+              }`}
           >
             <div className="py-3 pr-3 text-ink-500">{r.label}</div>
             <div className="py-3 pr-3 text-ink-900 tabular">{r.l}</div>

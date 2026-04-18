@@ -31,7 +31,7 @@ export const BENCHMARKS: Record<string, Benchmark> = {
       { label: "USB-C", value: "2 × 140 W PD 3.1" },
       { label: "USB-A", value: "2 × 24 W" },
       { label: "AC outlets", value: "2 × 3-prong" },
-      { label: "Wireless pad", value: "—" },
+      { label: "Wireless pad", value: "-" },
       { label: "AC recharge (full)", value: "70 min" },
       { label: "Solar input", value: "800 W (2× MPPT)" },
       { label: "Noise (ECO)", value: "23 dB" },
@@ -54,7 +54,7 @@ export const BENCHMARKS: Record<string, Benchmark> = {
       { label: "USB-C", value: "2 × 100 W PD" },
       { label: "USB-A", value: "4 × 12 W" },
       { label: "AC outlets", value: "6 × 3-prong" },
-      { label: "Wireless pad", value: "—" },
+      { label: "Wireless pad", value: "-" },
       { label: "AC recharge (full)", value: "58 min" },
       { label: "Solar input", value: "600 W" },
       { label: "Noise (ECO)", value: "~30 dB" },
@@ -164,12 +164,12 @@ export const BENCHMARKS: Record<string, Benchmark> = {
 
 // Returns benchmark rows aligned with a target product's spec table.
 // Pass the product's spec row labels as `labels`, this picks the
-// matching competitor values in the same order (missing → "—").
+// matching competitor values in the same order (missing → "-").
 export function alignBenchmark(b: Benchmark, labels: string[]): BenchmarkRow[] {
   return labels.map((label) => {
     const found = b.rows.find(
       (r) => r.label.toLowerCase() === label.toLowerCase()
     );
-    return { label, value: found?.value ?? "—" };
+    return { label, value: found?.value ?? "-" };
   });
 }
