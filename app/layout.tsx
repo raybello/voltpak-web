@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
 import RevealInit from "@/components/motion/RevealInit";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "VoltPak - Silent power. Serious output.",
@@ -49,6 +50,7 @@ export default function RootLayout({
           <CartDrawer />
         </CartProvider>
         <RevealInit />
+        <Analytics />
       </body>
     </html>
   );
