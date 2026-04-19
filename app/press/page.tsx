@@ -66,8 +66,8 @@ export default function PressPage() {
         </div>
 
         {/* Brand assets */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-ink-100 rounded-2xl p-8">
+        <div className="grid md:grid-cols-1 gap-8 mb-16">
+          {/* <div className="bg-ink-100 rounded-2xl p-8">
             <h3 className="font-semibold text-ink-900 mb-3">Brand assets</h3>
             <p className="text-sm text-ink-500 leading-relaxed mb-5">
               Logo files in SVG, PNG (light and dark variants), and EPS.
@@ -80,7 +80,7 @@ export default function PressPage() {
             >
               Request press kit →
             </a>
-          </div>
+          </div> */}
           <div className="bg-ink-100 rounded-2xl p-8">
             <h3 className="font-semibold text-ink-900 mb-3">Review units</h3>
             <p className="text-sm text-ink-500 leading-relaxed mb-5">

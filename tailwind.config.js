@@ -17,8 +17,8 @@ module.exports = {
           100: "#F5F5F7",
         },
         accent: {
-          DEFAULT: "#00D4FF",
-          hover: "#00A8CC",
+          DEFAULT: "#d8901d",
+          hover: "#a77119",
           glow: "rgba(0, 212, 255, 0.25)",
         },
         amber: {
