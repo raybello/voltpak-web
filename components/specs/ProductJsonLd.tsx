@@ -1,5 +1,6 @@
 import { Product } from "@/lib/products";
 import { ProductDetail } from "@/lib/specs";
+import { isPreLaunch } from "@/lib/config";
 
 // Emits schema.org Product JSON-LD for rich Google Shopping results.
 // Reads exclusively from the product + detail data - no duplication.
@@ -10,6 +11,7 @@ export default function ProductJsonLd({
   product: Product;
   detail: ProductDetail;
 }) {
+  const preLaunch = isPreLaunch(product);
   // Map a handful of high-signal spec rows to additionalProperty so
   // Google sees capacity/output/weight when indexing the page.
   const flat = detail.specs.flatMap((g) => g.rows);
@@ -34,13 +36,20 @@ export default function ProductJsonLd({
     brand: { "@type": "Brand", name: "VoltPak" },
     image: [product.image],
     description: detail.shortDesc,
-    offers: {
-      "@type": "Offer",
-      price: product.price.toFixed(2),
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      url: `https://voltpak.example.com/products/${product.slug}`,
-    },
+    offers: preLaunch
+      ? {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+          url: `https://voltpak.ca/products/${product.slug}`,
+        }
+      : {
+          "@type": "Offer",
+          price: product.price.toFixed(2),
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: `https://voltpak.ca/products/${product.slug}`,
+        },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

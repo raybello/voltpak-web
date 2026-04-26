@@ -1,9 +1,7 @@
 {
-  "/support/battery/page": "app/support/battery/page.js",
-  "/support/contact/page": "app/support/contact/page.js",
-  "/about/page": "app/about/page.js",
-  "/page": "app/page.js",
-  "/support/page": "app/support/page.js",
+  "/shop/page": "app/shop/page.js",
   "/products/[slug]/page": "app/products/[slug]/page.js",
-  "/icon.png/route": "app/icon.png/route.js"
+  "/support/page": "app/support/page.js",
+  "/page": "app/page.js",
+  "/account/page": "app/account/page.js"
 }

@@ -9,7 +9,7 @@ export default function InTheBoxList({
 }) {
   return (
     <section id="in-the-box" className="bg-ink-100 py-24 md:py-section">
-      <div className="max-w-container mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-container mx-auto px-6 md:px-8 grid md:grid-cols-1 gap-12 items-center">
         <div className="reveal">
           <p className="text-eyebrow uppercase text-accent-hover mb-4">In the box</p>
           <h2 className="font-display text-section text-ink-900">{title}</h2>
@@ -32,14 +32,13 @@ export default function InTheBoxList({
             ))}
           </ul>
         </div>
-        <div className="reveal">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+        {/* <div className="reveal">
           <img
             src={image}
             alt="In-the-box contents"
             className="rounded-2xl w-full object-cover aspect-square"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,16 +1,18 @@
 import { formatPrice } from "@/lib/format";
 import { ProductDetail } from "@/lib/specs";
+import { Product } from "@/lib/products";
+import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
+import NotifyMeButton from "@/components/product/NotifyMeButton";
 
 export default function ProductHero({
-  name,
-  price,
+  product,
   detail,
 }: {
-  name: string;
-  price: number;
+  product: Product;
   detail: ProductDetail;
 }) {
   const hasVideo = detail.heroMedia.type === "video";
+  const preLaunch = isPreLaunch(product);
 
   return (
     <section
@@ -37,7 +39,7 @@ export default function ProductHero({
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-ink-900/30 via-ink-900/10 to-ink-900/80" />
       <div className="relative max-w-container mx-auto px-6 md:px-8 text-center pt-28 pb-20">
-        <p className="text-eyebrow uppercase text-accent mb-4">{name}</p>
+        <p className="text-eyebrow uppercase text-accent mb-4">{product.name}</p>
         <h1 className="font-display text-hero">
           {detail.heroTagline.lineA}
           <br />
@@ -48,13 +50,22 @@ export default function ProductHero({
         <p className="mt-6 text-lg md:text-xl text-ink-300 max-w-2xl mx-auto">
           {detail.shortDesc}
         </p>
+        {preLaunch && (
+          <p className="mt-4 text-sm md:text-base text-accent font-semibold uppercase tracking-widest">
+            {PRE_LAUNCH_PRICE_LABEL} · Pricing announced at launch
+          </p>
+        )}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href="#buy"
-            className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
-          >
-            Buy - {formatPrice(price)}
-          </a>
+          {preLaunch ? (
+            <NotifyMeButton product={product} variant="hero" />
+          ) : (
+            <a
+              href="#buy"
+              className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
+            >
+              Buy - {formatPrice(product.price)}
+            </a>
+          )}
           <a
             href="#features"
             className="h-12 px-8 inline-flex items-center justify-center rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition"

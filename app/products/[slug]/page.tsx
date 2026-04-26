@@ -66,7 +66,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <ProductJsonLd product={product} detail={detail} />
       <StickyBuyBar product={product} />
 
-      <ProductHero name={product.name} price={product.price} detail={detail} />
+      <ProductHero product={product} detail={detail} />
 
       <HighlightsBand items={detail.highlights} />
 
@@ -100,7 +100,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       <FaqSection items={detail.faq} />
 
-      <FinalCta name={product.name} price={product.price} />
+      <FinalCta product={product} />
     </>
   );
 }

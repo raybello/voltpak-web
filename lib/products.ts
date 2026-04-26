@@ -12,6 +12,11 @@ export type Product = {
   compareAt?: number;
   image: string;
   stats?: { capacity?: string; output?: string; weight?: string };
+  // Per-product override for the global PRE_LAUNCH_MODE flag in lib/config.ts.
+  // - undefined: inherit the global flag
+  // - true:      force this product into pre-launch (Coming Soon / Notify Me)
+  // - false:     force this product live (price + Add to Cart) even when global is on
+  preLaunch?: boolean;
 };
 
 export const PRODUCTS: Product[] = [

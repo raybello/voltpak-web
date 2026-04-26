@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import { SPECS, type ProductDetail } from "@/lib/specs";
 import { formatPrice } from "@/lib/format";
+import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
 // Universal label set - union of the spec labels we care about across
 // the most common compare cases.  Rows without a value in either
@@ -183,7 +184,7 @@ function HeaderCell({
     <div className="py-4 pr-3">
       <div className="text-sm font-semibold text-ink-900">{product.name}</div>
       <div className="text-xs text-accent-hover font-medium mt-0.5 tabular">
-        {formatPrice(product.price)}
+        {isPreLaunch(product) ? PRE_LAUNCH_PRICE_LABEL : formatPrice(product.price)}
       </div>
     </div>
   );

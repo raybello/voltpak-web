@@ -454,7 +454,7 @@ const VP_BATT_2K: ProductDetail = {
   longDesc:
     "The Expansion Battery 2000 is passive capacity on demand. It inherits the parent station's output ceiling, BMS safety profile, and warranty. Chain up to five per station. No independent output - all energy routes through the VoltPak station you already own.",
   heroTagline: { lineA: "Double the runtime.", lineB: "Same VoltPak." },
-  heroMedia: { type: "image", src: "/media/rear.jpg" },
+  heroMedia: { type: "image", src: "/media/side.png" },
   highlights: [
     { stat: "2,048Wh", label: "LFP expansion" },
     { stat: "5×", label: "Max chain" },
@@ -469,7 +469,7 @@ const VP_BATT_2K: ProductDetail = {
         "The VoltLink connector carries power and BMS telemetry in a single sealed cable. The station recognizes the new capacity within seconds and shows combined runtime in the VoltPak app.",
       media: {
         type: "image",
-        src: "/media/assembly.jpg",
+        src: "/media/battery.png",
         alt: "VoltLink cable connecting expansion battery",
       },
       callouts: [
@@ -487,7 +487,7 @@ const VP_BATT_2K: ProductDetail = {
         "One battery doubles the runtime. Five batteries turn a VoltPak 2000 into whole-home backup for multi-day outages. Add them as budget allows - the station ceiling is fixed at five.",
       media: {
         type: "image",
-        src: "/media/side.png",
+        src: "/media/battery_stack.png",
         alt: "Multiple expansion batteries stacked with a station",
       },
     },

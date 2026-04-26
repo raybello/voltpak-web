@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
+import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
 export const metadata = { title: "Shop · VoltPak" };
 
@@ -88,17 +89,25 @@ export default function ShopPage({
                 )}
                 <div className="mt-auto pt-4 flex items-center justify-between">
                   <div>
-                    <span className="text-base font-semibold text-ink-900 tabular">
-                      {formatPrice(p.price)}
-                    </span>
-                    {p.compareAt && (
-                      <span className="ml-2 text-xs text-ink-500 line-through tabular">
-                        {formatPrice(p.compareAt)}
+                    {isPreLaunch(p) ? (
+                      <span className="text-base font-semibold text-accent-hover">
+                        {PRE_LAUNCH_PRICE_LABEL}
                       </span>
+                    ) : (
+                      <>
+                        <span className="text-base font-semibold text-ink-900 tabular">
+                          {formatPrice(p.price)}
+                        </span>
+                        {p.compareAt && (
+                          <span className="ml-2 text-xs text-ink-500 line-through tabular">
+                            {formatPrice(p.compareAt)}
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
                   <span className="text-sm text-accent-hover font-semibold group-hover:translate-x-1 transition-transform">
-                    View →
+                    {isPreLaunch(p) ? "Notify me →" : "View →"}
                   </span>
                 </div>
               </div>

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartContext";
 import { formatPrice } from "@/lib/format";
 import { Product } from "@/lib/products";
+import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
+import NotifyMeButton from "./NotifyMeButton";
 
 const ANCHORS = [
   { id: "overview", label: "Overview" },
@@ -16,6 +18,7 @@ export default function StickyBuyBar({ product }: { product: Product }) {
   const { addItem } = useCart();
   const [visible, setVisible] = useState(false);
   const [active, setActive] = useState<string>("overview");
+  const preLaunch = isPreLaunch(product);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 700);
@@ -70,21 +73,26 @@ export default function StickyBuyBar({ product }: { product: Product }) {
         </div>
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline text-sm text-ink-500 tabular">
-            {formatPrice(product.price)}
+            {preLaunch ? PRE_LAUNCH_PRICE_LABEL : formatPrice(product.price)}
           </span>
-          <button
-            onClick={() =>
-              addItem({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-              })
-            }
-            className="h-9 px-5 rounded-full bg-ink-900 text-white text-xs font-semibold hover:bg-ink-700 transition"
-          >
-            Add to Cart
-          </button>
+          {preLaunch ? (
+            // <NotifyMeButton product={product} variant="compact" />
+            <></>
+          ) : (
+            <button
+              onClick={() =>
+                addItem({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                })
+              }
+              className="h-9 px-5 rounded-full bg-ink-900 text-white text-xs font-semibold hover:bg-ink-700 transition"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

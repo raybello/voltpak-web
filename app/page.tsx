@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PRODUCTS, FLAGSHIP } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
+import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
 export default function Home() {
   const stations = PRODUCTS.filter((p) => p.category === "power-station");
@@ -267,11 +268,17 @@ export default function Home() {
                     </div>
                   )}
                   <div className="mt-auto pt-4 flex items-baseline justify-between">
-                    <span className="text-lg font-semibold text-ink-900 tabular">
-                      {formatPrice(p.price)}
-                    </span>
+                    {isPreLaunch(p) ? (
+                      <span className="text-lg font-semibold text-accent-hover">
+                        {PRE_LAUNCH_PRICE_LABEL}
+                      </span>
+                    ) : (
+                      <span className="text-lg font-semibold text-ink-900 tabular">
+                        {formatPrice(p.price)}
+                      </span>
+                    )}
                     <span className="text-sm text-accent-hover font-semibold group-hover:translate-x-1 transition-transform">
-                      View specs →
+                      {isPreLaunch(p) ? "Notify me →" : "View specs →"}
                     </span>
                   </div>
                 </div>
