@@ -28,7 +28,7 @@ export default function AccessibilityPage() {
             },
             {
               heading: "Contact",
-              body: "accessibility@voltpak.com · VoltPak, Inc. · 100 Brannan Street, San Francisco, CA 94107",
+              body: "accessibility@voltpak.com · VoltPak, Inc. · Ottawa, Ontario, Canada",
             },
           ].map((s) => (
             <div key={s.heading}>

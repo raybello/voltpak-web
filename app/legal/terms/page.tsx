@@ -32,7 +32,7 @@ export default function TermsPage() {
             },
             {
               heading: "6. Governing law",
-              body: "These terms are governed by the laws of the State of California. Any disputes will be resolved in the courts of San Francisco County, California.",
+              body: "These terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. Any disputes will be resolved in the courts of Ottawa, Ontario, Canada.",
             },
             {
               heading: "7. Changes to these terms",
@@ -40,7 +40,7 @@ export default function TermsPage() {
             },
             {
               heading: "8. Contact",
-              body: "VoltPak, Inc. · legal@voltpak.com · 100 Brannan Street, San Francisco, CA 94107",
+              body: "VoltPak, Inc. · legal@voltpak.com · Ottawa, Ontario, Canada",
             },
           ].map((s) => (
             <div key={s.heading}>

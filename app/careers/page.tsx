@@ -1,31 +1,6 @@
 export const metadata = { title: "Careers · VoltPak" };
 
-const ROLES = [
-  {
-    title: "Power Electronics Engineer",
-    type: "Full-time",
-    location: "San Francisco, CA",
-    body: "Design and iterate on the inverter and PFC stages. You'll work from schematic to prototype to production. Strong background in high-voltage analog design required. KiCad experience a plus.",
-  },
-  {
-    title: "Embedded Firmware Engineer",
-    type: "Full-time",
-    location: "San Francisco, CA",
-    body: "Own the MCU firmware stack - control loops, BMS communication, display driver, USB-PD negotiation. C/C++ on STM32. This is the proprietary core of the product. You'll work on things you can't publish.",
-  },
-  {
-    title: "Mechanical / Industrial Designer",
-    type: "Full-time",
-    location: "San Francisco, CA (hybrid)",
-    body: "Chassis design, thermal management, panel geometry. STEP, IGES, SolidWorks or Fusion 360. You care about tolerances and airflow, not brand aesthetics. We ship open STL files - your work will be printed by strangers.",
-  },
-  {
-    title: "Community & Developer Relations",
-    type: "Full-time",
-    location: "Remote (US)",
-    body: "Run the Discord, engage the hardware community, identify builders worth supporting with gear and access. You should understand what a KiCad schematic is and why it matters. This is not a social media job.",
-  },
-];
+const ROLES: { title: string; type: string; location: string; body: string }[] = [];
 
 export default function CareersPage() {
   return (
@@ -60,23 +35,29 @@ export default function CareersPage() {
         {/* Open roles */}
         <h2 className="font-display text-2xl font-semibold text-ink-900 mb-6">Open roles</h2>
         <div className="space-y-4 mb-14">
-          {ROLES.map((role) => (
-            <div key={role.title} className="bg-white rounded-2xl border border-ink-100 p-7 hover:border-ink-300 transition">
-              <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
-                <div>
-                  <div className="font-semibold text-ink-900 text-lg">{role.title}</div>
-                  <div className="text-sm text-ink-500 mt-0.5">{role.location} · {role.type}</div>
-                </div>
-                <a
-                  href={`mailto:careers@voltpak.com?subject=Application - ${role.title}`}
-                  className="flex-shrink-0 h-9 px-5 inline-flex items-center rounded-full bg-ink-900 text-white text-sm font-semibold hover:bg-ink-700 transition"
-                >
-                  Apply
-                </a>
-              </div>
-              <p className="text-sm text-ink-500 leading-relaxed">{role.body}</p>
+          {ROLES.length === 0 ? (
+            <div className="bg-ink-100 rounded-2xl p-7 text-ink-500">
+              No open roles at this time. Check back soon.
             </div>
-          ))}
+          ) : (
+            ROLES.map((role) => (
+              <div key={role.title} className="bg-white rounded-2xl border border-ink-100 p-7 hover:border-ink-300 transition">
+                <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
+                  <div>
+                    <div className="font-semibold text-ink-900 text-lg">{role.title}</div>
+                    <div className="text-sm text-ink-500 mt-0.5">{role.location} · {role.type}</div>
+                  </div>
+                  <a
+                    href={`mailto:careers@voltpak.com?subject=Application - ${role.title}`}
+                    className="flex-shrink-0 h-9 px-5 inline-flex items-center rounded-full bg-ink-900 text-white text-sm font-semibold hover:bg-ink-700 transition"
+                  >
+                    Apply
+                  </a>
+                </div>
+                <p className="text-sm text-ink-500 leading-relaxed">{role.body}</p>
+              </div>
+            ))
+          )}
         </div>
 
         <div className="border-t border-ink-100 pt-10">
