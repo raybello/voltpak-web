@@ -74,7 +74,7 @@ export default function ContactPage() {
           {[
             { label: "Support hours", value: "Mon–Fri, 8 am–6 pm PT\nSat–Sun: email only" },
             { label: "Response time", value: "< 24 h on business days\nUsually < 4 h" },
-            { label: "Headquarters", value: "VoltPak, Inc.\nSan Francisco, CA 94107" },
+            { label: "Headquarters", value: "VoltPak, Inc.\nOttawa, Ontario, Canada" },
           ].map((i) => (
             <div key={i.label}>
               <div className="text-xs uppercase tracking-widest text-ink-300 mb-2">{i.label}</div>

@@ -41,7 +41,7 @@ export default function PrivacyPage() {
             },
             {
               heading: "Contact",
-              body: "VoltPak, Inc. · 100 Brannan Street, San Francisco, CA 94107 · privacy@voltpak.com",
+              body: "VoltPak, Inc. · Ottawa, Ontario, Canada · privacy@voltpak.com",
             },
           ].map((s) => (
             <div key={s.heading}>
