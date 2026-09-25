@@ -1,0 +1,82 @@
+---
+title: "Designing for repair: how we're building VoltPak to be fixed, not replaced"
+description: "One screw size, an isolated battery bay, and parts you can reach without tools you don't own. The serviceability decisions behind the VoltPak 1000."
+date: "2026-09-24"
+author: "The VoltPak engineering team"
+cover: "/media/rear.jpg"
+tags: ["Design", "Repairability", "Sustainability"]
+---
+
+Most portable power stations are sealed appliances. When a fan wears out or
+a fuse blows, the manufacturer's answer is often a replacement unit. We
+think that's backwards for a product whose battery can last a decade. This
+post describes the serviceability decisions we're building into the
+VoltPak 1000, and where the work isn't finished.
+
+<Callout variant="note" title="Where things stand">
+  VoltPak is pre-launch. The repair guides and printable parts described
+  here are in development and will be published on the
+  [Mod &amp; Repair Guides](/support/mods) page at launch.
+</Callout>
+
+## Principle 1: one fastener
+
+Every user-serviceable panel is intended to use the same **M3** screw. It
+sounds trivial, but it decides whether someone can open the unit with a
+single hex or Phillips driver they already own, and whether the screws
+they lose are easy to replace from any hardware store.
+
+## Principle 2: consumables are reachable
+
+Parts that wear out should be replaceable without disassembling parts that
+don't. In the VoltPak 1000 layout that means:
+
+- **Fans** are the most common wear item in any actively cooled electronics, so they're designed to be swapped from a service panel.
+- **The main fuse** is planned to sit behind its own panel on the rear, held by a single screw, so a blown fuse doesn't turn into a teardown.
+- **The BMS** is planned to be reachable, with labelled test points for cell voltage, so an owner can verify a pack's health rather than guess.
+
+## Principle 3: keep the dangerous parts separate
+
+Serviceable doesn't mean casual. The cells and high-current bus bars sit in
+a **separate battery compartment** with its own cover, so that opening a
+service panel for a fan doesn't expose the energy in the pack.
+
+<Callout variant="warn" title="Know your limits">
+  Unplug and power down before opening any panel. Don't open the battery
+  compartment, and don't bypass a fuse or replace it with a higher rating.
+  If a fuse blows again straight away, that is a fault to diagnose, not a
+  part to swap again.
+</Callout>
+
+## Principle 4: publish what you need to fix it
+
+A repairable product needs documentation, not just screws. Our plan is to
+release:
+
+1. **Step-by-step guides** for the common jobs: fan swap, fuse replacement, BMS access.
+2. **Printable parts** (front panel, fan guard, rack ears, desk stand) as STL files for owners who want to adapt the case.
+3. **Hardware design files** (schematics, PCB layouts, mechanical models, and a bill of materials) under an open hardware licence, so replacement parts can still be made if we ever stop selling the unit.
+
+We've written more about that last decision in
+[Where VoltPak stands in the open-source hardware world](/press/open-source-hardware).
+Note that our firmware is a different story: it remains closed for safety
+reasons, and we explain the reasoning there.
+
+## Principle 5: be honest about the trade-offs
+
+Designing for repair isn't free:
+
+- **Ingress protection.** More panels and fasteners mean more seams. That's one reason the design target is splash resistance (IPX3), not dust- and water-proof.
+- **Size and cost.** Connectors and service panels cost space and money that a glued-together design avoids.
+- **Support burden.** If owners can open the unit, we have to explain clearly what is safe to do and what isn't, and what it means for warranty. We will publish that policy before ordering opens.
+
+We think those are the right trade-offs for a product meant to last, and
+we'd rather tell you about them now than have you find them later.
+
+## What we'd like from you
+
+If you repair electronics, we'd like to hear what would make this
+easier. Which parts do you expect to fail first? What documentation do you
+wish other manufacturers shipped? Tell us through the
+[contact form](/support/contact), or [join the Launch List](/shop) to hear
+when the first guides go live.

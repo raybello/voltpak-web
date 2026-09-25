@@ -1,0 +1,116 @@
+---
+title: "How to size a power station for home backup: a worked example"
+description: "Watts, watt-hours, surge, and inverter losses, explained with a real outage scenario, so you can pick the right capacity before you buy anything."
+date: "2026-09-10"
+author: "The VoltPak engineering team"
+cover: "/media/front-ports.jpg"
+tags: ["Guide", "Home Backup", "Basics"]
+---
+
+The most common mistake in buying a portable power station is shopping by
+the biggest number on the box. Capacity, continuous output, and surge
+output answer three different questions, and you need all three to be
+right. This guide walks through the math using a realistic outage, and
+uses the VoltPak 1000's **design specifications** as the example unit.
+
+<Callout variant="note" title="Pre-launch note">
+  The VoltPak 1000 has not started shipping. Figures quoted for it here are
+  design targets and will be confirmed against measured data before launch.
+  The method itself works for any power station.
+</Callout>
+
+## Three numbers, three questions
+
+| Number | Unit | Question it answers |
+|---|---|---|
+| Capacity | watt-hours (Wh) | How **long** can it run my stuff? |
+| Continuous output | watts (W) | Can it run everything **at once**? |
+| Surge output | watts (W) | Can it **start** motors and compressors? |
+
+Watts are a rate; watt-hours are an amount. A 100 W load running for 10
+hours uses 1,000 Wh.
+
+## Step 1: list what you actually need to run
+
+Write down each device, its running watts, and how many hours it will
+actually run over the outage. Nameplate ratings are a ceiling, not an
+average, so where you can, use a plug-in energy meter for a day.
+
+| Device | Running watts | Hours in 12 h | Energy (Wh) |
+|---|---|---|---|
+| Fridge (compressor cycles ~40%) | 150 | 12 × 0.4 = 4.8 | 720 |
+| Wi-Fi router + modem | 20 | 12 | 240 |
+| Laptop | 60 | 6 | 360 |
+| 3 phones charging | 30 | 4 | 120 |
+| LED lighting (4 bulbs) | 40 | 5 | 200 |
+| **Total** | | | **1,640 Wh** |
+
+Peak simultaneous draw here is roughly 150 + 20 + 60 + 30 + 40 = **300 W**,
+far below any modern unit's continuous rating. Capacity is the constraint.
+
+## Step 2: account for losses
+
+Converting battery DC to 120 V AC is not free. A typical inverter is
+somewhere around 85–92% efficient, and it also burns a small amount of
+power just being on. Plan on usable AC energy being about **85%** of the
+rated capacity, and don't plan to drain a pack to exactly 0%.
+
+$$
+\text{Wh needed from the pack} = \frac{1{,}640}{0.85} \approx 1{,}930 \text{ Wh}
+$$
+
+A 1,024 Wh unit would cover roughly **7 hours** of this exact list, not
+12. That's a useful result, because it tells you what to change:
+
+- Run the fridge only, plus the router, for the long haul (about 960 Wh → 13 h on one unit at 85%).
+- Charge laptops and phones during the day from a car or solar.
+- Add an expansion battery (VoltPak's design allows stacking) or solar to stretch runtime.
+
+## Step 3: check surge for anything with a motor
+
+Compressors, well pumps, and power tools draw a large inrush current for a
+fraction of a second when they start, often 3–7× their running watts. If
+your fridge runs at 150 W, plan for a start-up of up to about 800–1,000 W.
+
+For the VoltPak 1000 the design targets are 2,200 W continuous and 2,600 W
+surge, so a fridge start is comfortably inside the envelope. A 1 HP
+table saw or a 15,000 BTU air conditioner is not a good match for *any*
+unit this size. Check the label on the appliance for "LRA" (locked-rotor
+amps) and multiply by 120 V for a worst-case surge.
+
+## Step 4: sanity-check with three rules of thumb
+
+1. **Never size to the exact number.** Add 20–25% margin for cold weather, battery aging, and loads you forgot.
+2. **Heating loads are off the table.** Space heaters, kettles, and electric stoves draw 1,000–1,800 W continuously and will empty a 1 kWh pack in under an hour.
+3. **Cold matters.** Lithium batteries deliver less capacity in the cold, and LFP packs should not be *charged* below freezing. See our post on [why we chose LFP](/press/why-we-chose-lfp).
+
+## A quick worksheet
+
+<SpecTable
+  rows={[
+    {
+      label: "Energy needed",
+      value: "Σ (running watts × hours)",
+      note: "Use measured watts where you can.",
+    },
+    {
+      label: "Pack size",
+      value: "Energy ÷ 0.85, plus 20% margin",
+      note: "Accounts for inverter loss and aging.",
+    },
+    {
+      label: "Continuous rating",
+      value: "≥ the sum of loads running at once",
+      note: "Add them up; don't average.",
+    },
+    {
+      label: "Surge rating",
+      value: "≥ the largest motor's start-up draw",
+      note: "Start motors one at a time.",
+    },
+  ]}
+/>
+
+If you'd like a second opinion on your own list, send it to us through the
+[contact form](/support/contact) and an engineer will take a look. To hear
+when the VoltPak 1000 is ready to order, [join the Launch List](/shop).
