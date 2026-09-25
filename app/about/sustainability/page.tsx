@@ -68,7 +68,7 @@ export default function SustainabilityPage() {
               properly - not landfilled.
             </p>
             <p>
-              Contact us at returns@voltpak.com with subject line "Battery recycling" and
+              Contact us at returns@voltpak.ca with subject line "Battery recycling" and
               we'll arrange a prepaid return label. No purchase required.
             </p>
           </div>

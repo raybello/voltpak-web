@@ -48,7 +48,7 @@ export default function CareersPage() {
                     <div className="text-sm text-ink-500 mt-0.5">{role.location} · {role.type}</div>
                   </div>
                   <a
-                    href={`mailto:careers@voltpak.com?subject=Application - ${role.title}`}
+                    href={`mailto:careers@voltpak.ca?subject=Application - ${role.title}`}
                     className="flex-shrink-0 h-9 px-5 inline-flex items-center rounded-full bg-ink-900 text-white text-sm font-semibold hover:bg-ink-700 transition"
                   >
                     Apply
@@ -65,7 +65,7 @@ export default function CareersPage() {
           <p className="text-sm text-ink-500 leading-relaxed">
             If you're a hardware or firmware engineer who's dug into our open hardware files
             or is active in the Discord, send us an email anyway at{" "}
-            <a href="mailto:careers@voltpak.com" className="text-accent-hover hover:text-accent transition-colors font-medium">careers@voltpak.com</a>.
+            <a href="mailto:careers@voltpak.ca" className="text-accent-hover hover:text-accent transition-colors font-medium">careers@voltpak.ca</a>.
             People who understand the product from the inside are hard to find.
           </p>
         </div>

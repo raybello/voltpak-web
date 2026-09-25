@@ -21,6 +21,7 @@ export default function NotifyMeDialog({
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [website, setWebsite] = useState(""); // honeypot
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -49,11 +50,33 @@ export default function NotifyMeDialog({
   // ESC closes.
   useEffect(() => {
     if (!open) return;
+    const opener = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      // Trap focus inside the dialog.
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), [href], [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      opener?.focus?.();
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -76,9 +99,8 @@ export default function NotifyMeDialog({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: value,
-          productId: product.id,
-          productName: product.name,
-          productSlug: product.slug,
+                    productSlug: product.slug,
+          website,
         }),
       });
 
@@ -155,6 +177,8 @@ export default function NotifyMeDialog({
             errorMsg={errorMsg}
             inputRef={inputRef}
             onSubmit={submit}
+            website={website}
+            setWebsite={setWebsite}
           />
         )}
       </div>
@@ -183,7 +207,11 @@ function FormState({
   errorMsg,
   inputRef,
   onSubmit,
+  website,
+  setWebsite,
 }: {
+  website: string;
+  setWebsite: (v: string) => void;
   product: Product;
   email: string;
   setEmail: (v: string) => void;
@@ -223,6 +251,19 @@ function FormState({
       </p>
 
       <form onSubmit={onSubmit} noValidate>
+        {/* Honeypot - hidden from people and assistive tech; bots fill it. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label>
+            Website
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </label>
+        </div>
         <label htmlFor="notify-email" className="sr-only">
           Email address
         </label>
@@ -263,7 +304,7 @@ function FormState({
         >
           {submitting ? (
             <>
-              <Spinner /> Adding you to the list…
+              <Spinner /> Sending confirmation…
             </>
           ) : (
             "Notify Me"
@@ -303,15 +344,16 @@ function SuccessState({
       </div>
 
       <h2 className="font-display font-bold text-2xl text-ink-900 mb-2">
-        You're on the list.
+        Check your inbox.
       </h2>
 
       <p className="text-ink-500 text-sm leading-relaxed mb-1">
-        We'll email{" "}
+        We sent a confirmation link to{" "}
         <span className="text-ink-900 font-medium break-all">{email}</span>
       </p>
       <p className="text-ink-500 text-sm leading-relaxed">
-        as soon as <span className="text-ink-900">{productName}</span> is ready.
+        Confirm it and we&apos;ll email you when{" "}
+        <span className="text-ink-900">{productName}</span> is ready.
       </p>
 
       <button

@@ -21,6 +21,7 @@ export default function ContactForm() {
   const [subject, setSubject] = useState(SUBJECTS[0]);
   const [serialNumber, setSerialNumber] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -33,7 +34,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, subject, serialNumber, message }),
+        body: JSON.stringify({ firstName, lastName, email, subject, serialNumber, message, website }),
       });
 
       const data = await res.json();
@@ -69,12 +70,25 @@ export default function ContactForm() {
     <div className="bg-ink-100 rounded-2xl p-8">
       <h2 className="font-semibold text-ink-900 mb-5">Send a message</h2>
       <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+        {/* Honeypot - hidden from people and assistive tech; bots fill it. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label>
+            Website
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </label>
+        </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-ink-700 mb-1">
+            <label htmlFor="cf-first" className="block text-xs font-semibold text-ink-700 mb-1">
               First name
             </label>
-            <input
+            <input id="cf-first" autoComplete="given-name"
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -82,10 +96,10 @@ export default function ContactForm() {
             />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-ink-700 mb-1">
+            <label htmlFor="cf-last" className="block text-xs font-semibold text-ink-700 mb-1">
               Last name
             </label>
-            <input
+            <input id="cf-last" autoComplete="family-name"
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -94,10 +108,10 @@ export default function ContactForm() {
           </div>
         </div>
         <div>
-          <label className="block text-xs font-semibold text-ink-700 mb-1">
-            Email <span className="text-red-500">*</span>
+          <label htmlFor="cf-email" className="block text-xs font-semibold text-ink-700 mb-1">
+            Email <span className="text-red-500" aria-hidden="true">*</span>
           </label>
-          <input
+          <input id="cf-email" autoComplete="email"
             type="email"
             required
             value={email}
@@ -106,10 +120,10 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-ink-700 mb-1">
+          <label htmlFor="cf-subject" className="block text-xs font-semibold text-ink-700 mb-1">
             Subject
           </label>
-          <select
+          <select id="cf-subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             className="w-full h-10 rounded-lg border border-ink-100 bg-white px-3 text-sm text-ink-900 focus:outline-none focus:border-accent"
@@ -120,10 +134,10 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-semibold text-ink-700 mb-1">
+          <label htmlFor="cf-serial" className="block text-xs font-semibold text-ink-700 mb-1">
             Serial number (if applicable)
           </label>
-          <input
+          <input id="cf-serial"
             type="text"
             placeholder="VP1000-XXXXXX"
             value={serialNumber}
@@ -132,10 +146,10 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-ink-700 mb-1">
-            Message <span className="text-red-500">*</span>
+          <label htmlFor="cf-message" className="block text-xs font-semibold text-ink-700 mb-1">
+            Message <span className="text-red-500" aria-hidden="true">*</span>
           </label>
-          <textarea
+          <textarea id="cf-message"
             rows={4}
             required
             value={message}
@@ -145,7 +159,7 @@ export default function ContactForm() {
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-500">{errorMsg}</p>
+          <p role="alert" className="text-sm text-red-500">{errorMsg}</p>
         )}
 
         <button

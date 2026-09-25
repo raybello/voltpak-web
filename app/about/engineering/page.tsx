@@ -42,7 +42,7 @@ export default function EngineeringPage() {
                 Every VoltPak PCB - the main inverter board, the BMS interface, the USB-PD controller -
                 is released as open source under the CERN Open Hardware Licence v2 (Strongly Reciprocal).
                 KiCad schematics, PCB layouts, STEP mechanical models, and a full BOM with
-                Mouser/DigiKey part numbers are available on this site and on GitHub.
+                Mouser/DigiKey part numbers will be published on this site at launch.
               </p>
               <p>
                 We do this because we believe hardware you can understand is hardware you can trust.

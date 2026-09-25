@@ -1,7 +1,7 @@
 export const metadata = { title: "Privacy Policy · VoltPak" };
 
 export default function PrivacyPage() {
-  const updated = "April 2026";
+  const updated = "September 2026";
   return (
     <div className="pt-28 md:pt-32 pb-24">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
@@ -13,35 +13,35 @@ export default function PrivacyPage() {
           {[
             {
               heading: "What we collect",
-              body: "When you make a purchase, we collect the information necessary to process and ship your order: name, email, shipping address, and payment details. Payment data is handled by our payment processor (Stripe) and is never stored on our servers. If you register a product, we store your email and unit serial number. If you contact support, we store your messages to provide assistance.",
+              body: "VoltPak is not yet selling products, so today we collect only what you give us: your email address if you join the Launch List (and the product you signed up for), and the name, email, optional serial number and message if you use the support contact form. When ordering opens, we will also collect the information needed to process and ship orders, and this policy will be updated before that happens.",
             },
             {
               heading: "What we don't collect",
-              body: "We don't sell your data. We don't run ad targeting. We don't build profiles for marketing partners. We collect the minimum required to operate the store and provide support. If you don't buy anything or contact us, we have nothing on you.",
+              body: "We don't sell your data. We don't run ad targeting. We don't build profiles for marketing partners. We collect the minimum required to operate the site and answer your questions.",
             },
             {
               heading: "Newsletter and email",
-              body: "If you sign up for the newsletter, we store your email address and send you product updates, firmware changelogs, and early access offers. You can unsubscribe at any time via the link in any email. We use Mailchimp for email delivery. Mailchimp receives your email address and tracks open rates - this is noted in their own privacy policy.",
+              body: "When you join the Launch List we first send a confirmation email; you are only added to the list after you click the link (double opt-in). We then email you about product availability and occasional launch updates such as teardowns, mod guides and firmware notes. Every email includes an unsubscribe link and you can unsubscribe at any time. Email delivery and the list itself are handled by our email provider, Resend, which processes your address on our behalf.",
             },
             {
               heading: "Analytics",
-              body: "This site uses Plausible Analytics, a privacy-first analytics tool that does not use cookies, does not fingerprint visitors, and does not send data to Google. We can see aggregate traffic numbers - pages visited, referrers, country-level location - but nothing that identifies individual visitors.",
+              body: "This site does not currently use analytics or advertising trackers. If we add privacy-friendly analytics in future we will list it here before enabling it.",
             },
             {
               heading: "Cookies",
-              body: "We use session cookies for cart functionality. That's it. No tracking cookies, no third-party advertising cookies.",
+              body: "We do not set tracking or advertising cookies. Your shopping cart, if you use it, is saved in your browser's local storage on your own device and is never sent to us until checkout opens.",
             },
             {
               heading: "Data retention",
-              body: "Order records are retained for 7 years for accounting and warranty purposes. Support conversations are retained for 3 years. Newsletter subscribers are retained until you unsubscribe. You can request deletion of your personal data at any time by emailing privacy@voltpak.com.",
+              body: "Launch List addresses are kept until you unsubscribe. Support messages are kept for up to 3 years. Order and warranty records, once ordering opens, will be retained as required for accounting and warranty purposes. To request deletion of your personal data, email privacy@voltpak.ca.",
             },
             {
               heading: "Your rights",
-              body: "You have the right to access, correct, or delete any personal data we hold about you. To make a request, email privacy@voltpak.com. We'll respond within 30 days. If you are in the EU or UK, you also have the right to lodge a complaint with your local data protection authority.",
+              body: "You have the right to access, correct, or delete any personal data we hold about you. To make a request, email privacy@voltpak.ca. We'll respond within 30 days. If you are in the EU or UK, you also have the right to lodge a complaint with your local data protection authority.",
             },
             {
               heading: "Contact",
-              body: "VoltPak, Inc. · Ottawa, Ontario, Canada · privacy@voltpak.com",
+              body: "VoltPak, Inc. · Ottawa, Ontario, Canada · privacy@voltpak.ca",
             },
           ].map((s) => (
             <div key={s.heading}>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DOWNLOADS_AVAILABLE } from "@/lib/downloads";
 
 export const metadata = { title: "Mod & Repair Guides · VoltPak Support" };
 
@@ -156,7 +157,6 @@ export default function ModsPage() {
         <div className="mb-12 grid md:grid-cols-3 gap-4">
           {[
             { label: "Discord server", sub: "Where the mods live. Share builds, ask questions, get hardware.", href: "https://discord.gg/voltpak" },
-            { label: "GitHub - hardware repo", sub: "KiCad files, STEP models, BOM. Star it. Fork it.", href: "https://github.com/voltpak-hw" },
             { label: "Printables - community parts", sub: "Community-submitted STL files, brackets, and enclosure mods.", href: "https://printables.com/@voltpak" },
           ].map((c) => (
             <a key={c.label} href={c.href} className="group block bg-ink-100 rounded-xl p-5 hover:bg-ink-900 hover:text-white transition-colors">
@@ -202,9 +202,10 @@ export default function ModsPage() {
                             {f.type}
                           </span>
                         </td>
-                        <td className="px-5 py-4 text-ink-500 hidden sm:table-cell">{f.version}<div className="text-xs text-ink-300">{f.date}</div></td>
-                        <td className="px-5 py-4 text-ink-500 hidden lg:table-cell">{f.size}</td>
+                        <td className="px-5 py-4 text-ink-500 hidden sm:table-cell">{DOWNLOADS_AVAILABLE ? f.version : "—"}<div className="text-xs text-ink-300">{DOWNLOADS_AVAILABLE ? f.date : ""}</div></td>
+                        <td className="px-5 py-4 text-ink-500 hidden lg:table-cell">{DOWNLOADS_AVAILABLE ? f.size : "—"}</td>
                         <td className="px-5 py-4 text-right">
+                          {DOWNLOADS_AVAILABLE ? (
                           <a
                             href={f.href}
                             download
@@ -215,6 +216,9 @@ export default function ModsPage() {
                             </svg>
                             Download
                           </a>
+                          ) : (
+                            <span className="text-xs text-ink-500">Available at launch</span>
+                          )}
                         </td>
                       </tr>
                     ))}

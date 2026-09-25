@@ -6,13 +6,13 @@ export default function TermsPage() {
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <p className="text-eyebrow uppercase text-accent-hover mb-3">Legal</p>
         <h1 className="font-display text-2xl md:text-4xl font-bold text-ink-900 mb-2">Terms of Service</h1>
-        <p className="text-sm text-ink-500 mb-12">Last updated: April 2026</p>
+        <p className="text-sm text-ink-500 mb-12">Last updated: September 2026</p>
 
         <div className="space-y-10 text-ink-500 leading-relaxed">
           {[
             {
               heading: "1. The product",
-              body: "VoltPak, Inc. sells portable power inverter systems and accessories through this website. By purchasing, you agree to these terms.",
+              body: "VoltPak, Inc. designs portable power inverter systems and accessories. Products shown on this website are pre-launch and are not yet available to order; specifications, pricing and availability are subject to change and are not an offer for sale. By using this site (and, once ordering opens, by purchasing), you agree to these terms.",
             },
             {
               heading: "2. Open hardware licence",
@@ -20,11 +20,11 @@ export default function TermsPage() {
             },
             {
               heading: "3. Warranty",
-              body: "All VoltPak products carry a 5-year limited warranty against manufacturing defects. Full warranty terms are available at voltpak.com/support/warranty. Opening the product for maintenance, fan replacement, or hardware inspection does not void the warranty. Flashing unauthorised firmware onto the MCU voids the warranty.",
+              body: "All VoltPak products carry a 5-year limited warranty against manufacturing defects. Full warranty terms are available at voltpak.ca/support/warranty. Opening the product for maintenance, fan replacement, or hardware inspection does not void the warranty. Flashing unauthorised firmware onto the MCU voids the warranty.",
             },
             {
               heading: "4. Returns",
-              body: "Products may be returned within 30 days of delivery for a full refund, provided they are in working condition. See voltpak.com/support/returns for the complete policy.",
+              body: "Products may be returned within 30 days of delivery for a full refund, provided they are in working condition. See voltpak.ca/support/returns for the complete policy.",
             },
             {
               heading: "5. Limitation of liability",
@@ -40,7 +40,7 @@ export default function TermsPage() {
             },
             {
               heading: "8. Contact",
-              body: "VoltPak, Inc. · legal@voltpak.com · Ottawa, Ontario, Canada",
+              body: "VoltPak, Inc. · legal@voltpak.ca · Ottawa, Ontario, Canada",
             },
           ].map((s) => (
             <div key={s.heading}>

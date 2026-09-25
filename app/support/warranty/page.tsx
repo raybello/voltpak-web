@@ -100,8 +100,8 @@ export default function WarrantyPage() {
           <h2 className="font-display text-2xl font-semibold text-ink-900 mb-6">How to make a claim</h2>
           <ol className="space-y-4">
             {[
-              { n: "01", t: "Register your unit", b: "Go to voltpak.com/account and add your serial number. Takes 2 minutes. Required for extended coverage." },
-              { n: "02", t: "Contact support", b: "Email support@voltpak.com or open a chat weekdays 8am–6pm PT. Include your serial number and a brief description." },
+              { n: "01", t: "Register your unit", b: "Unit registration opens with the first shipments. Join the Launch List and we will tell you when it is live." },
+              { n: "02", t: "Contact support", b: "Email support@voltpak.ca or open a chat weekdays 8am–6pm ET. Include your serial number and a brief description." },
               { n: "03", t: "Ship or in-store", b: "We'll issue a prepaid label for mail-in, or direct you to a service partner if one is nearby." },
               { n: "04", t: "Repair or replace", b: "We aim to resolve claims within 10 business days. Replacement units ship from our warehouse stock." },
             ].map((s) => (
@@ -118,9 +118,6 @@ export default function WarrantyPage() {
             <Link href="/support/contact" className="h-11 px-6 inline-flex items-center justify-center rounded-full bg-ink-900 text-white text-sm font-semibold hover:bg-ink-700 transition">
               Contact support
             </Link>
-            <a href="#register" className="h-11 px-6 inline-flex items-center justify-center rounded-full border border-ink-900 text-ink-900 text-sm font-semibold hover:bg-ink-100 transition">
-              Register your unit →
-            </a>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function Home() {
           loop
           muted
           playsInline
-          poster="/media/hero.png"
+          poster="/media/hero.webp"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/80" />
         <div className="relative max-w-container mx-auto px-6 md:px-8 pb-24 text-center">
@@ -78,9 +78,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { title: "Power Stations", href: "/shop", img: "/media/product-front.png", sub: "Integrated inverter + battery" },
-              { title: "Expansion Batteries", href: "/shop?category=battery", img: "/media/battery.png", sub: "Add capacity, stay modular" },
-              { title: "Solar Panels", href: "/shop?category=solar", img: "/media/lifestyle.png", sub: "Foldable or rigid, weather-sealed" },
+              { title: "Power Stations", href: "/shop", img: "/media/product-front.webp", sub: "Integrated inverter + battery" },
+              { title: "Expansion Batteries", href: "/shop?category=battery", img: "/media/battery.webp", sub: "Add capacity, stay modular" },
+              { title: "Solar Panels", href: "/shop?category=solar", img: "/media/lifestyle.webp", sub: "Foldable or rigid, weather-sealed" },
               // { title: "Accessories", href: "/shop?category=accessory", img: "/media/front-ports.jpg", sub: "Cables, adapters, add-ons" },
             ].map((t, i) => (
               <Link
@@ -210,11 +210,11 @@ export default function Home() {
         <div className="overflow-x-auto no-scrollbar">
           <div className="flex gap-5 px-6 md:px-8 pb-2 max-w-container mx-auto">
             {[
-              { t: "Makers & Hackers", b: "Power your bench. Mod it if you want. We designed for that.", img: "/media/hacker.png" },
-              { t: "Van life & off-grid", b: "Silent. Compact. Runs all night off a 220W panel.", img: "/media/van-life.png" },
-              { t: "Job site", b: "Circular saw, lights, drill - all day, no generator.", img: "/media/job-site.png" },
-              { t: "Home backup", b: "Fridge, router, CPAP. Ready before the outage starts.", img: "/media/home-life.png" },
-              // { t: "Disaster prep", b: "100% charge in 1.8 hours from the wall. Always ready.", img: "/media/side.png" },
+              { t: "Makers & Hackers", b: "Power your bench. Mod it if you want. We designed for that.", img: "/media/hacker.webp" },
+              { t: "Van life & off-grid", b: "Silent. Compact. Runs all night off a 220W panel.", img: "/media/van-life.webp" },
+              { t: "Job site", b: "Circular saw, lights, drill - all day, no generator.", img: "/media/job-site.webp" },
+              { t: "Home backup", b: "Fridge, router, CPAP. Ready before the outage starts.", img: "/media/home-life.webp" },
+              // { t: "Disaster prep", b: "100% charge in 1.8 hours from the wall. Always ready.", img: "/media/side.webp" },
             ].map((c) => (
               <div
                 key={c.t}
@@ -296,52 +296,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────────────────────── SOCIAL PROOF ───────────────────────── */}
+      {/* ───────────────────────── OPEN BY DEFAULT ───────────────────────── */}
       <section className="bg-white py-24 md:py-section">
         <div className="max-w-container mx-auto px-6 md:px-8">
           <div className="text-center mb-12 reveal">
-            <p className="text-eyebrow uppercase text-accent-hover mb-4">From the community</p>
+            <p className="text-eyebrow uppercase text-accent-hover mb-4">Open by default</p>
             <p className="font-display text-section text-ink-900">
-              4.9 / 5 from 2,300+ verified buyers
+              Read the engineering before you buy.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                q: "Finally a power station I can actually open. Swapped the fan for a quieter one in 20 minutes. Everything is exactly where you'd expect it.",
-                n: "T. Nakamura",
-                c: "Verified buyer · Maker / Electronics",
+                t: "Engineering write-ups",
+                b: "Enclosure manufacturing, push-pull validation and our open hardware approach, in plain detail.",
+                href: "/press",
+                cta: "Read the articles",
               },
               {
-                q: "Ran our fridge, router and CPAPs through a 14-hour outage without a hiccup. The display showing real wattage draw is genuinely useful.",
-                n: "Jordan M.",
-                c: "Verified buyer · Home backup",
+                t: "Mod & repair guides",
+                b: "Planned fan swaps, BMS access and fuse replacement guides for a fully serviceable design.",
+                href: "/support/mods",
+                cta: "Browse guides",
               },
               {
-                q: "Bought the inverter core first with my own LiFePO4 pack. Worked first try. Added the VoltPak battery six months later. Exactly as advertised.",
-                n: "Sam R.",
-                c: "Verified buyer · DIY build",
+                t: "Design philosophy",
+                b: "Why we build serviceable, documented hardware and what we will and won't claim.",
+                href: "/about/engineering",
+                cta: "Our approach",
               },
-            ].map((t, i) => (
-              <div
-                key={t.n}
-                className="reveal bg-ink-100 rounded-2xl p-6"
+            ].map((c, i) => (
+              <Link
+                key={c.t}
+                href={c.href}
+                className="reveal bg-ink-100 rounded-2xl p-6 block hover:bg-ink-100/70 transition"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <p className="text-ink-700 leading-relaxed">&ldquo;{t.q}&rdquo;</p>
-                <div className="mt-5 text-sm">
-                  <div className="font-semibold text-ink-900">{t.n}</div>
-                  <div className="text-ink-500">{t.c}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-ink-500 text-xs uppercase tracking-widest reveal">
-            <span>Featured in</span>
-            {["Hackaday", "Wirecutter", "Engadget", "Tom's Hardware", "Make:"].map((p) => (
-              <span key={p} className="font-semibold text-ink-700">{p}</span>
+                <div className="font-semibold text-ink-900">{c.t}</div>
+                <p className="mt-2 text-ink-700 leading-relaxed">{c.b}</p>
+                <div className="mt-5 text-sm text-accent-hover font-semibold">{c.cta} →</div>
+              </Link>
             ))}
           </div>
         </div>

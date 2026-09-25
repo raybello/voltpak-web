@@ -1,128 +1,71 @@
 # VoltPak Web
 
-The official VoltPak e-commerce website — built with Next.js 14 (App Router) and Payload CMS.
+Marketing and catalog site for VoltPak (voltpak.ca), built with Next.js 14 (App Router), TypeScript and Tailwind.
 
-## Tech Stack
+**Current mode: pre-launch.** Products show "Coming Soon", visitors can join a double opt-in Launch List, and cart/checkout/account are disabled. See [docs/LAUNCH.md](docs/LAUNCH.md) for the launch checklist and [docs/PATH-B-COMMERCE.md](docs/PATH-B-COMMERCE.md) for what it takes to add real ordering.
 
-- **Framework:** Next.js 14 (App Router)
-- **UI:** React 18, TypeScript, TailwindCSS, shadcn/ui components
-- **CMS:** Payload CMS (headless backend with admin panel)
-- **Database:** PostgreSQL / MySQL (PlanetScale)
-- **Payments:** Stripe
-- **Email:** Resend (contact form + pre-launch notifications)
-- **Analytics:** PostHog
-- **Error monitoring:** Sentry
-- **Deployment:** Vercel
+## Stack
 
-## Project Structure
+- Next.js 14, React 18, TypeScript, Tailwind CSS
+- MDX press/engineering posts (`public/blog/*.mdx`, `next-mdx-remote`, KaTeX)
+- Email: [Resend](https://resend.com) (contact form, Launch List double opt-in)
+- Rate limiting: Upstash Redis REST (optional; in-memory fallback)
+- Hosting: Vercel
+- Tests: Vitest (unit) + `scripts/smoke.mjs` (HTTP smoke test); CI in GitHub Actions
 
-```
-├── app/                      # Next.js App Router
-│   ├── api/                  # API routes
-│   │   ├── contact/route.ts  # Contact form (Resend emails)
-│   │   └── notify/route.ts   # Pre-launch notify-me (Resend emails)
-│   ├── about/                # Company, engineering, sustainability pages
-│   ├── account/              # User account
-│   ├── blog/                 # MDX blog
-│   ├── cart/                 # Shopping cart
-│   ├── checkout/             # Checkout flow
-│   ├── compare/              # Side-by-side product comparison
-│   ├── press/                # Press room
-│   ├── products/[slug]/      # Dynamic product pages
-│   ├── shop/                 # Product grid + category filters
-│   ├── support/              # Support hub + mods + troubleshooting
-│   ├── legal/                # Terms, privacy, accessibility
-│   └── og/[slug]/            # Dynamic Open Graph images
-├── components/
-│   ├── specs/                # Product spec rendering components
-│   ├── product/              # Buy card, sticky buy bar, notify-me
-│   ├── layout/               # Header, footer
-│   ├── cart/                 # Cart context + drawer
-│   └── blog/                 # MDX components
-├── lib/
-│   ├── products.ts           # Product catalog (name, price, stats)
-│   ├── specs.ts              # Detailed specs, features, FAQ, certifications
-│   ├── config.ts             # Global config (PRE_LAUNCH_MODE, prices)
-│   ├── format.ts             # Price formatting
-│   ├── blog.ts               # Blog MDX loader
-│   └── benchmarks.ts         # Benchmark data for product pages
-└── public/                   # Static assets
-```
+There is no CMS, database, payment processor or analytics in this repo today.
 
-## Product Catalog
-
-| Product | Price | Status |
-|---|---|---|
-| VoltPak 1000 | $899 | In production |
-| VoltPak 2000 | $1,499 | Coming soon |
-| Solar Panel 220W | $449 | Active |
-| Expansion Battery 2000 | $1,299 | Active |
-| VoltPak 1000 · Solar Bundle | $1,249 | Active |
-
-> **Note:** `PRE_LAUNCH_MODE` is currently enabled in `lib/config.ts` — the site shows "Coming Soon" for all products until launch.
-
-## Key Pages
-
-- **Home (`/`):** Hero video, 3 design pillars, product category tiles, design philosophy, use cases, social proof, newsletter signup
-- **Shop (`/shop`):** Product grid with filters (power-stations, batteries, solar, bundles, accessories)
-- **Products (`/products/[slug]`):** Full product specs, features, FAQ, comparison
-- **Compare (`/compare`):** Select any two products to see specs side-by-side
-- **Support → Mods (`/support/mods`):** Repair guides, STL downloads, open hardware package
-- **About → Sustainability (`/about/sustainability`):** LFP chemistry, cycle life, repairability
-- **Press (`/press`):** Editorial resources and press kit
-- **Blog (`/blog`):** Engineering deep-dives and product updates
-
-## Support & Modding
-
-The `/support/mods` section hosts:
-- **STL Files:** Front panel replacements, fan guards, rack ears, tilt stands (v1.0, Apr 2026)
-- **Open Hardware Package:** KiCad schematics, PCB layouts, STEP models, BOM (v1.2, CERN-OHL-S v2)
-- **Repair Guides:** Fan swap, BMS access, fuse replacement
-
-## Development
+## Getting started
 
 ```bash
-# Clone
-git clone https://github.com/raybello/voltpak-web.git
-cd voltpak-web
-
-# Install
-pnpm install
-
-# Environment
-cp .env.example .env.local
-# Configure: DATABASE_URL, STRIPE_SECRET_KEY, NEXTAUTH_SECRET, etc.
-
-# Run dev server
-pnpm dev
-# http://localhost:3000
-
-# Build
-pnpm build
-pnpm start
+nvm use            # Node 20+
+npm ci
+cp .env.example .env.local   # fill in Resend values to test email flows
+npm run dev        # http://localhost:3000
 ```
-
-### Pre-launch Mode
-Toggle `PRE_LAUNCH_MODE` in `lib/config.ts` to switch between production pricing and "Coming Soon" / "Notify Me" mode. Individual products can override via the `preLaunch` flag in `lib/products.ts`.
-
-## Scripts
 
 | Command | Description |
 |---|---|
-| `dev` | Start development server on port 3000 |
-| `build` | Production build |
-| `start` | Start production server |
-| `lint` | Lint with ESLint |
+| `npm run dev` | Dev server |
+| `npm run build` / `npm start` | Production build / server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | Unit tests |
+| `npm run smoke` | HTTP smoke test against `BASE_URL` (default `localhost:3000`) |
+
+CI runs lint, typecheck, tests, build and the smoke test on every PR.
+
+## Project structure
+
+```
+app/
+  api/contact/            Support contact form -> Resend
+  api/notify/             Launch List signup (sends confirmation link)
+  api/notify/confirm/     Double opt-in confirm -> adds to Resend audience
+  api/notify/unsubscribe/ One-click + link unsubscribe
+  notify/[status]/        Result pages for the above
+  products/[slug]/        Product pages (data from lib/products.ts + lib/specs.ts)
+  press/                  MDX posts
+  support/, about/, legal/, compare/, shop/
+  cart/, checkout/, account/   DISABLED (middleware.ts) until COMMERCE_ENABLED
+  og/[slug]/              Dynamic Open Graph images
+components/               specs/, product/, layout/, cart/, blog/, support/
+lib/
+  config.ts               PRE_LAUNCH_MODE, COMMERCE_ENABLED
+  downloads.ts            DOWNLOADS_AVAILABLE
+  site.ts                 SITE_URL / email addresses (single source of truth)
+  security.ts             origin check, rate limit, signed tokens, validation helpers
+  notify-email.ts         Launch List email templates + Resend helpers
+  products.ts, specs.ts   Catalog + product content
+docs/                     LAUNCH.md, PATH-B-COMMERCE.md, placeholder-downloads/
+```
+
+## Switches
+
+- `PRE_LAUNCH_MODE` (`lib/config.ts`): prices vs "Coming Soon". Per-product override via `preLaunch` in `lib/products.ts`.
+- `COMMERCE_ENABLED` (`lib/config.ts`): cart/checkout/account. Leave `false` until Path B is built.
+- `DOWNLOADS_AVAILABLE` (`lib/downloads.ts`): set `true` after adding real files to `public/downloads/`.
 
 ## Deployment
 
-Deploy on Vercel with:
-```bash
-vercel --prod
-```
-
-The `vercel.json` config handles build settings. On-demand revalidation is wired for product content updates.
-
-## License
-
-Proprietary — VoltPak, Inc.
+Deploy on Vercel (`vercel.json` uses `npm ci` + `npm run build`). Set the environment variables in `.env.example`. Preview deployments are automatically `noindex`.
