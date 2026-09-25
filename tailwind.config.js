@@ -27,6 +27,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
+          "var(--font-inter)",
           "Inter",
           "SF Pro Text",
           "-apple-system",
@@ -35,6 +36,7 @@ module.exports = {
           "sans-serif",
         ],
         display: [
+          "var(--font-inter)",
           "Inter",
           "SF Pro Display",
           "-apple-system",

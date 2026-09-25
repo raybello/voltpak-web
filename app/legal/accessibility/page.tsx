@@ -24,11 +24,11 @@ export default function AccessibilityPage() {
             },
             {
               heading: "Feedback",
-              body: "If you encounter a barrier on this site, please email accessibility@voltpak.com. Include the URL of the page, the issue you encountered, and the assistive technology or browser you were using. We aim to respond within 5 business days.",
+              body: "If you encounter a barrier on this site, please email accessibility@voltpak.ca. Include the URL of the page, the issue you encountered, and the assistive technology or browser you were using. We aim to respond within 5 business days.",
             },
             {
               heading: "Contact",
-              body: "accessibility@voltpak.com · VoltPak, Inc. · Ottawa, Ontario, Canada",
+              body: "accessibility@voltpak.ca · VoltPak, Inc. · Ottawa, Ontario, Canada",
             },
           ].map((s) => (
             <div key={s.heading}>

@@ -33,6 +33,7 @@ export async function generateMetadata({
   return {
     title: `${product.name} - ${product.tagline} | VoltPak`,
     description: detail.shortDesc,
+    alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
       title: `${product.name} | VoltPak`,
       description: detail.shortDesc,

@@ -9,7 +9,6 @@ const COLUMNS = [
       { href: "/shop?category=battery", label: "Expansion Batteries" },
       { href: "/shop?category=solar", label: "Solar Panels" },
       { href: "/shop?category=accessory", label: "Accessories" },
-      { href: "/shop?sale=1", label: "Deals" },
     ],
   },
   {
@@ -107,7 +106,7 @@ export default function Footer() {
             © {new Date().getFullYear()} VoltPak, Inc. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-xs text-ink-500">
-            <span>United States · English</span>
+            <span>Ottawa, Canada · English</span>
             <span>·</span>
             <Link href="/legal/privacy" className="hover:text-white">Privacy</Link>
             <Link href="/legal/terms" className="hover:text-white">Terms</Link>

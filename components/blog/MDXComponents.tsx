@@ -1,3 +1,4 @@
+import { DOWNLOADS_AVAILABLE } from "@/lib/downloads";
 import type { ReactNode, HTMLAttributes, AnchorHTMLAttributes, ImgHTMLAttributes } from "react";
 
 /**
@@ -226,9 +227,11 @@ export function DownloadCard({
   description?: string;
   type?: DownloadKind;
 }) {
+  const available = DOWNLOADS_AVAILABLE;
+  const Tag = available ? "a" : "div";
   return (
-    <a
-      href={href}
+    <Tag
+      {...(available ? { href } : { "aria-disabled": true })}
       className="group not-prose flex items-start justify-between gap-6 bg-white rounded-2xl border border-ink-100 px-6 py-5 my-4 hover:border-ink-300 transition-colors no-underline"
     >
       <div className="min-w-0">
@@ -246,10 +249,10 @@ export function DownloadCard({
           </div>
         ) : null}
       </div>
-      <div className="flex-shrink-0 text-ink-300 group-hover:text-accent-hover mt-1 transition-colors">
-        ↓
+      <div className="flex-shrink-0 text-ink-300 group-hover:text-accent-hover mt-1 transition-colors text-xs">
+        {available ? "↓" : "Available at launch"}
       </div>
-    </a>
+    </Tag>
   );
 }
 

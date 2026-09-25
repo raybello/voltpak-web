@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     category: "power-station",
     price: 899,
     compareAt: 999,
-    image: "/media/product-front.png",
+    image: "/media/product-front.webp",
     stats: { capacity: "1,024 Wh", output: "2,200 W", weight: "28 lb" },
   },
   {
@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
     tagline: "2,048 Wh. More capacity, same open architecture.",
     category: "power-station",
     price: 1499,
-    image: "/media/product-front.png",
+    image: "/media/product-front.webp",
     stats: { capacity: "2,048 Wh", output: "3,000 W", weight: "46 lb" },
   },
   {
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     category: "bundle",
     price: 1249,
     compareAt: 1348,
-    image: "/media/lifestyle.png",
+    image: "/media/lifestyle.webp",
     stats: { capacity: "1,024 Wh", output: "2,200 W" },
   },
   // {
@@ -60,7 +60,7 @@ export const PRODUCTS: Product[] = [
   //   category: "bundle",
   //   price: 2000,
   //   compareAt: 2397,
-  //   image: "/media/lifestyle-2.png",
+  //   image: "/media/lifestyle-2.webp",
   //   stats: { capacity: "2,048 Wh", output: "3,000 W" },
   // },
   {
@@ -70,7 +70,7 @@ export const PRODUCTS: Product[] = [
     tagline: "Add capacity without swapping the core. Same isolated LFP compartment.",
     category: "battery",
     price: 1299,
-    image: "/media/battery.png",
+    image: "/media/battery.webp",
     stats: { capacity: "2,048 Wh", weight: "45 lb" },
   },
   {
@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
   //   tagline: "Rigid bifacial. Generates on both sides. Built for fixed installs.",
   //   category: "solar",
   //   price: 699,
-  //   image: "/media/side.png",
+  //   image: "/media/side.webp",
   //   stats: { output: "400 W", weight: "40 lb" },
   // },
   // {

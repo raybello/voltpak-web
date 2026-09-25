@@ -16,7 +16,7 @@ export default function PressPage() {
           </h1>
           <p className="mt-4 text-ink-500 leading-relaxed">
             Engineering notes, manufacturing deep-dives, and company perspective.
-            For review units and press inquiries, reach out to press@voltpak.com.
+            For review units and press inquiries, reach out to press@voltpak.ca.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function PressPage() {
               Brand guidelines PDF.
             </p>
             <a
-              href="mailto:press@voltpak.com?subject=Brand assets request"
+              href="mailto:press@voltpak.ca?subject=Brand assets request"
               className="text-sm font-semibold text-accent-hover hover:text-accent transition-colors"
             >
               Request press kit →
@@ -88,7 +88,7 @@ export default function PressPage() {
               We don&apos;t restrict what you say. We&apos;re confident enough in the hardware.
             </p>
             <a
-              href="mailto:press@voltpak.com?subject=Review unit request"
+              href="mailto:press@voltpak.ca?subject=Review unit request"
               className="text-sm font-semibold text-accent-hover hover:text-accent transition-colors"
             >
               Request a review unit →
@@ -101,10 +101,10 @@ export default function PressPage() {
           <h3 className="font-semibold text-ink-900 mb-2">Press contact</h3>
           <p className="text-sm text-ink-500">
             <a
-              href="mailto:press@voltpak.com"
+              href="mailto:press@voltpak.ca"
               className="text-accent-hover hover:text-accent transition-colors font-medium"
             >
-              press@voltpak.com
+              press@voltpak.ca
             </a>
             {" "}· Replies within one business day.
           </p>

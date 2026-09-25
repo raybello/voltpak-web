@@ -56,7 +56,7 @@ const ISSUES = [
     steps: [
       "Hold the power button for 10 seconds to force a hard reset.",
       "If the issue persists after reboot, check the display ribbon cable at the board (rear panel access, 4× M3 screws).",
-      "A firmware update may be available - check the changelog at voltpak.com/support/manuals.",
+      "A firmware update may be available - check the changelog at voltpak.ca/support/manuals.",
       "If hard reset and cable check don't resolve it, contact support for a warranty replacement.",
     ],
     links: [{ label: "Contact support", href: "/support/contact" }],

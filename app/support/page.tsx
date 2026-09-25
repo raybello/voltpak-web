@@ -70,19 +70,15 @@ export default function SupportPage() {
             <div>
               <p className="text-eyebrow uppercase text-accent-hover mb-3">Community</p>
               <h2 className="font-display text-2xl md:text-3xl text-ink-900 font-semibold">
-                The community fixes things faster than we do.
+                Build, mod and ask questions with the community.
               </h2>
               <p className="mt-4 text-ink-500 leading-relaxed">
-                Thousands of tinkerers have documented mods, edge cases, and fixes
-                on Reddit, Discord, and Hackaday. We link to the best of it here
-                and contribute back whenever we can.
+                Our Discord is where builders share mods, edge cases and fixes. We link to the best of it here and contribute back whenever we can.
               </p>
             </div>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Reddit · r/VoltPak", href: "#", sub: "Mods, builds, questions" },
-                { label: "Discord server", href: "#", sub: "Real-time help from the community" },
-                { label: "GitHub · Firmware", href: "#", sub: "Open changelog + issue tracker" },
+                                { label: "Discord server", href: "https://discord.gg/voltpak", sub: "Real-time help from the community" },
               ].map((l) => (
                 <a
                   key={l.label}

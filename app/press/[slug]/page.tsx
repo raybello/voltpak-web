@@ -31,6 +31,7 @@ export async function generateMetadata({
   return {
     title: `${title} · VoltPak`,
     description,
+    alternates: { canonical: `/press/${params.slug}` },
     openGraph: {
       title,
       description,

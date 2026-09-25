@@ -4,3 +4,12 @@ dev.log
 .env
 .env.local
 .env.*.local
+!.env.example
+*.tsbuildinfo
+.DS_Store
+*.swp
+.vercel
+next-env.d.ts
+coverage
+test-results
+playwright-report

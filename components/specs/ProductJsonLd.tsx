@@ -1,5 +1,6 @@
 import { Product } from "@/lib/products";
 import { ProductDetail } from "@/lib/specs";
+import { SITE_URL } from "@/lib/site";
 import { isPreLaunch } from "@/lib/config";
 
 // Emits schema.org Product JSON-LD for rich Google Shopping results.
@@ -34,27 +35,21 @@ export default function ProductJsonLd({
     name: product.name,
     sku: product.id,
     brand: { "@type": "Brand", name: "VoltPak" },
-    image: [product.image],
+    image: [`${SITE_URL}${product.image}`],
     description: detail.shortDesc,
     offers: preLaunch
       ? {
           "@type": "Offer",
-          priceCurrency: "USD",
           availability: "https://schema.org/PreOrder",
-          url: `https://voltpak.ca/products/${product.slug}`,
+          url: `${SITE_URL}/products/${product.slug}`,
         }
       : {
           "@type": "Offer",
           price: product.price.toFixed(2),
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          url: `https://voltpak.ca/products/${product.slug}`,
+          url: `${SITE_URL}/products/${product.slug}`,
         },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "2300",
-    },
     additionalProperty,
   };
 

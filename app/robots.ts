@@ -1,11 +1,21 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  // Block crawling everywhere except production so preview deployments
+  // never compete with the real site in search results.
+  if (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production") {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/cart", "/checkout"] },
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/cart", "/checkout", "/account", "/notify/"],
+      },
     ],
-    sitemap: "https://voltpak.example.com/sitemap.xml",
-    host: "https://voltpak.example.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

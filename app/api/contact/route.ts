@@ -1,34 +1,42 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { SITE_URL } from "@/lib/site";
+import { EMAIL_RE, clientIp, escapeHtml, originAllowed, rateLimit, str } from "@/lib/security";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-type ContactBody = {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  subject?: string;
-  serialNumber?: string;
-  message?: string;
-};
-
 export async function POST(req: Request) {
-  let body: ContactBody = {};
+  if (!originAllowed(req)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  const ip = clientIp(req);
+  if (!(await rateLimit(`contact:ip:${ip}`, 5, 3600))) {
+    return NextResponse.json(
+      { error: "Too many messages. Please try again later." },
+      { status: 429 }
+    );
+  }
+
+  let raw: Record<string, unknown> = {};
   try {
-    body = (await req.json()) as ContactBody;
+    raw = (await req.json()) as Record<string, unknown>;
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const firstName = (body.firstName ?? "").trim();
-  const lastName = (body.lastName ?? "").trim();
-  const email = (body.email ?? "").trim().toLowerCase();
-  const subject = (body.subject ?? "").trim();
-  const serialNumber = (body.serialNumber ?? "").trim();
-  const message = (body.message ?? "").trim();
+  // Honeypot: real users never see or fill this field. Pretend success.
+  if (str(raw.website, 200)) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const firstName = str(raw.firstName, 80);
+  const lastName = str(raw.lastName, 80);
+  const email = str(raw.email, 254).toLowerCase();
+  const subject = str(raw.subject, 120);
+  const serialNumber = str(raw.serialNumber, 60);
+  const message = str(raw.message, 5000);
 
   if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
@@ -39,9 +47,10 @@ export async function POST(req: Request) {
 
   const apiKey = process.env.RESEND_API_KEY ?? "";
   const fromEmail = process.env.RESEND_FROM_EMAIL ?? "";
+  const toEmail = process.env.CONTACT_TO_EMAIL ?? "";
 
-  if (!apiKey || !fromEmail) {
-    console.error("[contact] missing RESEND_API_KEY or RESEND_FROM_EMAIL");
+  if (!apiKey || !fromEmail || !toEmail) {
+    console.error("[contact] missing RESEND_API_KEY, RESEND_FROM_EMAIL or CONTACT_TO_EMAIL");
     return NextResponse.json({ error: "Email service not configured." }, { status: 500 });
   }
 
@@ -51,31 +60,23 @@ export async function POST(req: Request) {
   try {
     const res = await resend.emails.send({
       from: fromEmail,
-      to: ["raybello44@gmail.com"],
+      to: [toEmail],
       replyTo: email,
-      subject: `[VoltPak Support] ${subject || "General inquiry"} — ${senderName}`,
+      // Strip CR/LF so user input can never inject headers into the subject.
+      subject: `[VoltPak Support] ${subject || "General inquiry"} — ${senderName}`.replace(/[\r\n]+/g, " "),
       html: buildEmailHtml({ firstName, lastName, email, subject, serialNumber, message }),
     });
 
-    if ((res as any)?.error) {
-      console.error("[contact] resend error:", (res as any).error);
+    if (res.error) {
+      console.error("[contact] resend error:", res.error);
       return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
+  } catch (err) {
     console.error("[contact] send threw:", err);
     return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 500 });
   }
-}
-
-function escapeHtml(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 function buildEmailHtml({
@@ -145,7 +146,7 @@ function buildEmailHtml({
         </td></tr>
         <tr><td style="padding:16px 36px;background:#F5F5F7;border-top:1px solid #E5E5EA;">
           <p style="margin:0;font-size:11px;color:#86868B;">
-            Sent from voltpak.ca/support/contact
+            Sent from ${escapeHtml(SITE_URL.replace(/^https?:\/\//, ""))}/support/contact
           </p>
         </td></tr>
       </table>

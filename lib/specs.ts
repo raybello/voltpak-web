@@ -49,7 +49,7 @@ const VP1000: ProductDetail = {
   longDesc:
     "The VoltPak 1000 is engineered around three principles: stay safe, stay silent, stay out of your way. 1,024 Wh of automotive-grade LiFePO4 cells. 2,200 W of clean sine-wave AC output. 23 dB in ECO mode - quieter than a library, quiet enough for your bedroom.",
   heroTagline: { lineA: "Silent power.", lineB: "Serious output." },
-  heroMedia: { type: "video", src: "/media/hero.mp4", poster: "/media/hero.png" },
+  heroMedia: { type: "video", src: "/media/hero.mp4", poster: "/media/hero.webp" },
   highlights: [
     { stat: "2,200W", label: "AC continuous", note: "4,400W motor surge" },
     { stat: "1,024Wh", label: "LFP capacity", note: "4,000 cycles to 80%" },
@@ -61,14 +61,14 @@ const VP1000: ProductDetail = {
       eyebrow: "Safety built in",
       title: "LFP cells. 11 sensors. 10 fuses.",
       body:
-        "A flame-retardant polycarbonate body over an aluminum chassis. 26 SGS certifications. Lithium Iron Phosphate chemistry rated for 4,000 charge cycles - a decade of daily use before capacity drops to 80%.",
+        "A flame-retardant polycarbonate body over an aluminum chassis. Third-party safety certification is planned before shipping. Lithium Iron Phosphate chemistry rated for 4,000 charge cycles - a decade of daily use before capacity drops to 80%.",
       media: {
         type: "image",
         src: "/media/assembly.jpg",
         alt: "Exploded view of VoltPak 1000 internal safety construction",
       },
       callouts: [
-        { label: "Certifications", value: "26" },
+        { label: "Certification", value: "Planned" },
         { label: "Thermal sensors", value: "11" },
         { label: "Circuit fuses", value: "10" },
       ],
@@ -118,7 +118,7 @@ const VP1000: ProductDetail = {
         "Quiet enough to run in your bedroom overnight, on a conference call at a job site, or inside a tent without waking the campground. Variable-speed fans only spin up when the load actually needs them.",
       media: {
         type: "image",
-        src: "/media/side.png",
+        src: "/media/side.webp",
         alt: "VoltPak 1000 on a nightstand in a quiet room",
       },
       callouts: [
@@ -232,7 +232,7 @@ const VP1000: ProductDetail = {
         { label: "Temperature sensors", value: "11" },
         { label: "Circuit fuses", value: "10" },
         { label: "BMS", value: "Multi-stage (OCP / OVP / OTP / SCP / reverse polarity)" },
-        { label: "Case rating", value: "UL 94 V-0 flame-retardant" },
+        { label: "Case rating", value: "UL 94 V-0 flame-retardant (design target)" },
       ],
     },
   ],
@@ -278,7 +278,7 @@ const VP2000: ProductDetail = {
   longDesc:
     "The VoltPak 2000 doubles everything that matters. Twice the capacity, more than enough output to run power tools, and a 22,528 Wh expansion ceiling for true whole-home backup. Still under 47 pounds. Still below 30 dB.",
   heroTagline: { lineA: "Double the capacity.", lineB: "Still whisper quiet." },
-  heroMedia: { type: "image", src: "/media/side.png" },
+  heroMedia: { type: "image", src: "/media/side.webp" },
   highlights: [
     { stat: "3,000W", label: "AC continuous", note: "6,000W motor peak" },
     { stat: "2,048Wh", label: "LFP capacity", note: "expandable to 22.5 kWh" },
@@ -328,7 +328,7 @@ const VP2000: ProductDetail = {
         "1,800 W VoltLink Turbo AC charging. 1,600 W solar input. Hybrid recharge (AC + solar simultaneously) for the fastest possible refill after an outage.",
       media: {
         type: "image",
-        src: "/media/lifestyle.png",
+        src: "/media/lifestyle.webp",
         alt: "VoltPak 2000 charging from solar panels",
       },
       callouts: [
@@ -454,7 +454,7 @@ const VP_BATT_2K: ProductDetail = {
   longDesc:
     "The Expansion Battery 2000 is passive capacity on demand. It inherits the parent station's output ceiling, BMS safety profile, and warranty. Chain up to five per station. No independent output - all energy routes through the VoltPak station you already own.",
   heroTagline: { lineA: "Double the runtime.", lineB: "Same VoltPak." },
-  heroMedia: { type: "image", src: "/media/side.png" },
+  heroMedia: { type: "image", src: "/media/side.webp" },
   highlights: [
     { stat: "2,048Wh", label: "LFP expansion" },
     { stat: "5×", label: "Max chain" },
@@ -469,7 +469,7 @@ const VP_BATT_2K: ProductDetail = {
         "The VoltLink connector carries power and BMS telemetry in a single sealed cable. The station recognizes the new capacity within seconds and shows combined runtime in the VoltPak app.",
       media: {
         type: "image",
-        src: "/media/battery.png",
+        src: "/media/battery.webp",
         alt: "VoltLink cable connecting expansion battery",
       },
       callouts: [
@@ -487,7 +487,7 @@ const VP_BATT_2K: ProductDetail = {
         "One battery doubles the runtime. Five batteries turn a VoltPak 2000 into whole-home backup for multi-day outages. Add them as budget allows - the station ceiling is fixed at five.",
       media: {
         type: "image",
-        src: "/media/battery_stack.png",
+        src: "/media/battery_stack.webp",
         alt: "Multiple expansion batteries stacked with a station",
       },
     },
@@ -566,7 +566,7 @@ const VP_SOLAR_220: ProductDetail = {
   longDesc:
     "A foldable monocrystalline PERC panel rated at 220 W under full sun. Dual SDC and MC4 outputs mean it pairs with both VoltPak and any third-party MPPT on the market. Weather-sealed to IP67 - run it through the afternoon thunderstorm.",
   heroTagline: { lineA: "Fold it.", lineB: "Forget it." },
-  heroMedia: { type: "image", src: "/media/lifestyle.png" },
+  heroMedia: { type: "image", src: "/media/lifestyle.webp" },
   highlights: [
     { stat: "220W", label: "Rated output", note: "23.5% efficiency" },
     { stat: "IP67", label: "Rain & dust sealed" },
@@ -581,7 +581,7 @@ const VP_SOLAR_220: ProductDetail = {
         "Passivated Emitter Rear Contact cells squeeze more watts out of the same surface area. In full midday sun you'll see 210+ W sustained; overcast-but-bright drops only to ~140 W.",
       media: {
         type: "image",
-        src: "/media/lifestyle.png",
+        src: "/media/lifestyle.webp",
         alt: "Solar panel deployed in a sunny clearing",
       },
       callouts: [
@@ -701,7 +701,7 @@ const VP_SOLAR_400: ProductDetail = {
   longDesc:
     "A rigid monocrystalline bifacial panel for permanent installations, campers, cabins and ground-mount arrays. The rear-side cells pick up reflected light for real-world gains up to 25% above the 400 W rating.",
   heroTagline: { lineA: "400 watts.", lineB: "Plus a bonus." },
-  heroMedia: { type: "image", src: "/media/side.png" },
+  heroMedia: { type: "image", src: "/media/side.webp" },
   highlights: [
     { stat: "400W", label: "Front rating" },
     { stat: "+25%", label: "Rear albedo gain" },
@@ -716,7 +716,7 @@ const VP_SOLAR_400: ProductDetail = {
         "Transparent backsheet lets reflected light hit the rear cells too. On white gravel or snow you'll see up to 500 W out of the panel - without changing the mount.",
       media: {
         type: "image",
-        src: "/media/lifestyle.png",
+        src: "/media/lifestyle.webp",
         alt: "Bifacial panel mounted on gravel",
       },
       callouts: [
@@ -809,7 +809,7 @@ const VP_1000_SOLAR: ProductDetail = {
   longDesc:
     "A complete off-grid starter: the flagship 1,024 Wh VoltPak 1000 paired with the 220 W foldable solar panel. Save $99 vs. buying them separately.",
   heroTagline: { lineA: "Station plus sun.", lineB: "Save $99." },
-  heroMedia: { type: "image", src: "/media/lifestyle.png" },
+  heroMedia: { type: "image", src: "/media/lifestyle.webp" },
   highlights: [
     { stat: "1,024Wh", label: "Station capacity" },
     { stat: "220W", label: "Solar input" },
@@ -882,7 +882,7 @@ const VP_2000_SOLAR_KIT: ProductDetail = {
   longDesc:
     "Pair the 2,048 Wh VoltPak 2000 with two 220W panels for 440 W of total solar input. Enough to refill the station inside a single sunny day, or to sustain fridge + lights + router during a multi-day outage.",
   heroTagline: { lineA: "2 kWh station.", lineB: "Twin panels." },
-  heroMedia: { type: "image", src: "/media/side.png" },
+  heroMedia: { type: "image", src: "/media/side.webp" },
   highlights: [
     { stat: "2,048Wh", label: "Station capacity" },
     { stat: "440W", label: "Combined solar" },
@@ -897,7 +897,7 @@ const VP_2000_SOLAR_KIT: ProductDetail = {
         "440 W of sustained solar on a clear day refills the 2,048 Wh battery inside of a single daylight window. Pair with hybrid recharge (AC + solar) to hit 100% even faster when the grid comes back.",
       media: {
         type: "image",
-        src: "/media/lifestyle.png",
+        src: "/media/lifestyle.webp",
         alt: "VoltPak 2000 in a driveway with two solar panels",
       },
       tone: "dark",

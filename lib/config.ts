@@ -15,6 +15,16 @@
 // on its entry in lib/products.ts. The product-level value always wins.
 export const PRE_LAUNCH_MODE = true;
 
+// COMMERCE_ENABLED
+// ----------------
+// Master switch for the transactional surface: cart, checkout and account.
+// While false (Path A: pre-launch site) the header hides the cart/account
+// icons and middleware.ts redirects /cart, /checkout and /account to /shop.
+// Flip to true only once real payments, server-side pricing and accounts
+// exist - see docs/PATH-B-COMMERCE.md. Do NOT enable with the current
+// demo checkout, which has no payment processing.
+export const COMMERCE_ENABLED = false;
+
 // Copy used everywhere a price would normally appear in pre-launch mode.
 export const PRE_LAUNCH_PRICE_LABEL = "Coming Soon";
 

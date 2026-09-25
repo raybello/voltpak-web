@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartContext";
+import { COMMERCE_ENABLED } from "@/lib/config";
 
 const LINKS = [
   { href: "/shop", label: "Power Stations" },
@@ -64,12 +65,8 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-5">
-            <button
-              aria-label="Search"
-              className="hidden sm:inline-flex text-ink-700 hover:text-accent-hover transition-colors"
-            >
-              <SearchIcon />
-            </button>
+            {COMMERCE_ENABLED && (
+              <>
             <Link
               href="/account"
               aria-label="Account"
@@ -92,6 +89,8 @@ export default function Header() {
                 </span>
               )}
             </button>
+              </>
+            )}
             <button
               className="md:hidden text-ink-700"
               onClick={() => setMobileOpen((v) => !v)}
@@ -124,14 +123,6 @@ export default function Header() {
   );
 }
 
-function SearchIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5" />
-      <path d="m20 20-3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
 function UserIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>

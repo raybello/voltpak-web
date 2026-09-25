@@ -30,10 +30,10 @@ export default function ContactPage() {
             {[
               {
                 title: "Email support",
-                sub: "support@voltpak.com",
+                sub: "support@voltpak.ca",
                 body: "Best for warranty claims, returns, and detailed technical issues. Reply within 24 h on business days.",
                 cta: "Send an email →",
-                href: "mailto:support@voltpak.com",
+                href: "mailto:support@voltpak.ca",
               },
               {
                 title: "Live chat",

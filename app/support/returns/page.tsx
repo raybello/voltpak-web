@@ -48,7 +48,7 @@ export default function ReturnsPage() {
                 Unit must be in working condition with no physical damage caused after delivery.
               </p>
               <p>
-                To start a return, email returns@voltpak.com with your order number.
+                To start a return, email returns@voltpak.ca with your order number.
                 We'll reply within one business day with a prepaid shipping label.
               </p>
               <p>
