@@ -1,0 +1,97 @@
+---
+title: "Why we chose LFP: lithium chemistries in plain language"
+description: "Lithium iron phosphate vs. NMC: energy density, cycle life, safety, cold-weather behavior, and the trade-offs we accepted when we chose LFP for VoltPak."
+date: "2026-09-17"
+author: "The VoltPak engineering team"
+cover: "/media/assembly.jpg"
+tags: ["Engineering", "Batteries", "Safety"]
+---
+
+"Lithium battery" is a category, not a chemistry. The cells in your phone,
+an electric car, and a portable power station can be very different
+inside, and those differences decide how long the product lasts and how it
+fails. VoltPak uses **lithium iron phosphate (LiFePO<sub>4</sub>, "LFP")**.
+This post explains why, and what we gave up.
+
+## The two chemistries people compare
+
+**NMC** (nickel manganese cobalt) is the chemistry behind most phones,
+laptops, and many electric vehicles. **LFP** swaps the nickel and cobalt
+cathode for iron and phosphate.
+
+| | LFP | NMC |
+|---|---|---|
+| Nominal cell voltage | ~3.2 V | ~3.6–3.7 V |
+| Energy density (cell level, typical) | Lower (roughly 90–160 Wh/kg) | Higher (roughly 150–250 Wh/kg) |
+| Cycle life (typical, to 80%) | Thousands (often 3,000+) | Hundreds to ~1,500 |
+| Thermal runaway onset | Higher temperature, less energetic | Lower temperature, more energetic |
+| Charging in freezing temps | Not allowed without heating | Limited, but tolerated more |
+| Cobalt / nickel | None | Yes |
+
+These are broad, industry-typical ranges rather than VoltPak
+measurements. Individual cells vary a lot by manufacturer and grade.
+
+## Why LFP for a power station
+
+### 1. It lasts longer under daily use
+
+A power station is often cycled hard: solar every day, camping every
+weekend, or a nightly grid-tied schedule. Cycle life is the number that
+decides whether the product is still useful in ten years. LFP's
+typical cycle life is several times that of NMC, which is the single
+biggest reason we chose it.
+
+### 2. It fails more gently
+
+All lithium cells can be abused into thermal runaway. LFP's phosphate
+cathode is more stable: it releases far less oxygen when overheated, so it
+starts at a higher temperature and is less violent when it does. That
+doesn't make it a safety system on its own. We still rely on a
+multi-stage battery management system (BMS) with cell-level monitoring,
+fusing, and temperature sensing, but it gives that system more margin.
+
+<Callout variant="warn" title="LFP is safer, not safe">
+  No lithium battery is risk-free. Use a unit only within its rated
+  temperature range, don't use damaged packs, and keep it ventilated.
+</Callout>
+
+### 3. It tolerates being full
+
+NMC cells age faster when parked at 100%. LFP is comfortable at high state
+of charge, which suits a power station that lives on a charger waiting for
+an outage.
+
+### 4. No cobalt or nickel
+
+Cobalt and nickel are among the most environmentally and socially costly
+materials in battery supply chains. Iron and phosphate are abundant and
+cheap. This is a real advantage, though not a complete sustainability
+story on its own.
+
+## What LFP costs us
+
+We'd rather be plain about the trade-offs:
+
+- **Weight and size.** Lower energy density means more cells for the same Wh. It's a big part of why a 1 kWh-class LFP unit is a "carry it with both hands" product, not a pocketable one.
+- **Cold charging.** Charging LFP below about 0 °C (32 °F) can cause lithium plating and permanent damage. A unit either needs pack heating or must refuse to charge when cold. Discharging in the cold works but delivers less capacity.
+- **Flat voltage curve.** LFP's voltage barely changes between about 20% and 90% charge, so estimating state of charge from voltage alone is unreliable. Good coulomb counting and periodic recalibration in the BMS matter more than with NMC.
+
+## How the numbers work out on the VoltPak 1000
+
+Our design uses eight cells in series (8S), which gives a nominal pack
+voltage of 8 × 3.2 V = **25.6 V**. Design capacity is 1,024 Wh, which is
+25.6 V × 40 Ah. Those are design figures for the pre-production unit and
+will be confirmed with measured data at launch.
+
+$$
+E = V \times Q = 25.6\ \text{V} \times 40\ \text{Ah} = 1{,}024\ \text{Wh}
+$$
+
+## The practical guidance
+
+- Store LFP packs at a partial-to-full charge, and top up at least every few months.
+- Don't charge below freezing; let the pack warm up first.
+- Don't leave a pack fully discharged for long periods. It can drift out of balance.
+
+Related reading: [how to size a power station for home backup](/press/sizing-a-power-station-for-home-backup)
+and our [battery health guide](/support/battery).
