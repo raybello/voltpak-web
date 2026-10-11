@@ -1117,8 +1117,8 @@ const VP_8000H: ProductDetail = {
         "144 half-cut monocrystalline PERC cells deliver 530 W per panel at 21.5% module efficiency. Anti-reflective tempered glass, IP68 junction box, and MC4 connectors. Rated for 2,400 Pa wind and 5,400 Pa snow loads.",
       media: {
         type: "image",
-        src: "/media/vp8000h-inverter-front.png",
-        alt: "VP-8000H system overview with inverter and panels",
+        src: "/media/vp8000h-inverter-side.png",
+        alt: "VP-8000H VoltPak-branded hybrid inverter",
       },
       callouts: [
         { label: "Panel output", value: "530 W" },
