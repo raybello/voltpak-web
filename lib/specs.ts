@@ -1058,6 +1058,243 @@ const VP_MC4_ADAPTER: ProductDetail = {
 };
 
 // ──────────────────────────────────────────────────────────────
+// VoltPak VP-8000H - 3-in-1 hybrid solar system
+// ──────────────────────────────────────────────────────────────
+const VP_8000H: ProductDetail = {
+  id: "vp-8000h",
+  shortDesc:
+    "8 kW hybrid inverter, 20 kWh LiFePO4 battery rack, and 530 W monocrystalline solar panels in a single procurement package — ~5 hours of backup at 50% load.",
+  longDesc:
+    "The VoltPak VP-8000H is a fully integrated hybrid solar energy system for residential and light-commercial power independence. It combines an 8 kW pure sine-wave hybrid inverter with dual MPPT, 20 kWh of rack-mounted LiFePO4 battery storage rated for 6,000+ cycles, and high-efficiency 530 W monocrystalline PERC solar panels — delivering seamless solar self-consumption, automatic grid failover, and remote monitoring via Wi-Fi, 4G, or Bluetooth.",
+  heroTagline: { lineA: "Whole-home hybrid.", lineB: "One system." },
+  heroMedia: { type: "image", src: "/media/vp8000h-hero.png" },
+  highlights: [
+    { stat: "8 kW", label: "Continuous AC output", note: "16 kW peak for 10 s" },
+    { stat: "20 kWh", label: "LFP battery storage", note: "6,000+ cycles" },
+    { stat: "97.6%", label: "Max inverter efficiency" },
+  ],
+  features: [
+    {
+      id: "inverter",
+      eyebrow: "Dual-MPPT hybrid inverter",
+      title: "8 kW. Two solar trackers.",
+      body:
+        "Two independent 6 kW MPPT channels accept up to 12 kW of PV across split roof orientations. 97.6% peak conversion efficiency. Grid-tied or off-grid — the inverter handles both modes and switches in under 20 ms during an outage.",
+      media: {
+        type: "image",
+        src: "/media/vp8000h-inverter-side.png",
+        alt: "VP-8000H hybrid inverter front and side view",
+      },
+      callouts: [
+        { label: "Rated output", value: "8 kW / 8 kVA" },
+        { label: "Peak (10 s)", value: "16 kW" },
+        { label: "MPPT channels", value: "2 × 6 kW" },
+      ],
+      tone: "dark",
+    },
+    {
+      id: "battery",
+      eyebrow: "20 kWh rack-mounted LFP",
+      title: "4 modules. 6,000 cycles.",
+      body:
+        "Four 5 kWh LiFePO4 modules in a floor-standing rack cabinet. Integrated smart BMS with cell-level balancing and CAN/RS485 communication for adaptive charge curves. 100% depth of discharge supported, 95%+ round-trip efficiency.",
+      media: {
+        type: "image",
+        src: "/media/vp8000h-battery-module.png",
+        alt: "LFP 51.2V 100Ah battery module close-up",
+      },
+      callouts: [
+        { label: "Total capacity", value: "20 kWh" },
+        { label: "Cycle life", value: "6,000+" },
+        { label: "Round-trip eff.", value: "≥95%" },
+      ],
+    },
+    {
+      id: "solar",
+      eyebrow: "530 W monocrystalline PERC",
+      title: "21.5% efficiency. 25-year output warranty.",
+      body:
+        "144 half-cut monocrystalline PERC cells deliver 530 W per panel at 21.5% module efficiency. Anti-reflective tempered glass, IP68 junction box, and MC4 connectors. Rated for 2,400 Pa wind and 5,400 Pa snow loads.",
+      media: {
+        type: "image",
+        src: "/media/vp8000h-inverter-side.png",
+        alt: "VP-8000H VoltPak-branded hybrid inverter",
+      },
+      callouts: [
+        { label: "Panel output", value: "530 W" },
+        { label: "Efficiency", value: "21.5%" },
+        { label: "Hail rated", value: "25 mm @ 23 m/s" },
+      ],
+      tone: "dark",
+    },
+    {
+      id: "monitoring",
+      eyebrow: "Smart monitoring",
+      title: "Wi-Fi. 4G. Bluetooth.",
+      body:
+        "Real-time system monitoring via mobile app and web portal. Track solar generation, battery state, grid consumption, and backup status from anywhere. CAN and RS485 interfaces support third-party energy management integration.",
+      media: {
+        type: "image",
+        src: "/media/vp8000h-inverter-rear.png",
+        alt: "VP-8000H inverter showing PV disconnect and connectivity ports",
+      },
+      callouts: [
+        { label: "Connectivity", value: "Wi-Fi / 4G / BT" },
+        { label: "Protocols", value: "CAN / RS485" },
+        { label: "Transfer time", value: "<20 ms" },
+      ],
+    },
+  ],
+  inTheBox: [
+    "VP-8000H Hybrid Inverter (8 kW)",
+    "VP-BAT-20K Battery Rack (4 × 5 kWh LFP modules)",
+    "VP-SP-530 Solar Panel(s) (530 W each)",
+    "CAN / RS485 communication cables",
+    "AC & DC wiring harnesses",
+    "Mounting hardware (inverter wall-mount + panel rail kit)",
+    "Installation manual & commissioning guide",
+    "2-year warranty documentation",
+  ],
+  specs: [
+    {
+      group: "Hybrid Inverter (VP-8000H)",
+      rows: [
+        { label: "Rated output", value: "8,000 W / 8,000 VA" },
+        { label: "Peak power (off-grid)", value: "16,000 W (2× rated, 10 s)" },
+        { label: "Max efficiency", value: "97.6%" },
+        { label: "Euro efficiency", value: "97.0%" },
+        { label: "MPPT channels", value: "2 (2 strings each)" },
+        { label: "Max PV input", value: "12,000 W" },
+        { label: "PV voltage range", value: "120–500 V (max 550 V)" },
+        { label: "Max PV current", value: "18 + 18 A" },
+        { label: "Battery voltage range", value: "40–60 V (nominal 48 / 51.2 V)" },
+        { label: "Max charge / discharge", value: "120 / 120 A" },
+        { label: "AC output voltage", value: "220 / 230 V" },
+        { label: "Max AC passthrough", value: "63 A" },
+        { label: "THDi", value: "<3% of nominal" },
+        { label: "Grid connection", value: "L + N + PE" },
+        { label: "Transfer time", value: "<20 ms" },
+      ],
+    },
+    {
+      group: "Battery System (VP-BAT-20K)",
+      rows: [
+        { label: "Chemistry", value: "LiFePO4 (LFP)" },
+        { label: "Nominal capacity", value: "20 kWh" },
+        { label: "Nominal voltage", value: "51.2 V (48 V system)" },
+        { label: "Voltage range", value: "44.8–57.6 V" },
+        { label: "Configuration", value: "4 × 5 kWh modules (rack-mounted)" },
+        { label: "Max charge / discharge", value: "200 / 200 A (10,240 W)" },
+        { label: "Depth of discharge", value: "100% (recommended ≤80%)" },
+        { label: "Cycle life", value: "≥6,000 @ 80% DoD, 25 °C" },
+        { label: "Round-trip efficiency", value: "≥95%" },
+        { label: "BMS", value: "Integrated smart — cell balancing, OCP/OVP/OTP/SCP" },
+        { label: "Communication", value: "CAN 2.0 / RS485" },
+      ],
+    },
+    {
+      group: "Solar Panel (VP-SP-530)",
+      rows: [
+        { label: "Rated power", value: "530 W (STC)" },
+        { label: "Efficiency", value: "21.5%" },
+        { label: "Cell type", value: "Monocrystalline PERC, 144 half-cut" },
+        { label: "Voc", value: "49.8 V" },
+        { label: "Isc", value: "13.90 A" },
+        { label: "Vmp", value: "41.5 V" },
+        { label: "Imp", value: "12.78 A" },
+        { label: "Max system voltage", value: "1,500 V DC" },
+        { label: "Temp coefficient (Pmax)", value: "-0.35 %/°C" },
+        { label: "Panel dimensions", value: "2,279 × 1,134 × 35 mm" },
+        { label: "Panel weight", value: "28.5 kg" },
+        { label: "Connector", value: "MC4-compatible" },
+      ],
+    },
+    {
+      group: "Protection & Safety",
+      rows: [
+        { label: "Inverter protections", value: "DC reverse polarity, OCP, OVP, OTP, SCP, anti-islanding, arc-fault, RCD" },
+        { label: "Surge protection", value: "Type II (DC + AC)" },
+        { label: "Inverter IP rating", value: "IP65" },
+        { label: "Battery IP rating", value: "IP55" },
+        { label: "Panel junction box", value: "IP68" },
+      ],
+    },
+    {
+      group: "Physical",
+      rows: [
+        { label: "Inverter dimensions", value: "456 × 750 × 268.5 mm" },
+        { label: "Inverter weight", value: "52 kg" },
+        { label: "Battery cabinet", value: "600 × 900 × 580 mm" },
+        { label: "Battery weight", value: "≈240 kg" },
+        { label: "Inverter cooling", value: "Intelligent air cooling" },
+        { label: "Noise", value: "<60 dB" },
+        { label: "Operating temp (inverter)", value: "-25 to +60 °C" },
+        { label: "Operating temp (battery charge)", value: "0 to +55 °C" },
+        { label: "Operating temp (battery discharge)", value: "-20 to +60 °C" },
+      ],
+    },
+    {
+      group: "Connectivity",
+      rows: [
+        { label: "Communication", value: "RS485 / RS232 / CAN" },
+        { label: "Monitoring", value: "Wi-Fi / Bluetooth / 4G / LAN (optional)" },
+        { label: "App", value: "Mobile app + web portal" },
+      ],
+    },
+    {
+      group: "Backup Performance",
+      rows: [
+        { label: "@ 50% load (4 kW)", value: "~5 hours" },
+        { label: "@ 100% load (8 kW)", value: "~2.4 hours" },
+        { label: "Charging", value: "Solar + grid hybrid, automatic priority" },
+      ],
+    },
+  ],
+  faq: [
+    {
+      q: "How long will the battery last during a power outage?",
+      a: "At 50% load (4 kW — typical for fridge, lights, router, and a few circuits) the 20 kWh battery provides approximately 5 hours of backup. At full 8 kW load, expect about 2.4 hours.",
+    },
+    {
+      q: "Can it go fully off-grid?",
+      a: "Yes. The VP-8000H supports off-grid operation with automatic solar priority charging. The dual-MPPT inverter accepts up to 12 kW of PV input for fast daytime recharge.",
+    },
+    {
+      q: "What does the 3-in-1 package include?",
+      a: "The VP-8000H is a complete system: an 8 kW hybrid inverter, a 20 kWh rack-mounted LFP battery (4 × 5 kWh modules), and 530 W monocrystalline solar panels with all wiring and mounting hardware.",
+    },
+    {
+      q: "Is professional installation required?",
+      a: "Yes. The VP-8000H involves high-voltage AC/DC wiring and should be installed by a licensed electrician or certified solar installer. The system ships with a full commissioning guide.",
+    },
+    {
+      q: "How many solar panels can the inverter handle?",
+      a: "The dual-MPPT inverter supports up to 12 kW of PV across two independent 6 kW trackers, each with two string inputs. This allows split-orientation roof layouts.",
+    },
+    {
+      q: "What's the battery warranty?",
+      a: "2 years or 6,000 cycles, whichever comes first, with a guarantee of ≥70% retained capacity at end of warranty. The inverter and panels also carry 2-year product warranties, with the panels additionally warranting ≥80% output at year 25.",
+    },
+  ],
+  certifications: [
+    "CE",
+    "IEC 61727",
+    "IEC 62116",
+    "IEC 62109-1/2",
+    "EN 50549",
+    "VDE-AR-N 4105",
+    "IEC 61215",
+    "IEC 61730",
+    "RoHS",
+  ],
+  warranty: {
+    unit: "2 years (inverter) / 2 years (battery) / 2 years product + 25 years output (panels)",
+    battery: "2 years or 6,000 cycles (≥70% capacity)",
+  },
+  shipping: { usFreeOver: 500, intlAvailable: true },
+};
+
+// ──────────────────────────────────────────────────────────────
 // Registry (keyed by product id from lib/products.ts)
 // ──────────────────────────────────────────────────────────────
 export const SPECS: Record<string, ProductDetail> = {
@@ -1070,6 +1307,7 @@ export const SPECS: Record<string, ProductDetail> = {
   "vp-solar-400": VP_SOLAR_400,
   "vp-car-cable": VP_CAR_CABLE,
   "vp-mc4-adapter": VP_MC4_ADAPTER,
+  "vp-8000h": VP_8000H,
 };
 
 export const getSpecs = (id: string): ProductDetail | undefined => SPECS[id];

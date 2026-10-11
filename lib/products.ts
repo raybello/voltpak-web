@@ -74,6 +74,17 @@ export const PRODUCTS: Product[] = [
     stats: { capacity: "2,048 Wh", weight: "45 lb" },
   },
   {
+    id: "vp-8000h",
+    slug: "voltpak-8000h",
+    name: "VoltPak VP-8000H",
+    tagline: "8 kW inverter + 20 kWh battery + 530 W solar. Whole-home power independence.",
+    category: "bundle",
+    price: 12999,
+    compareAt: 15497,
+    image: "/media/vp8000h-hero.png",
+    stats: { capacity: "20 kWh", output: "8,000 W" },
+  },
+  {
     id: "vp-solar-220",
     slug: "voltpak-solar-220",
     name: "Solar Panel 220W",
