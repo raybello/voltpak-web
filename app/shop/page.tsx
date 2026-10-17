@@ -14,12 +14,13 @@ const CATEGORIES = [
   { key: "accessory", label: "Accessories" },
 ];
 
-export default function ShopPage({
+export default async function ShopPage({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 }) {
-  const cat = searchParams.category ?? "all";
+  const { category } = await searchParams;
+  const cat = category ?? "all";
   const list =
     cat === "all"
       ? PRODUCTS

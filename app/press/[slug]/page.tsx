@@ -11,9 +11,9 @@ import { mdxComponents } from "@/components/blog/MDXComponents";
 
 const SITE_URL = "https://voltpak.ca";
 
-type Params = { slug: string };
+type Params = Promise<{ slug: string }>;
 
-export async function generateStaticParams(): Promise<Params[]> {
+export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
@@ -22,17 +22,18 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return { title: "Post not found · VoltPak" };
 
   const { title, description, cover, author, date, tags } = post.frontmatter;
-  const url = `${SITE_URL}/press/${params.slug}`;
+  const url = `${SITE_URL}/press/${slug}`;
   const ogImage = cover ? `${SITE_URL}${cover}` : `${SITE_URL}/media/hero.webp`;
 
   return {
     title: `${title} · VoltPak`,
     description,
-    alternates: { canonical: `/press/${params.slug}` },
+    alternates: { canonical: `/press/${slug}` },
     authors: author ? [{ name: author }] : undefined,
     keywords: tags,
     openGraph: {
@@ -119,8 +120,9 @@ function BlogPostJsonLd({
   );
 }
 
-export default function BlogPostPage({ params }: { params: Params }) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   const { frontmatter, content } = post;
@@ -133,7 +135,7 @@ export default function BlogPostPage({ params }: { params: Params }) {
         date={frontmatter.date}
         author={frontmatter.author}
         cover={frontmatter.cover}
-        slug={params.slug}
+        slug={slug}
       />
 
       <div className="max-w-container mx-auto px-6 md:px-8">

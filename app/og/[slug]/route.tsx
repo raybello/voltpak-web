@@ -6,9 +6,10 @@ export const runtime = "edge";
 
 export async function GET(
   _req: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const product = getProduct(params.slug);
+  const { slug } = await params;
+  const product = getProduct(slug);
   const detail = product ? getSpecs(product.id) : undefined;
 
   const title = product?.name ?? "VoltPak";

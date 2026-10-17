@@ -37,10 +37,6 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  eslint: {
-    ignoreDuringBuilds: false,
-    dirs: ["app", "components", "lib"],
-  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

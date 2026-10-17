@@ -1,9 +1,9 @@
+/* KaTeX styling for LaTeX in MDX blog posts. */
+@import "katex/dist/katex.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* KaTeX styling for LaTeX in MDX blog posts. */
-@import "katex/dist/katex.min.css";
 
 :root {
   --bg: #ffffff;

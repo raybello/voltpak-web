@@ -22,8 +22,9 @@ const COPY: Record<string, { title: string; body: string }> = {
   },
 };
 
-export default function NotifyStatusPage({ params }: { params: { status: string } }) {
-  const c = COPY[params.status];
+export default async function NotifyStatusPage({ params }: { params: Promise<{ status: string }> }) {
+  const { status } = await params;
+  const c = COPY[status];
   if (!c) notFound();
   return (
     <div className="pt-28 md:pt-32 pb-24 max-w-container mx-auto px-6 md:px-8 min-h-[60vh]">
