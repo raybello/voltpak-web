@@ -60,7 +60,7 @@ export async function sendMail(
       to: [payload.to],
       subject: payload.subject.replace(/[\r\n]+/g, " "),
       html: payload.html,
-      headers: payload.headers,
+      ...(payload.headers ? { headers: payload.headers } : {}),
       ...(logo
         ? {
             attachments: [
@@ -68,7 +68,7 @@ export async function sendMail(
                 filename: "voltpak-logo.png",
                 content: logo,
                 contentType: "image/png",
-                inlineContentId: LOGO_CID,
+                contentId: LOGO_CID,
               },
             ],
           }
