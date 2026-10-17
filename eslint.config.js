@@ -8,6 +8,8 @@ const config = [
     rules: {
       "react/no-unescaped-entities": "off",
       "@next/next/no-img-element": "warn",
+      // Intentional setState-in-effect patterns (localStorage hydration, dialog reset)
+      "react-hooks/set-state-in-effect": "off",
     },
   },
 ];
