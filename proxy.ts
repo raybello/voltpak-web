@@ -3,7 +3,7 @@ import { COMMERCE_ENABLED } from "@/lib/config";
 
 // Path A (pre-launch): the demo cart/checkout/account pages are not
 // reachable. Flip COMMERCE_ENABLED in lib/config.ts to restore them.
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   if (!COMMERCE_ENABLED) {
     return NextResponse.redirect(new URL("/shop", req.url), 307);
   }

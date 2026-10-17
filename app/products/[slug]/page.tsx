@@ -24,9 +24,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const product = getProduct(params.slug);
+  const { slug } = await params;
+  const product = getProduct(slug);
   const detail = product ? getSpecs(product.id) : undefined;
   if (!product || !detail) return { title: "Not found · VoltPak" };
 
@@ -49,8 +50,9 @@ export async function generateMetadata({
   };
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = getProduct(params.slug);
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = getProduct(slug);
   if (!product) return notFound();
   const detail = getSpecs(product.id);
   if (!detail) return notFound();

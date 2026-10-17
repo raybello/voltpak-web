@@ -217,7 +217,7 @@ function FormState({
   setEmail: (v: string) => void;
   status: Status;
   errorMsg: string | null;
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
   onSubmit: (e: React.FormEvent) => void;
 }) {
   const submitting = status === "submitting";

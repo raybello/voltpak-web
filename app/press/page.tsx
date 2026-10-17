@@ -26,13 +26,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PressPage({
+export default async function PressPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   const allPosts = getAllPosts();
-  const rawPage = parseInt(searchParams.page ?? "1", 10);
+  const { page: pageParam } = await searchParams;
+  const rawPage = parseInt(pageParam ?? "1", 10);
   const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(Math.max(1, isNaN(rawPage) ? 1 : rawPage), totalPages);
   const posts = allPosts.slice(
