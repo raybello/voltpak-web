@@ -30,9 +30,8 @@ export default buildConfig({
     push: process.env.NODE_ENV !== 'production' || process.env.CI === 'true',
     pool: {
       connectionString: process.env.DATABASE_URL ?? '',
-      // Supabase uses valid TLS but the intermediate CA is not always in
-      // Windows' / Node's trust store; the connection is still encrypted.
-      ssl: { rejectUnauthorized: false },
+      // Supabase needs SSL but local/CI postgres doesn't support it.
+      ssl: (process.env.DATABASE_URL ?? '').includes('localhost') ? false : { rejectUnauthorized: false },
       // Supabase transaction pooler recommends low max for serverless
       max: process.env.NODE_ENV === 'production' ? 2 : 10,
       idleTimeoutMillis: 10_000,
