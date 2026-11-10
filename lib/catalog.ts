@@ -17,10 +17,15 @@ async function getClient() {
   return getPayload({ config: configPromise })
 }
 
-function mediaUrl(media: PayloadDoc | string | null | undefined): string {
-  if (!media) return '/media/product-front.webp'
-  if (typeof media === 'string') return media
-  return (media.url as string) ?? '/media/product-front.webp'
+function mediaUrl(
+  media: PayloadDoc | string | null | undefined,
+  legacyPath?: string | null,
+): string {
+  if (media) {
+    if (typeof media === 'string') return media
+    if (media.url) return media.url as string
+  }
+  return legacyPath ?? '/media/product-front.webp'
 }
 
 function toProduct(doc: PayloadDoc): Product {
@@ -32,7 +37,7 @@ function toProduct(doc: PayloadDoc): Product {
     category: doc.category as Product['category'],
     price: doc.price as number,
     compareAt: (doc.compareAt as number) ?? undefined,
-    image: mediaUrl(doc.image),
+    image: mediaUrl(doc.image, doc.imagePath as string | null),
     stats: doc.stats
       ? {
           capacity: (doc.stats.capacity as string) || undefined,
@@ -56,7 +61,7 @@ function toProductDetail(doc: PayloadDoc): ProductDetail {
     },
     heroMedia: {
       type: (doc.heroMediaType ?? 'image') as 'image' | 'video',
-      src: mediaUrl(doc.heroMedia),
+      src: mediaUrl(doc.heroMedia, doc.heroMediaPath as string | null),
     },
     highlights:
       (doc.highlights as PayloadDoc[])?.map((h) => ({
@@ -72,7 +77,7 @@ function toProductDetail(doc: PayloadDoc): ProductDetail {
         body: f.body as string,
         media: {
           type: (f.featureMediaType ?? 'image') as 'image' | 'video',
-          src: mediaUrl(f.featureMedia),
+          src: mediaUrl(f.featureMedia, f.featureMediaPath as string | null),
           alt: f.featureMediaAlt as string,
         },
         callouts:
@@ -119,59 +124,81 @@ function toProductDetail(doc: PayloadDoc): ProductDetail {
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────
+// All functions catch DB errors (e.g. tables not yet migrated) and return
+// empty results so the build succeeds before the first migration run.
 
 export async function getAllProducts(): Promise<Product[]> {
-  const payload = await getClient()
-  const { docs } = await payload.find({ collection: 'products', limit: 100, depth: 1 })
-  return docs.map(toProduct)
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({ collection: 'products', limit: 100, depth: 1 })
+    return docs.map(toProduct)
+  } catch {
+    return []
+  }
 }
 
 export async function getProduct(slugOrId: string): Promise<Product | undefined> {
-  const payload = await getClient()
-  const { docs } = await payload.find({
-    collection: 'products',
-    where: {
-      or: [{ slug: { equals: slugOrId } }, { productId: { equals: slugOrId } }],
-    },
-    limit: 1,
-    depth: 1,
-  })
-  return docs[0] ? toProduct(docs[0]) : undefined
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'products',
+      where: {
+        or: [{ slug: { equals: slugOrId } }, { productId: { equals: slugOrId } }],
+      },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ? toProduct(docs[0]) : undefined
+  } catch {
+    return undefined
+  }
 }
 
 export async function getProductDetail(slugOrId: string): Promise<ProductDetail | undefined> {
-  const payload = await getClient()
-  const { docs } = await payload.find({
-    collection: 'products',
-    where: {
-      or: [{ slug: { equals: slugOrId } }, { productId: { equals: slugOrId } }],
-    },
-    limit: 1,
-    depth: 2,
-  })
-  return docs[0] ? toProductDetail(docs[0]) : undefined
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'products',
+      where: {
+        or: [{ slug: { equals: slugOrId } }, { productId: { equals: slugOrId } }],
+      },
+      limit: 1,
+      depth: 2,
+    })
+    return docs[0] ? toProductDetail(docs[0]) : undefined
+  } catch {
+    return undefined
+  }
 }
 
 export async function getFlagship(): Promise<Product | undefined> {
-  const payload = await getClient()
-  const { docs } = await payload.find({
-    collection: 'products',
-    where: { productId: { equals: 'vp-1000' } },
-    limit: 1,
-    depth: 1,
-  })
-  return docs[0] ? toProduct(docs[0]) : undefined
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'products',
+      where: { productId: { equals: 'vp-1000' } },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ? toProduct(docs[0]) : undefined
+  } catch {
+    return undefined
+  }
 }
 
 export async function getProductsByCategory(
   category: Product['category'],
 ): Promise<Product[]> {
-  const payload = await getClient()
-  const { docs } = await payload.find({
-    collection: 'products',
-    where: { category: { equals: category } },
-    limit: 100,
-    depth: 1,
-  })
-  return docs.map(toProduct)
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'products',
+      where: { category: { equals: category } },
+      limit: 100,
+      depth: 1,
+    })
+    return docs.map(toProduct)
+  } catch {
+    return []
+  }
 }

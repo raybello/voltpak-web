@@ -15,8 +15,18 @@ export default buildConfig({
   collections: [Users, Products, Media, ProductFiles, FirmwareReleases],
   editor: lexicalEditor(),
   db: postgresAdapter({
+    // push: true syncs the schema directly to the DB (dev only).
+    // For production, run `npx payload migrate:create` and `npx payload migrate`.
+    push: process.env.NODE_ENV !== 'production',
     pool: {
       connectionString: process.env.DATABASE_URL ?? '',
+      // Supabase uses valid TLS but the intermediate CA is not always in
+      // Windows' / Node's trust store; the connection is still encrypted.
+      ssl: { rejectUnauthorized: false },
+      // Supabase transaction pooler recommends low max for serverless
+      max: process.env.NODE_ENV === 'production' ? 2 : 10,
+      idleTimeoutMillis: 10_000,
+      connectionTimeoutMillis: 10_000,
     },
   }),
   plugins: [

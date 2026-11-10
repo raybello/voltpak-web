@@ -7,7 +7,8 @@
 //
 // Requires DATABASE_URL and PAYLOAD_SECRET in .env.local.
 
-import 'dotenv/config'
+import dotenv from 'dotenv'
+dotenv.config({ path: '.env.local' })
 import { getPayload } from 'payload'
 import configPromise from '../payload.config'
 import { PRODUCTS } from '../lib/products'
@@ -19,7 +20,7 @@ async function seed() {
   // Clear existing products to avoid duplicates on re-seed.
   const existing = await payload.find({ collection: 'products', limit: 200 })
   for (const doc of existing.docs) {
-    await payload.delete({ collection: 'products', id: doc.id })
+    await payload.delete({ collection: 'products', id: String(doc.id) })
   }
 
   for (const product of PRODUCTS) {
@@ -115,13 +116,13 @@ async function seed() {
         where: { productId: { equals: relatedProductId } },
         limit: 1,
       })
-      if (related[0]) relatedIds.push(related[0].id)
+      if (related[0]) relatedIds.push(String(related[0].id))
     }
 
     if (relatedIds.length) {
       await payload.update({
         collection: 'products',
-        id: docs[0].id,
+        id: String(docs[0].id),
         data: { compatibleWith: relatedIds },
       })
       console.log(`Linked compatibleWith for ${product.id}: [${relatedIds.join(', ')}]`)

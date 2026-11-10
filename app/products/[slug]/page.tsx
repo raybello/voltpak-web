@@ -16,9 +16,15 @@ import BuySection from "@/components/specs/BuySection";
 import FinalCta from "@/components/specs/FinalCta";
 import ProductJsonLd from "@/components/specs/ProductJsonLd";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((p) => ({ slug: p.slug }));
+  try {
+    const products = await getAllProducts();
+    return products.map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

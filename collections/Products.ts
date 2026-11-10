@@ -57,8 +57,12 @@ export const Products: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      admin: { description: 'Product card / listing image' },
+      admin: { description: 'Product card / listing image (upload via Payload admin)' },
+    },
+    {
+      name: 'imagePath',
+      type: 'text',
+      admin: { description: 'Legacy static path, used as fallback when no media is uploaded' },
     },
     {
       name: 'stats',
@@ -97,8 +101,12 @@ export const Products: CollectionConfig = {
       name: 'heroMedia',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      admin: { description: 'Hero image or video file' },
+      admin: { description: 'Hero image or video file (upload via Payload admin)' },
+    },
+    {
+      name: 'heroMediaPath',
+      type: 'text',
+      admin: { description: 'Legacy static path, used as fallback when no media is uploaded' },
     },
 
     // ── Highlights band (3-up stat strip) ─────────────────────────────────
@@ -142,7 +150,11 @@ export const Products: CollectionConfig = {
           name: 'featureMedia',
           type: 'upload',
           relationTo: 'media',
-          required: true,
+        },
+        {
+          name: 'featureMediaPath',
+          type: 'text',
+          admin: { description: 'Legacy static path, used as fallback when no media is uploaded' },
         },
         {
           name: 'featureMediaAlt',

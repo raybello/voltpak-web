@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: p === "" ? 1 : p.startsWith("/legal") ? 0.3 : 0.6,
   }));
 
-  const products = await getAllProducts();
+  const products = await getAllProducts().catch(() => []);
   const productRoutes = products.map((p) => ({
     url: `${SITE_URL}/products/${p.slug}`,
     changeFrequency: "weekly" as const,

@@ -5,7 +5,7 @@
 // to https://voltpak.ca/api/revalidate with the REVALIDATE_SECRET header.
 
 import { NextResponse } from "next/server";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -27,13 +27,12 @@ export async function POST(req: Request) {
 
   if (collection === "products") {
     if (slug) {
-      revalidatePath(`/products/${slug}`);
+      revalidatePath(`/products/${slug}`, "page");
     }
     // Revalidate listing pages on any product change
-    revalidatePath("/shop");
-    revalidatePath("/compare");
-    revalidatePath("/");
-    revalidateTag("products");
+    revalidatePath("/shop", "page");
+    revalidatePath("/compare", "page");
+    revalidatePath("/", "page");
   }
 
   return NextResponse.json({ revalidated: true, collection, slug });
