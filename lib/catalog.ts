@@ -7,13 +7,14 @@
 
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+import { importMap } from '@/app/(payload)/admin/customImportMap'
 import type { Product } from './products'
 import type { ProductDetail } from './specs'
 
 type PayloadDoc = Record<string, any>
 
 async function getClient() {
-  return getPayload({ config: configPromise })
+  return getPayload({ config: configPromise, importMap })
 }
 
 function mediaUrl(
