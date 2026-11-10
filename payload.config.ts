@@ -50,6 +50,17 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN ?? '',
     }),
   ],
+  onInit: async (payload) => {
+    const dashboard = payload.config.admin.dashboard
+    if (dashboard?.widgets) {
+      const seen = new Set<string>()
+      dashboard.widgets = dashboard.widgets.filter((w) => {
+        if (seen.has(w.slug)) return false
+        seen.add(w.slug)
+        return true
+      })
+    }
+  },
   secret: process.env.PAYLOAD_SECRET ?? 'dev-secret-change-in-production',
   typescript: {
     outputFile: 'payload-types.ts',
