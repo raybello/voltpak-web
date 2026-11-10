@@ -25,9 +25,9 @@ export default buildConfig({
   collections: [Users, Products, Media, ProductFiles, FirmwareReleases],
   editor: lexicalEditor(),
   db: postgresAdapter({
-    // push: true syncs the schema directly to the DB (dev only).
+    // push: true syncs the schema directly to the DB (dev + CI).
     // For production, run `npx payload migrate:create` and `npx payload migrate`.
-    push: process.env.NODE_ENV !== 'production',
+    push: process.env.NODE_ENV !== 'production' || process.env.CI === 'true',
     pool: {
       connectionString: process.env.DATABASE_URL ?? '',
       // Supabase uses valid TLS but the intermediate CA is not always in
