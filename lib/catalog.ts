@@ -10,7 +10,6 @@ import configPromise from '@payload-config'
 import type { Product } from './products'
 import type { ProductDetail } from './specs'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PayloadDoc = Record<string, any>
 
 async function getClient() {
