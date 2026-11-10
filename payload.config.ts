@@ -11,6 +11,15 @@ import { FirmwareReleases } from './collections/FirmwareReleases'
 export default buildConfig({
   admin: {
     user: Users.slug,
+    meta: {
+      titleSuffix: '- VoltPak',
+    },
+    components: {
+      graphics: {
+        Logo: '@/components/admin/Logo',
+        Icon: '@/components/admin/Icon',
+      },
+    },
   },
   collections: [Users, Products, Media, ProductFiles, FirmwareReleases],
   editor: lexicalEditor(),

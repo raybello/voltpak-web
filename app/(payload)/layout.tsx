@@ -1,5 +1,5 @@
 import { RootLayout } from '@payloadcms/next/layouts'
-import { importMap } from './admin/importMap'
+import { importMap } from './admin/customImportMap'
 import { serverFunction } from './admin/serverAction'
 import configPromise from '@payload-config'
 import '@payloadcms/next/css'
