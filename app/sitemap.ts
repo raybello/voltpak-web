@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { PRODUCTS } from "@/lib/products";
+import { getAllProducts } from "@/lib/catalog";
 import { getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 
@@ -25,14 +25,15 @@ const STATIC_ROUTES = [
   "/legal/accessibility",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = STATIC_ROUTES.map((p) => ({
     url: `${SITE_URL}${p}`,
     changeFrequency: "monthly" as const,
     priority: p === "" ? 1 : p.startsWith("/legal") ? 0.3 : 0.6,
   }));
 
-  const productRoutes = PRODUCTS.map((p) => ({
+  const products = await getAllProducts();
+  const productRoutes = products.map((p) => ({
     url: `${SITE_URL}/products/${p.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.8,

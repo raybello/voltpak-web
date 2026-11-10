@@ -4,24 +4,33 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "next build",
+    "build": "payload generate:importmap && next build",
     "start": "next start -p 3000",
     "lint": "eslint app components lib",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.91.0",
+    "@payloadcms/next": "^3.91.0",
+    "@payloadcms/richtext-lexical": "^3.91.0",
+    "@payloadcms/storage-vercel-blob": "^3.91.0",
+    "graphql": "^16.9.0",
     "gray-matter": "^4.0.3",
     "katex": "^0.18.7",
     "next": "^16.3.5",
     "next-mdx-remote": "^6.0.0",
+    "payload": "^3.91.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "resend": "^6.28.1"
+    "resend": "^6.28.1",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@types/node": "^26",

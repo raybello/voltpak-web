@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getProduct, PRODUCTS } from "@/lib/products";
-import { getSpecs } from "@/lib/specs";
+import { getAllProducts, getProduct, getProductDetail } from "@/lib/catalog";
 import StickyBuyBar from "@/components/product/StickyBuyBar";
 import ProductHero from "@/components/specs/ProductHero";
 import HighlightsBand from "@/components/specs/HighlightsBand";
@@ -18,7 +17,8 @@ import FinalCta from "@/components/specs/FinalCta";
 import ProductJsonLd from "@/components/specs/ProductJsonLd";
 
 export async function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+  const products = await getAllProducts();
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -27,8 +27,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
-  const detail = product ? getSpecs(product.id) : undefined;
+  const product = await getProduct(slug);
+  const detail = product ? await getProductDetail(product.id) : undefined;
   if (!product || !detail) return { title: "Not found · VoltPak" };
 
   return {
@@ -52,9 +52,9 @@ export async function generateMetadata({
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProduct(slug);
   if (!product) return notFound();
-  const detail = getSpecs(product.id);
+  const detail = await getProductDetail(product.id);
   if (!detail) return notFound();
 
   const compareCategory =
@@ -63,6 +63,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     detail.compareAgainst &&
     detail.compareAgainst.length > 0 &&
     ["power-station", "battery", "solar"].includes(compareCategory);
+
+  const compatibleProducts = detail.compatibleWith && detail.compatibleWith.length > 0
+    ? (await Promise.all(detail.compatibleWith.map((id) => getProduct(id)))).filter(
+        (p): p is Awaited<ReturnType<typeof getProduct>> & NonNullable<unknown> => p != null
+      )
+    : [];
 
   return (
     <>
@@ -78,8 +84,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <FeatureBlock key={f.id} feature={f} index={i} />
       ))}
 
-      {detail.compatibleWith && detail.compatibleWith.length > 0 && (
-        <CompatibilityMatrix compatibleWith={detail.compatibleWith} />
+      {compatibleProducts.length > 0 && (
+        <CompatibilityMatrix products={compatibleProducts} />
       )}
 
       <InTheBoxList items={detail.inTheBox} />
