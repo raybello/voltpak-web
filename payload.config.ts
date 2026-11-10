@@ -19,6 +19,7 @@ export default buildConfig({
         Logo: '@/components/admin/Logo',
         Icon: '@/components/admin/Icon',
       },
+      beforeDashboard: ['@/components/admin/DashboardStats'],
     },
   },
   collections: [Users, Products, Media, ProductFiles, FirmwareReleases],
