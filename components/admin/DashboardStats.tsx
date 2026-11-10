@@ -1,11 +1,9 @@
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
+import type { Payload } from 'payload'
 
 type CategoryCount = { label: string; count: number }
 
-async function getStats() {
+async function getStats(payload: Payload) {
   try {
-    const payload = await getPayload({ config: configPromise })
     const { docs, totalDocs } = await payload.find({
       collection: 'products',
       limit: 100,
@@ -49,8 +47,10 @@ const CATEGORY_LABELS: Record<string, string> = {
   bundle: 'Bundles',
 }
 
-export default async function DashboardStats() {
-  const { totalProducts, categories, mediaCount, userCount } = await getStats()
+export default async function DashboardStats({ payload }: { payload?: Payload }) {
+  if (!payload) return null
+
+  const { totalProducts, categories, mediaCount, userCount } = await getStats(payload)
 
   return (
     <div
