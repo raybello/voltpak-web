@@ -2,7 +2,6 @@ import { RootLayout } from '@payloadcms/next/layouts'
 import { importMap } from './admin/importMap'
 import { serverFunction } from './admin/serverAction'
 import configPromise from '@payload-config'
-import React from 'react'
 
 type Args = {
   children: React.ReactNode

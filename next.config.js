@@ -33,6 +33,10 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Allow cross-origin dev requests from local network IPs (phone/tablet testing).
+  // Next.js 16 blocks them by default; only the hostname the server started with
+  // is allowed. Update this list when your LAN IP changes.
+  allowedDevOrigins: ['10.0.0.92'],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
