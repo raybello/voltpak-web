@@ -6,7 +6,7 @@
 // enrol or spam a third party.
 
 import { NextResponse } from "next/server";
-import { getProduct } from "@/lib/catalog";
+import { getProduct } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { EMAIL_RE, clientIp, originAllowed, rateLimit, signToken, str } from "@/lib/security";
 import { confirmHtml, getNotifyEnv, sendMail } from "@/lib/notify-email";
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
   }
 
   // Only accept known products; never echo arbitrary client text into email.
-  const product = await getProduct(str(raw.productSlug, 100));
+  const product = getProduct(str(raw.productSlug, 100));
   const productName = product?.name ?? "the VoltPak launch";
   const productSlug = product?.slug ?? "";
 
