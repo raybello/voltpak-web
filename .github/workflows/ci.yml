@@ -37,6 +37,8 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      - name: Push Payload schema to CI database
+        run: NODE_ENV=development npx tsx scripts/db-push.ts
       - run: npm run build
       - name: Smoke test production server
         run: |
