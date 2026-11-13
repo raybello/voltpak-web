@@ -4,9 +4,7 @@ import { getPayload } from 'payload'
 import configPromise from '../payload.config'
 import { importMap } from '../app/(payload)/admin/customImportMap'
 
-;(async () => {
-  const payload = await getPayload({ config: configPromise, importMap })
-  console.log('Payload schema push complete.')
-  await (payload.db as any).destroy?.()
-  process.exit(0)
-})()
+const payload = await getPayload({ config: configPromise, importMap })
+console.log('Payload schema push complete.')
+await (payload.db as any).destroy?.()
+process.exit(0)
