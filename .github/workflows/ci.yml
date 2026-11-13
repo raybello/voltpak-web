@@ -8,25 +8,11 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: voltpak_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     env:
       NOTIFY_SIGNING_SECRET: ci-only-secret
       NEXT_TELEMETRY_DISABLED: "1"
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/voltpak_test
-      PAYLOAD_SECRET: ci-only-payload-secret-do-not-use-in-production
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
