@@ -7,6 +7,7 @@ export default function InTheBoxList({
   image?: string;
   title?: string;
 }) {
+  if (items.length === 0) return null;
   return (
     <section id="in-the-box" className="bg-ink-100 py-24 md:py-section">
       <div className="max-w-container mx-auto px-6 md:px-8 grid md:grid-cols-1 gap-12 items-center">

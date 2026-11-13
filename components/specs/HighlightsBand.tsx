@@ -1,6 +1,7 @@
 import { Highlight } from "@/lib/specs";
 
 export default function HighlightsBand({ items }: { items: Highlight[] }) {
+  if (items.length === 0) return null;
   return (
     <section className="bg-white py-24 md:py-section border-b border-ink-100">
       <div className="max-w-container mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">
