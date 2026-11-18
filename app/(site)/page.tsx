@@ -10,42 +10,69 @@ export default async function Home() {
   return (
     <>
       {/* ───────────────────────── HERO ───────────────────────── */}
-      <section className="relative h-screen min-h-[680px] flex items-end justify-center bg-ink-900 text-white overflow-hidden noise">
-        <video
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-          src="/media/hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/media/hero.webp"
+      <section className="relative bg-ink-900 text-white overflow-hidden noise">
+        <div className="absolute inset-0 opacity-20"
+          style={{ background: "radial-gradient(ellipse 80% 60% at 70% 50%, #00D4FF 0%, transparent 60%)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/80" />
-        <div className="relative max-w-container mx-auto px-6 md:px-8 pb-24 text-center">
-          <p className="text-eyebrow uppercase text-accent mb-4 tracking-widest">Built to be open</p>
-          <h1 className="font-display text-hero">
-            Power, without
-            <br />
-            the mystery.
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-ink-300 max-w-2xl mx-auto">
-            A modular inverter system engineered for tinkerers, hackers, and anyone
-            who believes their gear should make sense. 256 Wh. Fully serviceable.
-            No black box.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
-              href={`/products/${flagship?.slug ?? "vp-1000"}`}
-              className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
-            >
-              Explore VoltPak 1000
-            </Link>
-            <Link
-              href="/shop"
-              className="h-12 px-8 inline-flex items-center justify-center rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition"
-            >
-              See the full lineup →
-            </Link>
+        <div className="relative max-w-container mx-auto px-6 md:px-8 py-20 md:py-28">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-8 items-center">
+            {/* Copy + CTAs */}
+            <div>
+              <p className="text-eyebrow uppercase text-accent mb-4 tracking-widest">Built to be open</p>
+              <h1 className="font-display text-hero">
+                Power, without
+                <br />
+                the mystery.
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-ink-300 max-w-xl">
+                A modular inverter system engineered for tinkerers, hackers, and anyone
+                who believes their gear should make sense. Fully serviceable. No black box.
+              </p>
+
+              {/* Key specs strip */}
+              {flagship?.stats && (
+                <div className="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+                  {[
+                    { v: flagship.stats.capacity, l: "Capacity" },
+                    { v: flagship.stats.output, l: "AC Output" },
+                    { v: flagship.stats.weight, l: "Weight" },
+                  ].filter((s) => s.v).map((s) => (
+                    <div key={s.l}>
+                      <div className="font-display text-xl md:text-2xl font-bold tabular text-white whitespace-nowrap">{s.v}</div>
+                      <div className="text-xs text-ink-500 mt-1 uppercase tracking-wider">{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link
+                  href={`/products/${flagship?.slug ?? "voltpak-1000"}`}
+                  className="min-h-[48px] px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition whitespace-nowrap"
+                >
+                  Explore VoltPak 1000
+                </Link>
+                <Link
+                  href="/shop"
+                  className="min-h-[48px] px-8 inline-flex items-center justify-center rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition whitespace-nowrap"
+                >
+                  See the full lineup →
+                </Link>
+              </div>
+            </div>
+
+            {/* Product image */}
+            <div className="relative flex items-center justify-center order-first md:order-last">
+              <div className="relative w-full max-w-sm md:max-w-none mx-auto">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 to-transparent" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={flagship?.image ?? "/media/product-front.webp"}
+                  alt={flagship?.name ?? "VoltPak 1000"}
+                  className="relative w-full object-contain aspect-square drop-shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -268,9 +295,10 @@ export default async function Home() {
                       {p.stats.output && <span>· {p.stats.output}</span>}
                     </div>
                   )}
-                  <div className="mt-auto pt-4 flex items-baseline justify-between">
+                  <div className="mt-auto pt-4 flex items-center justify-between gap-3">
                     {isPreLaunch(p) ? (
-                      <span className="text-lg font-semibold text-accent-hover">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-ink-500">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-hover flex-shrink-0" />
                         {PRE_LAUNCH_PRICE_LABEL}
                       </span>
                     ) : (
@@ -278,7 +306,7 @@ export default async function Home() {
                         {formatPrice(p.price)}
                       </span>
                     )}
-                    <span className="text-sm text-accent-hover font-semibold group-hover:translate-x-1 transition-transform">
+                    <span className="text-sm text-accent font-semibold whitespace-nowrap group-hover:translate-x-1 transition-transform">
                       {isPreLaunch(p) ? "Notify me →" : "View specs →"}
                     </span>
                   </div>

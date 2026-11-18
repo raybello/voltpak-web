@@ -5,7 +5,7 @@ export default function BuySection({ product }: { product: Product }) {
   return (
     <section
       id="buy"
-      className="bg-ink-100 py-24 md:py-section border-t border-ink-100"
+      className="bg-ink-100 py-24 md:py-section"
     >
       <div className="max-w-container mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-start">
         <div>

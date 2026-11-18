@@ -39,7 +39,7 @@ export default function FinalCta({
           ) : (
             <Link
               href="#buy"
-              className="h-14 px-10 inline-flex items-center justify-center rounded-full bg-accent text-ink-900 font-semibold hover:bg-white transition"
+              className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-accent text-ink-900 font-semibold hover:bg-white transition"
             >
               Buy {product.name}
             </Link>
