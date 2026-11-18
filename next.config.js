@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
+const { withPayload } = require('@payloadcms/next/withPayload');
+
 const isDev = process.env.NODE_ENV !== "production";
 
-// Content-Security-Policy. Next.js injects inline bootstrap scripts, so
-// script-src needs 'unsafe-inline' unless we move to per-request nonces
-// (tracked in docs/LAUNCH.md). Everything else is locked to same-origin.
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "media-src 'self'",
+  "img-src 'self' data: blob: *.public.blob.vercel-storage.com",
+  "media-src 'self' *.public.blob.vercel-storage.com",
   "font-src 'self' data:",
   "connect-src 'self'",
   "frame-ancestors 'none'",
@@ -34,14 +33,23 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Allow cross-origin dev requests from local network IPs (phone/tablet testing).
+  // Next.js 16 blocks them by default; only the hostname the server started with
+  // is allowed. Update this list when your LAN IP changes.
+  allowedDevOrigins: ['10.0.0.92'],
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+      },
+    ],
   },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
       {
-        // Filenames are not hashed, so keep this modest to allow asset replacement.
         source: "/media/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
       },
@@ -49,4 +57,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPayload(nextConfig);

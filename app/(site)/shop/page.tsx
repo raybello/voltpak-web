@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/products";
+import { getAllProducts } from "@/lib/catalog";
 import { formatPrice } from "@/lib/format";
 import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
@@ -21,10 +21,11 @@ export default async function ShopPage({
 }) {
   const { category } = await searchParams;
   const cat = category ?? "all";
+  const allProducts = await getAllProducts();
   const list =
     cat === "all"
-      ? PRODUCTS
-      : PRODUCTS.filter((p) => p.category === cat);
+      ? allProducts
+      : allProducts.filter((p) => p.category === cat);
 
   return (
     <div className="pt-28 md:pt-32 pb-24">

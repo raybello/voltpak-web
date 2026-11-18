@@ -1,23 +1,16 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/products";
+import type { Product } from "@/lib/products";
 
-// Renders a small "works with" card grid for the product pages where
-// it's relevant (expansion battery, solar, accessories).  Accepts a
-// list of product ids it's compatible with.
 export default function CompatibilityMatrix({
-  compatibleWith,
+  products,
   title = "Works with",
   eyebrow = "Compatibility",
 }: {
-  compatibleWith: string[];
+  products: Product[];
   title?: string;
   eyebrow?: string;
 }) {
-  const items = compatibleWith
-    .map((id) => PRODUCTS.find((p) => p.id === id))
-    .filter(Boolean) as typeof PRODUCTS;
-
-  if (items.length === 0) return null;
+  if (products.length === 0) return null;
 
   return (
     <section className="bg-white py-24 md:py-section">
@@ -27,7 +20,7 @@ export default function CompatibilityMatrix({
           <h2 className="font-display text-section text-ink-900">{title}</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {items.map((p, i) => (
+          {products.map((p, i) => (
             <Link
               key={p.id}
               href={`/products/${p.slug}`}

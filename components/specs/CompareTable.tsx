@@ -151,9 +151,9 @@ export default function CompareTable({
                   <td className="py-3 px-4 tabular text-ink-900 font-medium bg-ink-100/60">
                     {productRows[i].value}
                   </td>
-                  {competitors.map(({ rows }) => (
+                  {competitors.map(({ b, rows }) => (
                     <td
-                      key={rows[i].label + label}
+                      key={b.id}
                       className="py-3 px-4 tabular text-ink-700"
                     >
                       {rows[i].value}

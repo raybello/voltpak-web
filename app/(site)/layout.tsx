@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
-import "./globals.css";
+import "../globals.css";
+import Script from "next/script";
 import { CartProvider } from "@/components/cart/CartContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
-import { COMMERCE_ENABLED } from "@/lib/config";
 import RevealInit from "@/components/motion/RevealInit";
+import { COMMERCE_ENABLED } from "@/lib/config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,34 +46,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <head>
-        {/* Mark the document as JS-capable BEFORE CSS paints.
-            Our `.reveal` utility is visible by default so that
-            anyone with JS disabled or a slow main thread always
-            sees content.  This class promotes it to the
-            hidden-until-observed state used by our scroll reveal. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "document.documentElement.classList.add('has-js');",
-          }}
-        />
-      </head>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans text-ink-700 bg-white">
+        <Script id="has-js" strategy="beforeInteractive">
+          {`document.documentElement.classList.add('has-js');`}
+        </Script>
         <CartProvider>
           <Header />
           <main>{children}</main>
           <Footer />
           {COMMERCE_ENABLED && <CartDrawer />}
+          <RevealInit />
         </CartProvider>
-        <RevealInit />
       </body>
     </html>
   );

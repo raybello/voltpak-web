@@ -1,16 +1,13 @@
 import { ImageResponse } from "next/og";
-import { getProduct } from "@/lib/products";
-import { getSpecs } from "@/lib/specs";
-
-export const runtime = "edge";
+import { getProduct, getProductDetail } from "@/lib/catalog";
 
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const product = getProduct(slug);
-  const detail = product ? getSpecs(product.id) : undefined;
+  const product = await getProduct(slug);
+  const detail = product ? await getProductDetail(product.id) : undefined;
 
   const title = product?.name ?? "VoltPak";
   const sub = detail?.shortDesc ?? "Silent power. Serious output.";

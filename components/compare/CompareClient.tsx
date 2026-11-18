@@ -2,14 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/products";
-import { SPECS, type ProductDetail } from "@/lib/specs";
+import type { Product } from "@/lib/products";
+import type { ProductDetail } from "@/lib/specs";
 import { formatPrice } from "@/lib/format";
 import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
-// Universal label set - union of the spec labels we care about across
-// the most common compare cases.  Rows without a value in either
-// product show "-".
 const COMPARE_LABELS = [
   "Capacity",
   "Chemistry",
@@ -45,16 +42,21 @@ function pick(detail: ProductDetail, label: string) {
   return hit?.value ?? "-";
 }
 
-export default function ComparePage() {
-  const [left, setLeft] = useState("vp-1000");
-  const [right, setRight] = useState("vp-2000");
+export default function CompareClient({
+  products,
+  specs,
+}: {
+  products: Product[];
+  specs: Record<string, ProductDetail>;
+}) {
+  const [left, setLeft] = useState(products[0]?.id ?? "");
+  const [right, setRight] = useState(products[1]?.id ?? "");
 
-  const leftProduct = PRODUCTS.find((p) => p.id === left)!;
-  const rightProduct = PRODUCTS.find((p) => p.id === right)!;
-  const leftSpecs = SPECS[left];
-  const rightSpecs = SPECS[right];
+  const leftProduct = products.find((p) => p.id === left);
+  const rightProduct = products.find((p) => p.id === right);
+  const leftSpecs = left ? specs[left] : undefined;
+  const rightSpecs = right ? specs[right] : undefined;
 
-  // Only show rows where at least one side has a value.
   const rows = useMemo(
     () =>
       COMPARE_LABELS.map((label) => ({
@@ -79,7 +81,6 @@ export default function ComparePage() {
           </p>
         </div>
 
-        {/* Picker */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           <ProductPicker
             label="Left"
@@ -87,6 +88,8 @@ export default function ComparePage() {
             onChange={setLeft}
             exclude={right}
             product={leftProduct}
+            products={products}
+            specs={specs}
           />
           <ProductPicker
             label="Right"
@@ -94,10 +97,11 @@ export default function ComparePage() {
             onChange={setRight}
             exclude={left}
             product={rightProduct}
+            products={products}
+            specs={specs}
           />
         </div>
 
-        {/* Headline row */}
         <div className="grid grid-cols-[1fr_2fr_2fr] md:grid-cols-[1fr_3fr_3fr] border-y-2 border-ink-900 text-sm">
           <div className="py-4 text-xs uppercase tracking-widest text-ink-500 font-semibold">
             Product
@@ -109,8 +113,9 @@ export default function ComparePage() {
         {rows.map((r, i) => (
           <div
             key={r.label}
-            className={`grid grid-cols-[1fr_2fr_2fr] md:grid-cols-[1fr_3fr_3fr] text-sm border-b border-ink-100 ${i % 2 === 1 ? "bg-ink-100/30" : ""
-              }`}
+            className={`grid grid-cols-[1fr_2fr_2fr] md:grid-cols-[1fr_3fr_3fr] text-sm border-b border-ink-100 ${
+              i % 2 === 1 ? "bg-ink-100/30" : ""
+            }`}
           >
             <div className="py-3 pr-3 text-ink-500">{r.label}</div>
             <div className="py-3 pr-3 text-ink-900 tabular">{r.l}</div>
@@ -118,7 +123,6 @@ export default function ComparePage() {
           </div>
         ))}
 
-        {/* Back link */}
         <div className="mt-12 text-center">
           <Link
             href="/shop"
@@ -138,12 +142,16 @@ function ProductPicker({
   onChange,
   exclude,
   product,
+  products,
+  specs,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   exclude: string;
-  product: ReturnType<typeof PRODUCTS.find>;
+  product: Product | undefined;
+  products: Product[];
+  specs: Record<string, ProductDetail>;
 }) {
   if (!product) return null;
   return (
@@ -163,7 +171,7 @@ function ProductPicker({
           onChange={(e) => onChange(e.target.value)}
           className="flex-1 h-10 bg-white rounded-full px-4 text-sm text-ink-900 border border-ink-100 focus:outline-none focus:border-ink-900 cursor-pointer"
         >
-          {PRODUCTS.filter((p) => p.id !== exclude && SPECS[p.id]).map((p) => (
+          {products.filter((p) => p.id !== exclude && specs[p.id]).map((p) => (
             <option key={p.id} value={p.id}>
               {p.name}
             </option>
@@ -174,11 +182,7 @@ function ProductPicker({
   );
 }
 
-function HeaderCell({
-  product,
-}: {
-  product: ReturnType<typeof PRODUCTS.find>;
-}) {
+function HeaderCell({ product }: { product: Product | undefined }) {
   if (!product) return null;
   return (
     <div className="py-4 pr-3">

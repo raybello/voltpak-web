@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { PRODUCTS, FLAGSHIP } from "@/lib/products";
+import { getAllProducts, getFlagship } from "@/lib/catalog";
 import { formatPrice } from "@/lib/format";
 import { isPreLaunch, PRE_LAUNCH_PRICE_LABEL } from "@/lib/config";
 
-export default function Home() {
-  const stations = PRODUCTS.filter((p) => p.category === "power-station");
+export default async function Home() {
+  const [allProducts, flagship] = await Promise.all([getAllProducts(), getFlagship()]);
+  const stations = allProducts.filter((p) => p.category === "power-station");
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href={`/products/${FLAGSHIP.slug}`}
+              href={`/products/${flagship?.slug ?? "vp-1000"}`}
               className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
             >
               Explore VoltPak 1000
@@ -243,7 +244,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {stations.concat(PRODUCTS.filter(p => p.category === "battery")).slice(0, 3).map((p, i) => (
+            {stations.concat(allProducts.filter(p => p.category === "battery")).slice(0, 3).map((p, i) => (
               <Link
                 key={p.id}
                 href={`/products/${p.slug}`}

@@ -9,6 +9,7 @@ export default function SpecSheet({
   title?: string;
   eyebrow?: string;
 }) {
+  if (groups.length === 0) return null;
   return (
     <section id="specs" className="bg-white py-24 md:py-section">
       <div className="max-w-container mx-auto px-6 md:px-8">

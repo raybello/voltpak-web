@@ -1,6 +1,6 @@
 // GET /api/notify/confirm?token=...  (link from the confirmation email)
 import { NextResponse } from "next/server";
-import { getProduct } from "@/lib/products";
+import { getProduct } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/site";
 import { signToken, verifyToken } from "@/lib/security";
 import { adminHtml, getNotifyEnv, sendMail, welcomeHtml } from "@/lib/notify-email";
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
     console.warn("[notify] contacts.create failed (likely duplicate):", err);
   }
 
-  const product = getProduct(slug);
+  const product = await getProduct(slug);
   const productName = product?.name ?? "the VoltPak launch";
   const unsubUrl = `${SITE_URL}/api/notify/unsubscribe?token=${encodeURIComponent(
     signToken("unsub", { email })
