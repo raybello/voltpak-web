@@ -45,16 +45,16 @@ export default async function Home() {
                 </div>
               )}
 
-              <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
                   href={`/products/${flagship?.slug ?? "voltpak-1000"}`}
-                  className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition"
+                  className="min-h-[48px] px-8 inline-flex items-center justify-center rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition whitespace-nowrap"
                 >
                   Explore VoltPak 1000
                 </Link>
                 <Link
                   href="/shop"
-                  className="h-12 px-8 inline-flex items-center justify-center rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition"
+                  className="min-h-[48px] px-8 inline-flex items-center justify-center rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition whitespace-nowrap"
                 >
                   See the full lineup →
                 </Link>
@@ -295,9 +295,10 @@ export default async function Home() {
                       {p.stats.output && <span>· {p.stats.output}</span>}
                     </div>
                   )}
-                  <div className="mt-auto pt-4 flex items-baseline justify-between">
+                  <div className="mt-auto pt-4 flex items-center justify-between gap-3">
                     {isPreLaunch(p) ? (
-                      <span className="text-lg font-semibold text-accent-hover">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-ink-500">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-hover flex-shrink-0" />
                         {PRE_LAUNCH_PRICE_LABEL}
                       </span>
                     ) : (
@@ -305,7 +306,7 @@ export default async function Home() {
                         {formatPrice(p.price)}
                       </span>
                     )}
-                    <span className="text-sm text-accent-hover font-semibold group-hover:translate-x-1 transition-transform">
+                    <span className="text-sm text-accent font-semibold whitespace-nowrap group-hover:translate-x-1 transition-transform">
                       {isPreLaunch(p) ? "Notify me →" : "View specs →"}
                     </span>
                   </div>
