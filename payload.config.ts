@@ -9,7 +9,22 @@ import { ProductFiles } from './collections/ProductFiles'
 import { FirmwareReleases } from './collections/FirmwareReleases'
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://voltpak.ca',
+  // Canonical origin: voltpak.ca 307-redirects to www.voltpak.ca, so every
+  // admin request runs with Origin https://www.voltpak.ca. Payload adds
+  // `serverURL` to its CSRF allowlist and drops cookie auth for any
+  // state-changing request whose Origin isn't on that list — so a serverURL
+  // that doesn't match the served host makes POSTs (sign out, saves,
+  // uploads) run as anonymous ("No User" 400). Keep fallback in sync with
+  // the real host, and allowlist both hosts.
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.voltpak.ca',
+  csrf: [
+    'https://www.voltpak.ca',
+    'https://voltpak.ca',
+    ...(process.env.NEXT_PUBLIC_SITE_URL &&
+    !['https://www.voltpak.ca', 'https://voltpak.ca'].includes(process.env.NEXT_PUBLIC_SITE_URL)
+      ? [process.env.NEXT_PUBLIC_SITE_URL]
+      : []),
+  ],
   admin: {
     user: Users.slug,
     meta: {
