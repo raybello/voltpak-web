@@ -26,10 +26,9 @@ export default buildConfig({
   collections: [Users, Products, Media, ProductFiles, FirmwareReleases],
   editor: lexicalEditor(),
   db: postgresAdapter({
-    // push: true syncs the schema directly to the DB (dev only).
-    // For production, run `npx payload migrate:create` and `npx payload migrate`.
-    // CI uses scripts/db-push.ts (NODE_ENV=development) before next build.
-    push: process.env.NODE_ENV !== 'production',
+    // push: true is intentional in all environments. drizzle makes it idempotent
+    // (no-op when schema is already in sync), so it is safe on cold starts.
+    push: true,
     pool: {
       connectionString: process.env.DATABASE_URL ?? '',
       // Supabase needs SSL but local/CI postgres doesn't support it.

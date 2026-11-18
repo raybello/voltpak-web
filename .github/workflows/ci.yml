@@ -24,7 +24,6 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
-      - run: NODE_ENV=development npx tsx scripts/db-push.mts
       - run: npm run build
       - name: Smoke test production server
         run: |

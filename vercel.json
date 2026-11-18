@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "NODE_ENV=development npx tsx scripts/db-push.mts && npm run build",
+  "buildCommand": "npm run build",
   "installCommand": "npm ci",
   "outputDirectory": ".next"
 }
