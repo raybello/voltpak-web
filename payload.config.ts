@@ -9,6 +9,7 @@ import { ProductFiles } from './collections/ProductFiles'
 import { FirmwareReleases } from './collections/FirmwareReleases'
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://voltpak.ca',
   admin: {
     user: Users.slug,
     meta: {
